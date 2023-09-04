@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 
+import 'config/api/api_paths.dart';
 import 'core/utils/navigation.dart';
 
 final sl = GetIt.instance;
@@ -8,14 +9,11 @@ final sl = GetIt.instance;
 Future<void> initializeDependencies() async {
   // Dio
   Dio client = Dio(
-      // BaseOptions(
-      //   receiveDataWhenStatusError: true,
-      //   connectTimeout:
-      //       const Duration(milliseconds: Endpoints.connectionTimeout),
-      //   receiveTimeout: const Duration(milliseconds: Endpoints.receiveTimeout),
-      //   baseUrl: Endpoints.baseUrl,
-      // ),
-      );
+    BaseOptions(
+      baseUrl: Links.baseLink,
+      receiveDataWhenStatusError: true,
+    ),
+  );
 
   sl.registerLazySingleton<Dio>(() => client);
 
