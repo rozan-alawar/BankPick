@@ -14,8 +14,11 @@ import 'injection_container.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Ensure that ScreenUtil's screen size is initialized.
+  // Ensure that ScreenUtil's screen size is initialized
   await ScreenUtil.ensureScreenSize();
+
+  // Ensure that localization is initialized
+  await EasyLocalization.ensureInitialized();
 
   // Initialize dependency injection
   await initializeDependencies();
@@ -68,10 +71,12 @@ class MyApp extends StatelessWidget {
           navigatorKey: sl<NavigationService>().navigatorKey,
           scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
           initialRoute: Routes.splash,
+          // home: Scaffold(),
           onGenerateRoute: AppRoutes.onGenerateRoutes,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
+
         );
       },
     );

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static const Color primary = Color(0xFF4375FF);
-  static const Color primaryBlue = Color(0xFF029DDE);
-  static const Color backgroundColor = Color(0xFF272727);
-  static const Color buttonBlue = Color(0xFF029DDE);
-  static const Color black = Color(0xFF000000);
-  static const Color blackCard = Color(0xFF3D3D3D);
-  // static const Color textGrey = Color(0xFFEFEFEF);
+  static const Color primary = Color(0xff3628B2);
+  static const Color primaryText = Color(0xff000000);
+  static const Color white = Color(0xffFFFFFF);
+  static const Color secondaryText = Color(0xff878282);
+  static const Color textFieldBox = Color(0xffF5F5F5);
+  static const Color blaceholderText = Color(0xffC2C2C2);
+  static const Color buyingColor = Color(0xff67B96B);
+  static const Color sellingColor = Color(0xffCA5751);
+  static const Color thirdOptionText = Color(0xffB1B1B1);
+  static const Color thirdShadePurple = Color(0xffA7A0E4);
+  static const Color transparent = Colors.transparent;
 
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color borderWhite = Color(0xFFE2E2E2);
-  static const Color borderGrey = Color(0xFFBEC2C6);
-  static const Color borderBlue = Color(0xFF90AEFF);
-  static const Color darkGrey = Color(0xFF252525);
-
-  static const Color parent = Colors.transparent;
+  static const blueGradient = LinearGradient(colors: <Color>[
+    ColorManager.primary,
+    ColorManager.thirdShadePurple,
+  ]);
 }

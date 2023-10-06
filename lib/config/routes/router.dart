@@ -1,10 +1,12 @@
+import 'package:dakakeen/config/routes/routes.dart';
+import 'package:dakakeen/presentation/screens/spalsh_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
-      // case '/':
-      //   return _materialRoute(const DailyNews());
+      case Routes.splash:
+        return _materialRoute(const SplashScreen());
 
       default:
         return _materialRoute(

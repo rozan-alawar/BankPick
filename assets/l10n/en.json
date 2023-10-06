@@ -1,0 +1,22 @@
+{
+  "login": "Log In",
+  "email": "Email",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAccount": "Don’t have an account?",
+  "create_account": " Create account",
+
+  "haveAccount": "Already have an account? ",
+  "country": "Country",
+  "dateOfBirth": "Date of Birth",
+  "lastName": "Last Name",
+  "firstName": "First Name",
+  "emailOrPhone": "Email or Phone",
+
+  "confirm": "Confirm",
+  "codeNotReceived": "Didn't receive the code? ",
+  "resend": "Resend it",
+  "verificationCodeSent": "A verification code has been sent to your email",
+  "confirmEmail": "Confirm Email",
+  "emailConfirmed": "Your email has been successfully confirmed!"
+}

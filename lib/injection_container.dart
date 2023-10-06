@@ -15,6 +15,8 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+
+
   sl.registerLazySingleton<Dio>(() => client);
 
   // Dependencies
