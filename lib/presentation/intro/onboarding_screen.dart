@@ -72,10 +72,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           20.height,
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 50.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: PrimaryButton(
               color: ColorManager.primary,
               width: double.infinity,
+              height: 56.h,
               onPressed: () {
                 if (introProvider.currentPage ==
                     introProvider.titles.length - 1) {
@@ -92,15 +93,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 introProvider.currentPage == introProvider.titles.length - 1
                     ? 'Get Started'
                     : 'Next',
-                color:  ColorManager.white
+                color:  ColorManager.white,
+                fontWeight: FontWeight.bold,
                 //     ? ColorManager.blue.withOpacity(0.7)
                 //     : Colors.white,
-                // fontSize:.sp,
+
                 // height: 1,
               ),
 
             ),
           ),
+          50.height,
+
         ],
       ),
     );

@@ -3,7 +3,11 @@ const String iconsPath = "assets/icons";
 
 class IconAssets {
   // static const String splashLogoSvg = "$iconsPath/logo.svg";
-  static const String email = "$imagesPath/email-mail-letter.svg";
+  static const String email = "$iconsPath/email-mail-letter.svg";
+  static const String password = "$iconsPath/Lock, Password.svg";
+  static const String eye = "$iconsPath/eye-show-up-arrow.svg";
+
+
 
 }
 

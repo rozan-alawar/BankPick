@@ -1,3 +1,4 @@
+import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -49,6 +50,7 @@ class PrimaryTextField extends StatelessWidget {
         textInputAction: textInputAction,
         maxLines: multiLines! ? 6 : 1,
         inputFormatters: inputFormater,
+
         style: TextStyle(
           // color: ColorManager.secondryTextColor,
           // fontWeight: FontWeightManager.regular,
@@ -60,10 +62,11 @@ class PrimaryTextField extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted ?? (v) {},
         decoration: InputDecoration(
           isDense: true,
-          prefix: prefixIcon,
+          prefixIcon: prefixIcon,
           helperText: ' ',
           suffixIcon: suffixIcon,
           hintText: hintText ?? '',
+          fillColor: ColorManager.transparent,
           hintStyle: TextStyle(
             // color: ColorManager.hintTextColor,
             fontSize: 14.sp,
@@ -71,14 +74,14 @@ class PrimaryTextField extends StatelessWidget {
             // fontFamily: FontConstants.arabicFontFamily,
           ),
           filled: true,
-          // enabledBorder: OutlineInputBorder(
-          //   borderRadius: BorderRadius.circular(24.r),
-          //   // borderSide:
-          //   //     BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
-          // ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(24.r),
-            // borderSide: BorderSide(color: ColorManager.unSelectedBorder),
+          enabledBorder:
+ UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorManager.blaceholderText),
+          ),            // borderSide:
+            //     BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
+        
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: ColorManager.blaceholderText),
           ),
           contentPadding:
               EdgeInsets.symmetric(vertical: 17.h, horizontal: 15.w),
@@ -91,9 +94,8 @@ class PrimaryTextField extends StatelessWidget {
               // color: ColorManager.primary,
               fontFamily: 'Almarai',
               fontSize: 12.sp),
-          focusedErrorBorder: OutlineInputBorder(
-            // borderSide: BorderSide(color: ColorManager.primary),
-            borderRadius: BorderRadius.circular(24.r),
+          focusedErrorBorder:  UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.red),
           ),
           errorBorder: OutlineInputBorder(
             // borderSide: hideError == false
