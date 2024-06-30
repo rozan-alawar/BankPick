@@ -70,7 +70,6 @@ class MyApp extends StatelessWidget {
             create: (context) => IntroProvider(),
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Dakakeen',
               theme: appTheme(),
               navigatorKey: sl<NavigationService>().navigatorKey,
               scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
