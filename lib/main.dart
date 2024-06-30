@@ -66,20 +66,22 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return ChangeNotifierProvider(
-          create: (context) => IntroProvider(),
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Dakakeen',
-            theme: appTheme(),
-            navigatorKey: sl<NavigationService>().navigatorKey,
-            scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.splash,
-            onGenerateRoute: AppRoutes.onGenerateRoutes,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-          ),
+        return  ChangeNotifierProvider (
+            create: (context) => IntroProvider(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: appTheme(),
+              navigatorKey: sl<NavigationService>().navigatorKey,
+              scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
+              initialRoute: Routes.splash,
+              // home: Scaffold(),
+              onGenerateRoute: AppRoutes.onGenerateRoutes,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+            ),
+
+
         );
       },
     );
