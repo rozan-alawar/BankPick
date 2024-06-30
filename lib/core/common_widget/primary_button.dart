@@ -1,20 +1,18 @@
+import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'primary_text.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
-    required this.text,
     required this.color,
     required this.onPressed,
     this.width = 90,
     this.height = 40,
     this.fontSize = 16,
     this.borderColor,
-    this.isDisable = false,
+    this.isDisable = false, required this.child,
   }) : super(key: key);
-  final String? text;
   final Color? color;
   final double width;
   final double height;
@@ -22,6 +20,7 @@ class PrimaryButton extends StatelessWidget {
   final void Function()? onPressed;
   final Color? borderColor;
   final bool isDisable;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +47,7 @@ class PrimaryButton extends StatelessWidget {
           child: Center(
             child: isDisable
                 ? Image.asset('assets/animation/loading_aimation.gif')
-                : PrimaryText(
-                    text!,
-                    // color: color == ColorManager.white
-                    //     ? ColorManager.blue.withOpacity(0.7)
-                    //     : Colors.white,
-                    fontSize: fontSize.sp,
-                    height: 1,
-                  ),
+                :child
           ),
         ),
       ),

@@ -1,8 +1,10 @@
 import 'package:dakakeen/config/routes/router.dart';
+import 'package:dakakeen/controller/intro_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import 'config/api/network_helper/dio_helper.dart';
 import 'config/routes/routes.dart';
@@ -64,18 +66,22 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Dakakeen',
-          theme: appTheme(),
-          navigatorKey: sl<NavigationService>().navigatorKey,
-          scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-          initialRoute: Routes.splash,
-          // home: Scaffold(),
-          onGenerateRoute: AppRoutes.onGenerateRoutes,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
+        return  ChangeNotifierProvider (
+            create: (context) => IntroProvider(),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Dakakeen',
+              theme: appTheme(),
+              navigatorKey: sl<NavigationService>().navigatorKey,
+              scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
+              initialRoute: Routes.splash,
+              // home: Scaffold(),
+              onGenerateRoute: AppRoutes.onGenerateRoutes,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+            ),
+
 
         );
       },

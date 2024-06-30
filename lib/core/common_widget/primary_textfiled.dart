@@ -34,7 +34,6 @@ class PrimaryTextField extends StatelessWidget {
       this.multiLines = false,
       this.textAlign = TextAlign.start,
       this.onChanged,
-      // this.fillColor,
       this.inputFormater,
       this.textInputAction = TextInputAction.none})
       : super(key: key);
@@ -42,7 +41,6 @@ class PrimaryTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // width: Get.width,
       child: TextFormField(
         controller: controller,
         readOnly: readOnly,
@@ -51,7 +49,6 @@ class PrimaryTextField extends StatelessWidget {
         textInputAction: textInputAction,
         maxLines: multiLines! ? 6 : 1,
         inputFormatters: inputFormater,
-        // cursorColor: ColorManager.primary,
         style: TextStyle(
           // color: ColorManager.secondryTextColor,
           // fontWeight: FontWeightManager.regular,
@@ -63,7 +60,7 @@ class PrimaryTextField extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted ?? (v) {},
         decoration: InputDecoration(
           isDense: true,
-          prefixIcon: prefixIcon,
+          prefix: prefixIcon,
           helperText: ' ',
           suffixIcon: suffixIcon,
           hintText: hintText ?? '',
@@ -74,11 +71,11 @@ class PrimaryTextField extends StatelessWidget {
             // fontFamily: FontConstants.arabicFontFamily,
           ),
           filled: true,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(24.r),
-            // borderSide:
-            //     BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
-          ),
+          // enabledBorder: OutlineInputBorder(
+          //   borderRadius: BorderRadius.circular(24.r),
+          //   // borderSide:
+          //   //     BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
+          // ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(24.r),
             // borderSide: BorderSide(color: ColorManager.unSelectedBorder),

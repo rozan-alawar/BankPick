@@ -1,7 +1,7 @@
+import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'primary_text.dart';
 
 class PrimaryCard extends StatelessWidget {
   const PrimaryCard(
