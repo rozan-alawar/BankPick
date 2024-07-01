@@ -18,11 +18,12 @@ class PrimaryTextField extends StatelessWidget {
   final dynamic inputFormater;
   // Color? fillColor = ColorManager.borderColor;
   final bool hideError;
+  final bool obscureText;
   final ValueChanged<String>? onChanged;
 
   const PrimaryTextField(
       {Key? key,
-      this.hintText,
+        this.hintText, this.obscureText =false,
       required this.controller,
       required this.validator,
       this.keyboardType = TextInputType.text,
@@ -50,6 +51,7 @@ class PrimaryTextField extends StatelessWidget {
         textInputAction: textInputAction,
         maxLines: multiLines! ? 6 : 1,
         inputFormatters: inputFormater,
+        obscureText: obscureText,
 
         style: TextStyle(
           // color: ColorManager.secondryTextColor,
@@ -67,6 +69,7 @@ class PrimaryTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
           hintText: hintText ?? '',
           fillColor: ColorManager.transparent,
+
           hintStyle: TextStyle(
             // color: ColorManager.hintTextColor,
             fontSize: 14.sp,
@@ -74,6 +77,7 @@ class PrimaryTextField extends StatelessWidget {
             // fontFamily: FontConstants.arabicFontFamily,
           ),
           filled: true,
+
           enabledBorder:
  UnderlineInputBorder(
             borderSide: BorderSide(color: ColorManager.blaceholderText),
@@ -97,11 +101,8 @@ class PrimaryTextField extends StatelessWidget {
           focusedErrorBorder:  UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
           ),
-          errorBorder: OutlineInputBorder(
-            // borderSide: hideError == false
-            //     ? BorderSide(color: ColorManager.primary)
-            //     : BorderSide(color: ColorManager.primary.withOpacity(0)),
-            borderRadius: BorderRadius.circular(24.r),
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.red),
           ),
         ),
         validator: validator,

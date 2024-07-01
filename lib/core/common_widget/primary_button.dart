@@ -1,6 +1,7 @@
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
@@ -46,7 +47,10 @@ class PrimaryButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 4.w),
           child: Center(
             child: isDisable
-                ? Image.asset('assets/animation/loading_aimation.gif')
+                ?  SpinKitThreeBounce(
+              color: Colors.white,
+              size: 20.0,
+            )
                 :child
           ),
         ),
