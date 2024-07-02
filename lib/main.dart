@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/routes/router.dart';
 import 'package:dakakeen/controller/auth_provider.dart';
+import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/controller/intro_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,8 @@ void main() async {
           create: (context) => IntroProvider(),),
           ChangeNotifierProvider (
             create: (context) => AuthProvider(),),
+          ChangeNotifierProvider (
+            create: (context) => HomeProvider(),),
         ],
         child: const MyApp(),
 

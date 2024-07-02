@@ -54,7 +54,7 @@ class AuthProvider extends ChangeNotifier {
         Duration(seconds: 3),
         () {
           _isLoading = false;
-          // sl<NavigationService>().navigateToAndRemove(Routes.home);
+          sl<NavigationService>().navigateToAndRemove(Routes.home);
           notifyListeners();
         },
       );
