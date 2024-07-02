@@ -16,30 +16,33 @@ import '../../core/common_widget/primary_button.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<SignupScreen> {
+  TextEditingController? nameController;
+  TextEditingController? phoneController;
   TextEditingController? emailController;
   TextEditingController? passwordController;
   GlobalKey<FormState>? formKey;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     formKey = GlobalKey<FormState>();
+    nameController = TextEditingController();
+    phoneController = TextEditingController();
     emailController = TextEditingController();
     passwordController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
-    final loginProvider = Provider.of<AuthProvider>(context);
+    final registerProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
@@ -53,13 +56,54 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  100.height,
+                  40.height,
                   PrimaryText(
-                    'Sign In',
+                    'Sign Up',
                     fontSize: 35.sp,
                     fontWeight: FontWeight.w500,
                   ),
+
                   40.height,
+                  PrimaryText(
+                    'Full Name',
+                    fontSize: 14.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  16.height,
+                  PrimaryTextField(
+                    controller: nameController,
+                    validator: (value) {
+                      registerProvider.setEmail(value!);
+                      return value!.isValidName;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.user,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+
+                  ),
+                  20.height,
+
+                  PrimaryText(
+                    'Phone Number',
+                    fontSize: 14.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  16.height,
+                  PrimaryTextField(
+                    controller: phoneController,
+                    validator: (value) {
+                      registerProvider.setEmail(value!);
+                      return value!.isValidName;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.phone,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+                  ),
+                  20.height,
                   PrimaryText(
                     'Email Address',
                     fontSize: 14.sp,
@@ -69,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   PrimaryTextField(
                     controller: emailController,
                     validator: (value) {
-                      loginProvider.setEmail(value!);
+                      registerProvider.setEmail(value!);
                       return value!.isValidEmail;
                     },
                     prefixIcon: SvgPicture.asset(
@@ -86,11 +130,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   16.height,
                   PrimaryTextField(
-                    obscureText: loginProvider.isPasswordVisible,
+                    obscureText: registerProvider.isPasswordVisible,
 
                     controller: passwordController,
                     validator: (value) {
-                      loginProvider.setPassword(value!);
+                      registerProvider.setPassword(value!);
                       return value!.isValidPassword;
                     },
                     prefixIcon: SvgPicture.asset(
@@ -99,28 +143,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 20.h,
                     ),
                     suffixIcon: IconButton(
-                      onPressed: () => loginProvider.togglePasswordVisibility(),
-                                            icon:loginProvider.isPasswordVisible?Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
+                      onPressed: () => registerProvider.togglePasswordVisibility(),
+                      icon:registerProvider.isPasswordVisible?Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
                     ),
 
                   ),
                   40.height,
                   AbsorbPointer(
-                      absorbing: loginProvider.isLoading,
-                      child: PrimaryButton(
-                        color:loginProvider.isLoading?ColorManager.secondaryText: ColorManager.primary,
-                        width: double.infinity,
-                        height: 56.h,
-                        onPressed: () => loginProvider.login(formKey!),
-                        isDisable: loginProvider.isLoading,
-                        child:  PrimaryText(
-                          'Sign In',
-                          color: ColorManager.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    absorbing: registerProvider.isLoading,
+                    child: PrimaryButton(
+                      color:registerProvider.isLoading?ColorManager.secondaryText: ColorManager.primary,
+                      width: double.infinity,
+                      height: 56.h,
+                      onPressed: () => registerProvider.signUp(formKey!),
+                      isDisable: registerProvider.isLoading,
+                      child:  PrimaryText(
+                        'Sign Up',
+                        color: ColorManager.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  40.height,
+                  ),
+                  20.height,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -129,9 +173,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: ColorManager.secondaryText,
                       ),
                       GestureDetector(
-                        onTap: () =>   sl<NavigationService>().navigateToAndRemove(Routes.signup),
+                        onTap: () =>   sl<NavigationService>().navigateToAndRemove(Routes.login),
                         child: PrimaryText(
-                          ' Sign up',
+                          ' Sign In',
                           color: ColorManager.primary,
                           fontWeight: FontWeight.w500,
                         ),
@@ -149,6 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
+    nameController!.dispose();
+    phoneController!.dispose();
     emailController!.dispose();
     passwordController!.dispose();
     super.dispose();

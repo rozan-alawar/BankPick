@@ -6,6 +6,12 @@ class IconAssets {
   static const String email = "$iconsPath/email-mail-letter.svg";
   static const String password = "$iconsPath/Lock, Password.svg";
   static const String eye = "$iconsPath/eye-show-up-arrow.svg";
+  static const String user = "$iconsPath/User,Profile.svg";
+  static const String phone = "$iconsPath/phone.svg";
+  static const String wallet = "$iconsPath/wallet.svg";
+  static const String setting = "$iconsPath/Setting, Edit, Filter, Gear.svg";
+  static const String home = "$iconsPath/home-house-line.svg";
+
 
 
 

@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
+import 'package:dakakeen/presentation/auth/signup_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,8 @@ class AppRoutes {
         return _materialRoute(const LoginScreen());
 
       case Routes.onboarding:
-        return _materialRoute(const OnboardingScreen());
+        return _materialRoute(const OnboardingScreen());  case Routes.signup:
+      return _materialRoute(const SignupScreen());
       default:
         return _materialRoute(
           Text('No route defined for ${settings.name}'),
