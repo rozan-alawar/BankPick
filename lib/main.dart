@@ -79,19 +79,24 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return  MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: appTheme(),
-          navigatorKey: sl<NavigationService>().navigatorKey,
-          scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-          initialRoute: Routes.splash,
-          // home: Scaffold(),
-          onGenerateRoute: AppRoutes.onGenerateRoutes,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
+        return  SafeArea(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: appTheme(),
+            navigatorKey: sl<NavigationService>().navigatorKey,
+            scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
+            initialRoute: Routes.splash,
+            // home: Scaffold(),
+            onGenerateRoute: AppRoutes.onGenerateRoutes,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+          ),
         );
       },
     );
   }
 }
+
+//rozan@gmail.com
+//Roii222!@

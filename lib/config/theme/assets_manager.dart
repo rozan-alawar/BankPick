@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const String imagesPath = "assets/images";
 const String iconsPath = "assets/icons";
 
@@ -11,6 +13,12 @@ class IconAssets {
   static const String wallet = "$iconsPath/wallet.svg";
   static const String setting = "$iconsPath/Setting, Edit, Filter, Gear.svg";
   static const String home = "$iconsPath/home-house-line.svg";
+  static const String search = "$iconsPath/search.svg";
+  static const String loan = "$iconsPath/Loan.svg";
+  static const String receive = "$iconsPath/Receive.svg";
+  static const String sent = "$iconsPath/sent.svg";
+  static const String topup = "$iconsPath/Top-up.svg";
+
 
 
 
@@ -23,4 +31,6 @@ class ImageAssets {
   static const String onboarding1 = "$imagesPath/onboarding1.png";
   static const String onboarding2 = "$imagesPath/onboarding2.png";
   static const String onboarding3 = "$imagesPath/onboarding3.png";
+  static const String profile = "$iconsPath/profile.png";
+  static const String card = "$imagesPath/Card.png";
 }
