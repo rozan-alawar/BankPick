@@ -40,105 +40,122 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<AuthProvider>(context);
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  100.height,
-                  PrimaryText(
-                    'Sign In',
-                    fontSize: 35.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  40.height,
-                  PrimaryText(
-                    'Email Address',
-                    fontSize: 14.sp,
-                    color: ColorManager.secondaryText,
-                  ),
-                  16.height,
-                  PrimaryTextField(
-                    controller: emailController,
-                    validator: (value) {
-                      loginProvider.setEmail(value!);
-                      return value!.isValidEmail;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.email,
-                      width: 20.w,
-                      height: 20.h,
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    100.height,
+                    PrimaryText(
+                      'Sign In',
+                      fontSize: 35.sp,
+                      fontWeight: FontWeight.w500,
                     ),
-                  ),
-                  20.height,
-                  PrimaryText(
-                    'Password',
-                    fontSize: 14.sp,
-                    color: ColorManager.secondaryText,
-                  ),
-                  16.height,
-                  PrimaryTextField(
-                    obscureText: loginProvider.isPasswordVisible,
-
-                    controller: passwordController,
-                    validator: (value) {
-                      loginProvider.setPassword(value!);
-                      return value!.isValidPassword;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.password,
-                      width: 20.w,
-                      height: 20.h,
+                    40.height,
+                    PrimaryText(
+                      'Email Address',
+                      fontSize: 14.sp,
+                      color: ColorManager.secondaryText,
                     ),
-                    suffixIcon: IconButton(
-                      onPressed: () => loginProvider.togglePasswordVisibility(),
-                                            icon:loginProvider.isPasswordVisible?Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
+                    16.height,
+                    PrimaryTextField(
+                      controller: emailController,
+                      validator: (value) {
+                        loginProvider.setEmail(value!);
+                        return value!.isValidEmail;
+                      },
+                      prefixIcon: SvgPicture.asset(
+                        IconAssets.email,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
                     ),
-
-                  ),
-                  40.height,
-                  AbsorbPointer(
+                    20.height,
+                    PrimaryText(
+                      'Password',
+                      fontSize: 14.sp,
+                      color: ColorManager.secondaryText,
+                    ),
+                    16.height,
+                    PrimaryTextField(
+                      obscureText: loginProvider.isPasswordVisible,
+                      controller: passwordController,
+                      validator: (value) {
+                        loginProvider.setPassword(value!);
+                        return value!.isValidPassword;
+                      },
+                      prefixIcon: SvgPicture.asset(
+                        IconAssets.password,
+                        width: 20.w,
+                        height: 20.h,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () =>
+                            loginProvider.togglePasswordVisibility(),
+                        icon: loginProvider.isPasswordVisible
+                            ? Icon(
+                                Icons.visibility_outlined,
+                                size: 22,
+                                color: ColorManager.secondaryText,
+                              )
+                            : Icon(
+                                Icons.visibility_off_outlined,
+                                size: 22,
+                                color: ColorManager.secondaryText,
+                              ),
+                      ),
+                    ),
+                    40.height,
+                    AbsorbPointer(
                       absorbing: loginProvider.isLoading,
                       child: PrimaryButton(
-                        color:loginProvider.isLoading?ColorManager.secondaryText: ColorManager.primary,
+                        color: loginProvider.isLoading
+                            ? ColorManager.secondaryText
+                            : ColorManager.primary,
                         width: double.infinity,
                         height: 56.h,
                         onPressed: () => loginProvider.login(formKey!),
                         isDisable: loginProvider.isLoading,
-                        child:  PrimaryText(
+                        child: PrimaryText(
                           'Sign In',
                           color: ColorManager.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  40.height,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      PrimaryText(
-                        'I’m a new user.',
-                        color: ColorManager.secondaryText,
-                      ),
-                      GestureDetector(
-                        onTap: () =>   sl<NavigationService>().navigateToAndRemove(Routes.signup),
-                        child: PrimaryText(
-                          ' Sign up',
-                          color: ColorManager.primary,
-                          fontWeight: FontWeight.w500,
+                    40.height,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        PrimaryText(
+                          'I’m a new user.',
+                          color: ColorManager.secondaryText,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        GestureDetector(
+                          onTap: () => sl<NavigationService>()
+                              .navigateToAndRemove(Routes.signup),
+                          child: PrimaryText(
+                            ' Sign up',
+                            color: ColorManager.primary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

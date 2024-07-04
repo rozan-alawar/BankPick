@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
             theme: appTheme(),
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.splash,
+            initialRoute: Routes.home,
             // home: Scaffold(),
             onGenerateRoute: AppRoutes.onGenerateRoutes,
             localizationsDelegates: context.localizationDelegates,

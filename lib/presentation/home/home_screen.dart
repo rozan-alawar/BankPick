@@ -47,13 +47,35 @@ class HomeScreen extends StatelessWidget {
             BuildProfileSection(),
             32.height,
             // BuildCardSection(),
-            Image.asset(ImageAssets.card , width: double.infinity, fit: BoxFit.fill,),
+            Image.asset(
+              ImageAssets.card,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
             30.height,
             TransactionButtons(),
+            30.height,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PrimaryText(
+                  'Transaction',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                PrimaryText(
+                  'See All',
+                  color: ColorManager.primary,
+                ),
+              ],
+            ),
+            20.height,
+            Expanded(child: Container()),
+            Expanded(child: Container()),
+
           ],
         ),
       ),
     );
   }
 }
-
