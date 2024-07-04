@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            20.height,
+            30.height,
             Expanded(child: Container()),
 
           ],
