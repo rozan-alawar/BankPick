@@ -18,32 +18,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.credit_card),
-            label: 'My Cards',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Statistics',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
-      ),
+
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            20.height,
+            30.height,
             BuildProfileSection(),
             32.height,
             // BuildCardSection(),
@@ -54,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             ),
             30.height,
             TransactionButtons(),
-            30.height,
+            20.height,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -69,11 +50,82 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            30.height,
-            Expanded(child: Container()),
-
+            20.height,
+            Expanded(
+              child: ListView.separated(
+                // physics: NeverScrollableScrollPhysics(),
+                itemCount: 5,
+                separatorBuilder: (context, index) => 22.width,
+                itemBuilder: (context, index) =>  Row(
+                  children: [
+                    Container(
+                      width: 70.w,
+                      height: 70.h,
+                      decoration: BoxDecoration(
+                          color: Color(0xffF4F4F4),
+                          borderRadius: BorderRadius.circular(50.r)),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          IconAssets.sent,
+                          height: 24.h,
+                          width: 24.w,
+                        ),
+                      ),
+                    ),
+                    17.width,
+                    Column(
+                      children: [
+                        PrimaryText(
+                          'Apple Store',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16.sp,
+                        ),
+                        6.height,
+                        PrimaryText(
+                          'Entertainment',
+                          color: ColorManager.secondaryText,
+                        ),
+                      ],
+                    ),
+                    Spacer(),
+                    PrimaryText(
+                      '- \$5,99',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16.sp,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 24.h,
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
+selectedItemColor: ColorManager.primary,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+        unselectedItemColor: Color(0xff8B8B94),
+        items:  [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconAssets.home, width: 24.w,height: 24.h,),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon:SvgPicture.asset(IconAssets.wallet, width: 24.w,height: 24.h,),
+            label: 'My Cards',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconAssets.chart, width: 24.w,height: 24.h,),
+            label: 'Statistics',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(IconAssets.setting, width: 24.w,height: 24.h,),
+            label: 'Settings',
+          ),
+        ],
       ),
     );
   }

@@ -20,31 +20,33 @@ class TransactionButtons extends StatelessWidget {
       IconAssets.topup
     ];
     List transactionnButtonLable = ["Sent", "Receive", "Loan", "Top-up"];
-    return Expanded(
+    return SizedBox(
+      height: 110.h,
       child: ListView.separated(
-        separatorBuilder: (context, index) => 20.width,
+        separatorBuilder: (context, index) => 30.width,
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 4,
         itemBuilder: (context, index) => Column(
           children: [
             Container(
-              width: 75.w,
-              height: 75.h,
+              width: 70.w,
+              height: 70.h,
               decoration: BoxDecoration(
-                  color: Color(0xffd5d5d5),
+                  color: Color(0xffF4F4F4),
                   borderRadius: BorderRadius.circular(50.r)),
               child: Center(
                   child: SvgPicture.asset(
                 transactionnButtonIcons[index],
-                height: 20.h,
+                height: 24.h,
+                   width: 24.w,
               )),
             ),
             8.height,
             PrimaryText(
               transactionnButtonLable[index],
-              fontWeight: FontWeight.w600,
-              fontSize: 16.sp,
+              // fontWeight: FontWeight.w600,
+              fontSize: 13.sp,
             ),
           ],
         ),

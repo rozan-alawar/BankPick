@@ -14,6 +14,8 @@ class IconAssets {
   static const String setting = "$iconsPath/Setting, Edit, Filter, Gear.svg";
   static const String home = "$iconsPath/home-house-line.svg";
   static const String search = "$iconsPath/search.svg";
+  static const String chart = "$iconsPath/chart.svg";
+
   static const String loan = "$iconsPath/Loan.svg";
   static const String receive = "$iconsPath/Receive.svg";
   static const String sent = "$iconsPath/sent.svg";
