@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/core/common_widget/circular_card.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
@@ -29,24 +30,14 @@ class TransactionButtons extends StatelessWidget {
         itemCount: 4,
         itemBuilder: (context, index) => Column(
           children: [
-            Container(
+            CircularCard(
               width: 70.w,
               height: 70.h,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 6,
-                      offset: Offset(0, 4),
-                    )
-                  ],
-                  color: Color(0xffF4F4F4),
-                  borderRadius: BorderRadius.circular(50.r)),
-              child: Center(
+              widget: Center(
                   child: SvgPicture.asset(
                 transactionnButtonIcons[index],
                 height: 24.h,
-                   width: 24.w,
+                width: 24.w,
               )),
             ),
             8.height,

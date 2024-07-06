@@ -12,6 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+import '../../core/common_widget/circular_card.dart';
 import 'card_section.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -20,9 +21,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -58,29 +58,14 @@ class HomeScreen extends StatelessWidget {
                 // physics: NeverScrollableScrollPhysics(),
                 itemCount: TransactionModel.transactions.length,
                 separatorBuilder: (context, index) => 22.height,
-                itemBuilder: (context, index) =>  Row(
+                itemBuilder: (context, index) => Row(
                   children: [
-                    Container(
-                      width: 60.w,
-                      height: 60.h,
-
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            blurRadius: 6,
-                            offset: Offset(0, 4),
-                          )
-                        ],
-                          color: const Color(0xffF4F4F4),
-                          borderRadius: BorderRadius.circular(50.r)),
-                      child: Center(
-                        child:Icon(TransactionModel.transactions[index].icon),
-                      ),
+                    CircularCard(
+                      widget: Icon(TransactionModel.transactions[index].icon),
                     ),
                     17.width,
                     Column(
-                      crossAxisAlignment:CrossAxisAlignment.start ,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         PrimaryText(
                           TransactionModel.transactions[index].title,
@@ -88,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                           fontSize: 16.sp,
                         ),
                         6.height,
-                         PrimaryText(
+                        PrimaryText(
                           TransactionModel.transactions[index].subtitle,
                           color: ColorManager.secondaryText,
                         ),
@@ -107,8 +92,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-
-
     );
   }
 }
