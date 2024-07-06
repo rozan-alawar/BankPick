@@ -10,6 +10,15 @@ class HomeProvider with ChangeNotifier {
   //   TransactionModel(icon: Icons.shopping_cart, title: 'Grocery', subtitle: 'Shopping', amount: '- \$88'),
   // ];
 
+  int _currentIndex = 0;
+
+  int get currentIndex => _currentIndex;
+
+  void setIndex(int index) {
+    _currentIndex = index;
+    notifyListeners();
+  }
+
   String get name => _name;
   // List<TransactionModel> get transactions => _transactions;
 
@@ -23,6 +32,7 @@ class HomeProvider with ChangeNotifier {
     notifyListeners();
   }
 }
+
 
 class TransactionModel {
   final IconData icon;
