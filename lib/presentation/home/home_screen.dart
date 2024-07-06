@@ -101,32 +101,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
 
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 24.h,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
-selectedItemColor: ColorManager.primary,
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        unselectedItemColor: Color(0xff8B8B94),
-        items:  [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconAssets.home, width: 24.w,height: 24.h,),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon:SvgPicture.asset(IconAssets.wallet, width: 24.w,height: 24.h,),
-            label: 'My Cards',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconAssets.chart, width: 24.w,height: 24.h,),
-            label: 'Statistics',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconAssets.setting, width: 24.w,height: 24.h,),
-            label: 'Settings',
-          ),
-        ],
-      ),
+
     );
   }
 }

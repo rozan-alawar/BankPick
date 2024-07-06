@@ -1,4 +1,8 @@
 
+import 'package:dakakeen/presentation/card/card_screen.dart';
+import 'package:dakakeen/presentation/home/home_screen.dart';
+import 'package:dakakeen/presentation/settings/settings_screen.dart';
+import 'package:dakakeen/presentation/statistic/statistics_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeProvider with ChangeNotifier {
@@ -31,6 +35,13 @@ class HomeProvider with ChangeNotifier {
     // _transactions.add(transaction);
     notifyListeners();
   }
+
+  final screens =<Widget>[
+    HomeScreen(),
+    CardScreen(),
+    StatisticsScreen(),
+    SettingsScreen()
+  ];
 }
 
 
