@@ -33,6 +33,13 @@ class TransactionButtons extends StatelessWidget {
               width: 70.w,
               height: 70.h,
               decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 6,
+                      offset: Offset(0, 4),
+                    )
+                  ],
                   color: Color(0xffF4F4F4),
                   borderRadius: BorderRadius.circular(50.r)),
               child: Center(

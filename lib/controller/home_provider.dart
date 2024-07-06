@@ -20,7 +20,6 @@ class HomeProvider with ChangeNotifier {
   }
 
   String get name => _name;
-  // List<TransactionModel> get transactions => _transactions;
 
   void updateName(String newName) {
     _name = newName;

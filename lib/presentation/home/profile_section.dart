@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+
 class BuildProfileSection extends StatelessWidget {
   const BuildProfileSection({super.key});
 
@@ -34,9 +35,21 @@ class BuildProfileSection extends StatelessWidget {
               ],
             ),
             Spacer(),
-            CircleAvatar(
-              radius: 25.r,
-              backgroundColor: Color(0xffd5d5d5),
+            Container(
+              padding: EdgeInsets.all(8),
+              width: 40.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 6,
+                    offset: Offset(0, 4),
+                  )
+                ],
+                borderRadius: BorderRadius.circular(50),
+                color: Color(0xffF4F4F4),
+              ),
               child: SvgPicture.asset(IconAssets.search),
             ),
           ],

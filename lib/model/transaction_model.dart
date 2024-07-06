@@ -7,6 +7,14 @@ class TransactionModel {
   final String subtitle;
   final String amount;
 
+
+ static List<TransactionModel> transactions = [
+    TransactionModel(icon: Icons.apple, title: 'Apple Store', subtitle: 'Entertainment', amount: '- \$5.99'),
+    TransactionModel(icon: Icons.music_note, title: 'Spotify', subtitle: 'Music', amount: '- \$12.99'),
+    TransactionModel(icon: Icons.swap_horiz, title: 'Money Transfer', subtitle: 'Transaction', amount: '\$300'),
+    TransactionModel(icon: Icons.shopping_cart, title: 'Grocery', subtitle: 'Shopping', amount: '- \$88'),
+  ];
+
   TransactionModel({
     required this.icon,
     required this.title,
@@ -14,10 +22,3 @@ class TransactionModel {
     required this.amount,
   });
 }
-
-List<TransactionModel> transactions = [
-  TransactionModel(icon: Icons.apple, title: 'Apple Store', subtitle: 'Entertainment', amount: '- \$5.99'),
-  TransactionModel(icon: Icons.music_note, title: 'Spotify', subtitle: 'Music', amount: '- \$12.99'),
-  TransactionModel(icon: Icons.swap_horiz, title: 'Money Transfer', subtitle: 'Transaction', amount: '\$300'),
-  TransactionModel(icon: Icons.shopping_cart, title: 'Grocery', subtitle: 'Shopping', amount: '- \$88'),
-];

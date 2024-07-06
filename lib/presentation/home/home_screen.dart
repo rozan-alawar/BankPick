@@ -2,8 +2,10 @@ import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/model/transaction_model.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:dakakeen/presentation/home/transaction_buttons_section.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,42 +56,47 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 // physics: NeverScrollableScrollPhysics(),
-                itemCount: 5,
-                separatorBuilder: (context, index) => 22.width,
+                itemCount: TransactionModel.transactions.length,
+                separatorBuilder: (context, index) => 22.height,
                 itemBuilder: (context, index) =>  Row(
                   children: [
                     Container(
-                      width: 70.w,
-                      height: 70.h,
+                      width: 60.w,
+                      height: 60.h,
+
                       decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 6,
+                            offset: Offset(0, 4),
+                          )
+                        ],
                           color: const Color(0xffF4F4F4),
                           borderRadius: BorderRadius.circular(50.r)),
                       child: Center(
-                        child: SvgPicture.asset(
-                          IconAssets.sent,
-                          height: 24.h,
-                          width: 24.w,
-                        ),
+                        child:Icon(TransactionModel.transactions[index].icon),
                       ),
                     ),
                     17.width,
                     Column(
+                      crossAxisAlignment:CrossAxisAlignment.start ,
                       children: [
                         PrimaryText(
-                          'Apple Store',
+                          TransactionModel.transactions[index].title,
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp,
                         ),
                         6.height,
-                        const PrimaryText(
-                          'Entertainment',
+                         PrimaryText(
+                          TransactionModel.transactions[index].subtitle,
                           color: ColorManager.secondaryText,
                         ),
                       ],
                     ),
                     const Spacer(),
                     PrimaryText(
-                      '- \$5,99',
+                      TransactionModel.transactions[index].amount,
                       fontWeight: FontWeight.w500,
                       fontSize: 16.sp,
                     ),
