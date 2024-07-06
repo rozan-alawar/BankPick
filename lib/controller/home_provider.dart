@@ -37,10 +37,10 @@ class HomeProvider with ChangeNotifier {
   }
 
   final screens =<Widget>[
-    HomeScreen(),
-    CardScreen(),
-    StatisticsScreen(),
-    SettingsScreen()
+    const HomeScreen(),
+    const CardScreen(),
+    const StatisticsScreen(),
+    const SettingsScreen()
   ];
 }
 

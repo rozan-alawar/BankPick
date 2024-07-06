@@ -27,7 +27,7 @@ class MainScreen extends StatelessWidget {
         selectedItemColor: ColorManager.primary,
         showUnselectedLabels: true,
         showSelectedLabels: true,
-        unselectedItemColor: Color(0xff8B8B94),
+        unselectedItemColor: const Color(0xff8B8B94),
         items:  [
           BottomNavigationBarItem(
             icon: SvgPicture.asset(IconAssets.home, width: 24.w,height: 24.h,),
