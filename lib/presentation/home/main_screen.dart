@@ -21,31 +21,35 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
 
       body:homeProvider.screens[homeProvider.currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 24.h,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
-        selectedItemColor: ColorManager.primary,
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        unselectedItemColor: const Color(0xff8B8B94),
-        items:  [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconAssets.home, width: 24.w,height: 24.h,),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon:SvgPicture.asset(IconAssets.wallet, width: 24.w,height: 24.h,),
-            label: 'My Cards',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconAssets.chart, width: 24.w,height: 24.h,),
-            label: 'Statistics',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(IconAssets.setting, width: 24.w,height: 24.h,),
-            label: 'Settings',
-          ),
-        ],
+      bottomNavigationBar: Consumer<HomeProvider>(builder: (context, value, child) =>  BottomNavigationBar(
+          iconSize: 24.h,
+          selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
+currentIndex: homeProvider.currentIndex,
+          selectedItemColor: ColorManager.primary,
+        unselectedItemColor:Color(0xff8B8B94) ,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
+          unselectedLabelStyle: const TextStyle(color:  Color(0xff8B8B94),fontWeight: FontWeight.w600,),
+          onTap: (value) => homeProvider.setIndex(value),
+          items:  [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(IconAssets.home, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==0?ColorManager.primary:const Color(0xff8B8B94),),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon:SvgPicture.asset(IconAssets.wallet, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==1?ColorManager.primary:const Color(0xff8B8B94),),
+              label: 'My Cards',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(IconAssets.chart, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==2?ColorManager.primary:const Color(0xff8B8B94),),
+              label: 'Statistics',
+            ),
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(IconAssets.setting, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==3?ColorManager.primary:const Color(0xff8B8B94),),
+              label: 'Settings',
+            ),
+          ],
+        ),
       ),
     );
   }
