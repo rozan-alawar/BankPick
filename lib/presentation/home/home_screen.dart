@@ -23,9 +23,9 @@ class HomeScreen extends StatelessWidget {
         padding:  EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             30.height,
-            BuildProfileSection(),
+            const BuildProfileSection(),
             32.height,
             // BuildCardSection(),
             Image.asset(
@@ -34,9 +34,9 @@ class HomeScreen extends StatelessWidget {
               fit: BoxFit.fill,
             ),
             30.height,
-            TransactionButtons(),
+            const TransactionButtons(),
             20.height,
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PrimaryText(
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       width: 70.w,
                       height: 70.h,
                       decoration: BoxDecoration(
-                          color: Color(0xffF4F4F4),
+                          color: const Color(0xffF4F4F4),
                           borderRadius: BorderRadius.circular(50.r)),
                       child: Center(
                         child: SvgPicture.asset(
@@ -81,13 +81,13 @@ class HomeScreen extends StatelessWidget {
                           fontSize: 16.sp,
                         ),
                         6.height,
-                        PrimaryText(
+                        const PrimaryText(
                           'Entertainment',
                           color: ColorManager.secondaryText,
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     PrimaryText(
                       '- \$5,99',
                       fontWeight: FontWeight.w500,
