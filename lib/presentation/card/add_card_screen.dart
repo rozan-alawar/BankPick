@@ -146,14 +146,21 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   color: ColorManager.secondaryText,
                   fontWeight: FontWeight.w500,
                 ),
-                PrimaryTextField(
-                  controller: cardnumberController,
-                  validator: (value) {},
-                  prefixIcon: SvgPicture.asset(
-                    IconAssets.credit_cards,
-                    width: 12.w,
-                    height: 12.h,
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: PrimaryTextField(
+                        controller: cardnumberController,
+                        validator: (value) {},
+                        prefixIcon: SvgPicture.asset(
+                          IconAssets.credit_cards,
+                          width: 12.w,
+                          height: 12.h,
+                        ),
+                      ),
+                    ),
+                    SvgPicture.asset(IconAssets.master_card)
+                  ],
                 ),
                 60.height,
                 PrimaryButton(color: ColorManager.primary, onPressed: () {} , child:  const PrimaryText('Add Card ', color: Colors.white,),)
