@@ -11,7 +11,7 @@ class HomeProvider with ChangeNotifier {
   String _name = 'Tanya Myroniuk';
 
   int _currentIndex = 0;
-
+  double _spendingLimit = 8545;
   int get currentIndex => _currentIndex;
 
   void setIndex(int index) {
@@ -20,6 +20,7 @@ class HomeProvider with ChangeNotifier {
   }
 
   String get name => _name;
+  double get spendingLimit => _spendingLimit;
 
   void updateName(String newName) {
     _name = newName;
@@ -37,5 +38,10 @@ class HomeProvider with ChangeNotifier {
     const StatisticsScreen(),
     const SettingsScreen()
   ];
+
+  void updateSpendingLimit(double newLimit) {
+    _spendingLimit = newLimit;
+    notifyListeners();
+  }
 }
 

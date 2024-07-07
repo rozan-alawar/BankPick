@@ -1,8 +1,13 @@
+import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
+import '../../config/theme/assets_manager.dart';
+import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
@@ -13,35 +18,94 @@ class CardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    final homeProvider = Provider.of<HomeProvider>(context);
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            20.height,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const SizedBox(),
-                PrimaryText(
-                  'My Cards',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.sp,
-                ),
-                GestureDetector(
-                  onTap: () => sl<NavigationService>().navigateTo(Routes.show_cards) ,
-                  child: CircularCard(
-                    widget: const Icon(Icons.add),
-                    width: 45.w,
-                    height: 45.h,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              20.height,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(),
+                  PrimaryText(
+                    'My Cards',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
                   ),
+                  GestureDetector(
+                    onTap: () =>
+                        sl<NavigationService>().navigateTo(Routes.show_cards),
+                    child: CircularCard(
+                      widget: const Icon(Icons.add),
+                      width: 45.w,
+                      height: 45.h,
+                    ),
+                  ),
+                ],
+              ),
+              40.height,
+              Image.asset(
+                ImageAssets.card,
+                fit: BoxFit.fitWidth,
+                width: double.infinity,
+              ),
+              30.height,
+              const TransactionsListSection(),
+              30.height,
+              PrimaryText(
+                'Monthly Spending limit',
+                fontWeight: FontWeight.w500,
+                fontSize: 16.sp,
+              ),
+              20.height,
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    )
+                  ],
+                  color: Color(0xffF4F4F4),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ],
-            ),
-            40.height,
-
-          ],
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PrimaryText(
+                        'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                       fontSize: 14.sp,),
+                    Slider(
+                      activeColor: ColorManager.primary,
+                      value: homeProvider.spendingLimit,
+                      min: 0,
+                      max: 10000,
+                      divisions: 100,
+                      label: homeProvider.spendingLimit.round().toString(),
+                      onChanged: (value) {
+                        homeProvider.updateSpendingLimit(value);
+                      },
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('\$0', style: TextStyle(fontSize: 14.sp)),
+                        Text('\$4,600', style: TextStyle(fontSize: 14.sp)),
+                        Text('\$10,000', style: TextStyle(fontSize: 14.sp)),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              40.height,
+            ],
+          ),
         ),
       ),
     );

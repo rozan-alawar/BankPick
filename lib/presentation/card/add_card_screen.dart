@@ -159,7 +159,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                         ),
                       ),
                     ),
-                    SvgPicture.asset(IconAssets.master_card)
+                    SvgPicture.asset(IconAssets.master_card),
                   ],
                 ),
                 60.height,

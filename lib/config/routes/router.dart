@@ -2,7 +2,7 @@ import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
 import 'package:dakakeen/presentation/auth/signup_screen.dart';
 import 'package:dakakeen/presentation/card/add_card_screen.dart';
-import 'package:dakakeen/presentation/card/cards_screen.dart';
+import 'package:dakakeen/presentation/card/show_cards_screen.dart';
 import 'package:dakakeen/presentation/home/home_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';

@@ -5,6 +5,7 @@ import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/model/transaction_model.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:dakakeen/presentation/home/transaction_buttons_section.dart';
+import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,42 +54,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             20.height,
-            Expanded(
-              child: ListView.separated(
-                // physics: NeverScrollableScrollPhysics(),
-                itemCount: TransactionModel.transactions.length,
-                separatorBuilder: (context, index) => 22.height,
-                itemBuilder: (context, index) => Row(
-                  children: [
-                    CircularCard(
-                      widget: Icon(TransactionModel.transactions[index].icon),
-                    ),
-                    17.width,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        PrimaryText(
-                          TransactionModel.transactions[index].title,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16.sp,
-                        ),
-                        6.height,
-                        PrimaryText(
-                          TransactionModel.transactions[index].subtitle,
-                          color: ColorManager.secondaryText,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    PrimaryText(
-                      TransactionModel.transactions[index].amount,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.sp,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            const TransactionsListSection(),
           ],
         ),
       ),
