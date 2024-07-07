@@ -1,6 +1,7 @@
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
 import 'package:dakakeen/presentation/auth/signup_screen.dart';
+import 'package:dakakeen/presentation/card/add_card_screen.dart';
 import 'package:dakakeen/presentation/home/home_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
@@ -23,7 +24,11 @@ class AppRoutes {
         return _materialRoute(const SignupScreen());
 
       case Routes.home:
-        return _materialRoute( MainScreen());
+        return _materialRoute( const MainScreen());
+
+      case Routes.add_card:
+        return _materialRoute( const AddCardScreen());
+
 
       default:
         return _materialRoute(
