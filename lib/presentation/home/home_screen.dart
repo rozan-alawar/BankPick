@@ -24,38 +24,42 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            30.height,
-            const BuildProfileSection(),
-            32.height,
-            // BuildCardSection(),
-            Image.asset(
-              ImageAssets.card,
-              width: double.infinity,
-              fit: BoxFit.fill,
-            ),
-            30.height,
-            const TransactionButtons(),
-            20.height,
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                PrimaryText(
-                  'Transaction',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                PrimaryText(
-                  'See All',
-                  color: ColorManager.primary,
-                ),
-              ],
-            ),
-            20.height,
-            const TransactionsListSection(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              30.height,
+              const BuildProfileSection(),
+              32.height,
+              // BuildCardSection(),
+              Image.asset(
+                ImageAssets.card,
+                width: double.infinity,
+                fit: BoxFit.fill,
+              ),
+              30.height,
+              const TransactionButtons(),
+              20.height,
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  PrimaryText(
+                    'Transaction',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  PrimaryText(
+                    'See All',
+                    color: ColorManager.primary,
+                  ),
+                ],
+              ),
+              20.height,
+              const TransactionsListSection(),
+              20.height,
+
+            ],
+          ),
         ),
       ),
     );
