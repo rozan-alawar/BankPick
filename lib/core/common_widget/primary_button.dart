@@ -8,15 +8,15 @@ class PrimaryButton extends StatelessWidget {
     Key? key,
     required this.color,
     required this.onPressed,
-    this.width = 90,
-    this.height = 40,
+    this.width,
+    this.height ,
     this.fontSize = 16,
     this.borderColor,
     this.isDisable = false, required this.child,
   }) : super(key: key);
   final Color? color;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double fontSize;
   final void Function()? onPressed;
   final Color? borderColor;
@@ -28,8 +28,8 @@ class PrimaryButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: width.w,
-        height: height.h,
+        width: width??double.infinity,
+        height: height??60.h,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(16.r),

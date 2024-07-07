@@ -30,7 +30,7 @@ class CardScreen extends StatelessWidget {
                   fontSize: 18.sp,
                 ),
                 GestureDetector(
-                  onTap: () => sl<NavigationService>().navigateTo(Routes.add_card) ,
+                  onTap: () => sl<NavigationService>().navigateTo(Routes.show_cards) ,
                   child: CircularCard(
                     widget: const Icon(Icons.add),
                     width: 45.w,
