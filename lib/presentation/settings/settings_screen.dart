@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../config/routes/routes.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/utils/navigation.dart';
+import '../../injection_container.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -53,12 +56,15 @@ class SettingsScreen extends StatelessWidget {
                   color: ColorManager.secondaryText,
                 ),
                 16.width,
-                Transform.rotate(
-                    angle: 3.2,
-                    child: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: ColorManager.secondaryText,
-                    )),
+                GestureDetector(
+                  onTap: () =>      sl<NavigationService>().navigateTo(Routes.language),
+                  child: Transform.rotate(
+                      angle: 3.2,
+                      child: SvgPicture.asset(
+                        IconAssets.arrow_back,
+                        color: ColorManager.secondaryText,
+                      )),
+                ),
               ],
             ),
             30.height,

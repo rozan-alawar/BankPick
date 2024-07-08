@@ -7,6 +7,7 @@ import 'package:dakakeen/presentation/home/home_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
+import 'package:dakakeen/presentation/settings/language_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -25,13 +26,16 @@ class AppRoutes {
         return _materialRoute(const SignupScreen());
 
       case Routes.home:
-        return _materialRoute( const MainScreen());
+        return _materialRoute(const MainScreen());
 
       case Routes.add_card:
-        return _materialRoute( const AddCardScreen());
+        return _materialRoute(const AddCardScreen());
 
       case Routes.show_cards:
-        return _materialRoute( const CardsScreen());
+        return _materialRoute(const CardsScreen());
+
+      case Routes.language:
+        return _materialRoute(const LanguageScreen());
 
       default:
         return _materialRoute(
