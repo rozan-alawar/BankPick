@@ -46,40 +46,35 @@ class _AddCardScreenState extends State<AddCardScreen> {
     },
       child: Scaffold(
         extendBody: true,
-        appBar: AppBar(
-          elevation: 0,
-          toolbarHeight: 70.h,
-         automaticallyImplyLeading: false,
-          centerTitle: false,
-          title:  Row(
-            children: [
-              GestureDetector(
-                onTap: () => sl<NavigationService>().pop(),
-                child: CircularCard(
-                  widget: SvgPicture.asset(
-                    IconAssets.arrow_back,
-                    color: Colors.black,
-                  ),
-                  width: 45.w,
-                  height: 45.h,
-                ),
-              ),
-              80.width,
-              PrimaryText(
-                'Add New Card ',
-                fontWeight: FontWeight.w500,
-                fontSize: 18.sp,
-              ),
-            ],
-          ),
-        ),
+
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
+                30.height,
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () => sl<NavigationService>().pop(),
+                      child: CircularCard(
+                        widget: SvgPicture.asset(
+                          IconAssets.arrow_back,
+                          color: Colors.black,
+                        ),
+                        width: 45.w,
+                        height: 45.h,
+                      ),
+                    ),
+                    80.width,
+                    PrimaryText(
+                      'Add New Card ',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.sp,
+                    ),
+                  ],
+                ),
                 20.height,
                 Image.asset(
                   ImageAssets.card,
