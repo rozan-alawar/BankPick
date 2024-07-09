@@ -126,7 +126,7 @@ interval: 1                    ),
                 ),
               ),
               30.height,
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   PrimaryText(
@@ -141,7 +141,8 @@ interval: 1                    ),
                 ],
               ),
               20.height,
-              TransactionsListSection(),
+              const TransactionsListSection(),
+              20.height,
             ],
           ),
         ),

@@ -1,5 +1,13 @@
+import 'package:dakakeen/config/theme/assets_manager.dart';
+import 'package:dakakeen/core/common_widget/primary_text.dart';
+import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../core/common_widget/circular_card.dart';
+import '../../core/utils/navigation.dart';
+import '../../injection_container.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -11,12 +19,12 @@ class LanguageScreen extends StatefulWidget {
 class _LanguageScreenState extends State<LanguageScreen> {
   String selectedLanguage = 'English';
   List<Map<String, String>> languages = [
-    {'name': 'English', 'flag': 'assets/flags/us.png'},
-    {'name': 'Australia', 'flag': 'assets/flags/au.png'},
-    {'name': 'Franch', 'flag': 'assets/flags/fr.png'},
-    {'name': 'Spanish', 'flag': 'assets/flags/es.png'},
-    {'name': 'America', 'flag': 'assets/flags/us.png'},
-    {'name': 'Vietnam', 'flag': 'assets/flags/vn.png'},
+    {'name': 'English', 'flag': ImageAssets.en_flag},
+    {'name': 'Australia', 'flag': ImageAssets.au_flag},
+    {'name': 'Franch', 'flag': ImageAssets.fr_flag},
+    {'name': 'Spanish', 'flag': ImageAssets.es_flag},
+    {'name': 'America', 'flag': ImageAssets.us_flag},
+    {'name': 'Vietnam', 'flag': ImageAssets.vn_flag},
   ];
 
   List<Map<String, String>> filteredLanguages = [];
@@ -42,21 +50,32 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            // Handle back navigation
-          },
-        ),
-        title: Text('Language'),
-        centerTitle: true,
-      ),
+
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            20.height,
+            Row(
+              children: [
+
+                GestureDetector(
+                  onTap: () => sl<NavigationService>().pop(),
+                  child: CircularCard(
+                    widget: SvgPicture.asset(
+                      IconAssets.arrow_back,
+                      color: Colors.black,
+                    ),
+                    width: 45.w,
+                    height: 45.h,
+                  ),
+                ),
+                80.width,
+                Center(child:  PrimaryText('Language',fontSize: 18.sp, ),),
+              ],
+            ),
+            30.height,
             TextField(
               onChanged: filterLanguages,
               decoration: InputDecoration(
@@ -70,9 +89,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 fillColor: Colors.grey[200],
               ),
             ),
-            SizedBox(height: 20.h),
+          20.height,
             Expanded(
-              child: ListView.builder(
+              child: ListView.separated(
+                separatorBuilder:(context, index) =>  16.height,
                 itemCount: filteredLanguages.length,
                 itemBuilder: (context, index) {
                   final language = filteredLanguages[index];
@@ -81,7 +101,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                       language['flag']!,
                       width: 40.w,
                     ),
-                    title: Text(language['name']!),
+                    title: PrimaryText(language['name']!, fontSize: 14.sp,),
                     trailing: selectedLanguage == language['name']
                         ? Icon(Icons.check_circle, color: Colors.blue)
                         : null,

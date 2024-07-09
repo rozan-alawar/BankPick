@@ -39,5 +39,12 @@ class ImageAssets {
   static const String onboarding2 = "$imagesPath/onboarding2.png";
   static const String onboarding3 = "$imagesPath/onboarding3.png";
   static const String profile = "$iconsPath/profile.png";
+
+  static const String au_flag = "$imagesPath/au.png";
+  static const String en_flag = "$imagesPath/en.png";
+  static const String es_flag = "$imagesPath/es.png";
+  static const String fr_flag = "$imagesPath/fr.png";
+  static const String us_flag = "$imagesPath/us.png";
+  static const String vn_flag = "$imagesPath/vn.png";
   static const String card = "$imagesPath/Card.png";
 }
