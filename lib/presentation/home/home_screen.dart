@@ -32,11 +32,7 @@ class HomeScreen extends StatelessWidget {
               const BuildProfileSection(),
               32.height,
 
-              Image.asset(
-                ImageAssets.card,
-                width: double.infinity,
-                fit: BoxFit.fill,
-              ),
+            BuildCardSection(),
               30.height,
               const TransactionButtons(),
               20.height,

@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/presentation/home/card_section.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,11 +49,7 @@ class CardScreen extends StatelessWidget {
                 ],
               ),
               40.height,
-              Image.asset(
-                ImageAssets.card,
-                fit: BoxFit.fitWidth,
-                width: double.infinity,
-              ),
+             BuildCardSection(),
               30.height,
               const TransactionsListSection(),
               30.height,

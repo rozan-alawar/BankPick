@@ -3,6 +3,7 @@ import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/presentation/home/card_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +18,7 @@ class CardsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
@@ -29,7 +30,10 @@ class CardsScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () => sl<NavigationService>().pop(),
                   child: CircularCard(
-                    widget: SvgPicture.asset(IconAssets.arrow_back, color: Colors.black, ),
+                    widget: SvgPicture.asset(
+                      IconAssets.arrow_back,
+                      color: Colors.black,
+                    ),
                     width: 45.w,
                     height: 45.h,
                   ),
@@ -40,17 +44,22 @@ class CardsScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                   fontSize: 18.sp,
                 ),
-
               ],
             ),
             40.height,
-            Image.asset(ImageAssets.card ,fit: BoxFit.fitWidth, width: double.infinity,),
+            BuildCardSection(),
             20.height,
-            Image.asset(ImageAssets.card ,fit: BoxFit.fitWidth, width: double.infinity,),
-
+            BuildCardSection(),
             200.height,
-            PrimaryButton(color: ColorManager.primary, onPressed: () =>  sl<NavigationService>().navigateTo(Routes.add_card), child:  const PrimaryText('Add Card +', color: Colors.white,),)
-
+            PrimaryButton(
+              color: ColorManager.primary,
+              onPressed: () =>
+                  sl<NavigationService>().navigateTo(Routes.add_card),
+              child: const PrimaryText(
+                'Add Card +',
+                color: Colors.white,
+              ),
+            )
           ],
         ),
       ),

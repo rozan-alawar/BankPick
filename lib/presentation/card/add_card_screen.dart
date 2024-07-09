@@ -4,6 +4,7 @@ import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/presentation/home/card_section.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -76,11 +77,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   ],
                 ),
                 20.height,
-                Image.asset(
-                  ImageAssets.card,
-                  fit: BoxFit.fitWidth,
-                  width: double.infinity,
-                ),
+               BuildCardSection(),
                 30.height,
                 const PrimaryText(
                   'Cardholder Name',

@@ -8,37 +8,68 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-
 class BuildCardSection extends StatelessWidget {
   const BuildCardSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.symmetric(horizontal:20.w, vertical: 20.h),
       decoration: BoxDecoration(
-        color: Colors.blue[900],
-        borderRadius: BorderRadius.circular(15),
+        // color: Colors.blue[900],
+        image: DecorationImage(
+            image: AssetImage(
+              ImageAssets.card,
+            ),
+            fit: BoxFit.fill),
+        borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('4562 1122 4595 7852',
-              style: TextStyle(color: Colors.white, fontSize: 22)),
-          SizedBox(height: 10),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('AR Jonson', style: TextStyle(color: Colors.white)),
-              Text('Mastercard', style: TextStyle(color: Colors.white)),
+              SvgPicture.asset(IconAssets.card_icon),
+              Spacer(),
+              SvgPicture.asset(IconAssets.union),
+
             ],
           ),
-          SizedBox(height: 10),
+          20.height,
+          Text('4562 1122 4595 7852',
+              style: TextStyle(color: Colors.white, fontSize: 22)),
+          20.height,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Exp: 24/2000', style: TextStyle(color: Colors.white)),
-              Text('CVV: 6986', style: TextStyle(color: Colors.white)),
+              PrimaryText('AR Jonson',color: Colors.white,fontWeight:FontWeight.w600,),
+            ],
+          ),
+         20.height,
+          Row(
+            children: [
+              Column(
+                children: [
+                  PrimaryText('Exp Date',color: ColorManager.white,fontSize: 10.sp,),
+                  PrimaryText('24/2000',color: ColorManager.white,fontSize: 12.sp,),
+                ],
+              ),
+              20.width,
+              Column(
+                children: [
+                  PrimaryText('CVV',color: ColorManager.white,fontSize: 10.sp,),
+                  PrimaryText('6986',color: ColorManager.white,fontSize: 12.sp,),
+                ],
+              ),
+              Spacer(),
+              Column(
+                children: [
+                  SvgPicture.asset(IconAssets.master_card),
+                  6.height,
+                  PrimaryText('Mastercard',color: ColorManager.white,fontSize: 11.sp,),
+                ],
+              ),
+
             ],
           ),
         ],
