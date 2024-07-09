@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
@@ -13,10 +14,10 @@ class BuildCardSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider= Provider.of<HomeProvider>(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal:20.w, vertical: 20.h),
       decoration: BoxDecoration(
-        // color: Colors.blue[900],
         image: DecorationImage(
             image: AssetImage(
               ImageAssets.card,
@@ -36,13 +37,13 @@ class BuildCardSection extends StatelessWidget {
             ],
           ),
           20.height,
-          Text('4562 1122 4595 7852',
-              style: TextStyle(color: Colors.white, fontSize: 22)),
+          PrimaryText(homeProvider.user!.cards[0].cardNumber,
+            color: Colors.white, fontSize: 20.sp,),
           20.height,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              PrimaryText('AR Jonson',color: Colors.white,fontWeight:FontWeight.w600,),
+              PrimaryText(homeProvider.user!.cards[0].cardHolder,color: Colors.white,fontWeight:FontWeight.w600,),
             ],
           ),
          20.height,
@@ -51,14 +52,14 @@ class BuildCardSection extends StatelessWidget {
               Column(
                 children: [
                   PrimaryText('Exp Date',color: ColorManager.white,fontSize: 10.sp,),
-                  PrimaryText('24/2000',color: ColorManager.white,fontSize: 12.sp,),
+                  PrimaryText(homeProvider.user!.cards[0].expiryDate,color: ColorManager.white,fontSize: 12.sp,),
                 ],
               ),
               20.width,
               Column(
                 children: [
                   PrimaryText('CVV',color: ColorManager.white,fontSize: 10.sp,),
-                  PrimaryText('6986',color: ColorManager.white,fontSize: 12.sp,),
+                  PrimaryText(homeProvider.user!.cards[0].cvv,color: ColorManager.white,fontSize: 12.sp,),
                 ],
               ),
               Spacer(),
@@ -66,7 +67,7 @@ class BuildCardSection extends StatelessWidget {
                 children: [
                   SvgPicture.asset(IconAssets.master_card),
                   6.height,
-                  PrimaryText('Mastercard',color: ColorManager.white,fontSize: 11.sp,),
+                  PrimaryText(homeProvider.user!.cards[0].cardType,color: ColorManager.white,fontSize: 11.sp,),
                 ],
               ),
 

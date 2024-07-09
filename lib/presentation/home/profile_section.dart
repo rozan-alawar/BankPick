@@ -31,7 +31,7 @@ class BuildProfileSection extends StatelessWidget {
               children: [
                 PrimaryText('Welcome back,',
                     fontSize: 12.sp, color: ColorManager.secondaryText),
-                PrimaryText(homeProvider.name,
+                PrimaryText(homeProvider.user?.name??"Rozan AbuAlawar",
                     fontSize: 18, fontWeight: FontWeight.bold),
               ],
             ),
