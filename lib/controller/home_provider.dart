@@ -1,3 +1,4 @@
+import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/model/card_model.dart';
 import 'package:dakakeen/presentation/card/card_screen.dart';
 import 'package:dakakeen/presentation/home/home_screen.dart';
@@ -16,7 +17,7 @@ class HomeProvider with ChangeNotifier {
   int get currentIndex => _currentIndex;
   User? _user = User(
     name: 'Tanya Myroniuk',
-    avatarUrl: 'https://example.com/avatar.jpg',
+    avatarUrl: ImageAssets.profile,
     email: 'tanya.myroniuk@gmail.com',
     phoneNumber: '+8801712663389',
     birthDate: DateTime(2000, 9, 28),

@@ -21,8 +21,8 @@ class BuildProfileSection extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 40.r,
-              backgroundImage: AssetImage(
-                ImageAssets.profile,
+              backgroundImage:AssetImage(
+                homeProvider.user!.avatarUrl,
               ), // Add a profile image in assets folder
             ),
             16.width,
