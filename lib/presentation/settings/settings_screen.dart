@@ -52,7 +52,7 @@ class SettingsScreen extends StatelessWidget {
                     'Language ',
                     fontSize: 16.sp,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   const PrimaryText(
                     'English ',
                     color: ColorManager.secondaryText,
@@ -76,7 +76,7 @@ class SettingsScreen extends StatelessWidget {
                     'My Profile ',
                     fontSize: 16.sp,
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Transform.rotate(
                       angle: 3.2,
                       child: SvgPicture.asset(
@@ -93,7 +93,7 @@ class SettingsScreen extends StatelessWidget {
                   'Contact Us ',
                   fontSize: 16.sp,
                 ),
-                Spacer(),
+                const Spacer(),
                 Transform.rotate(
                     angle: 3.2,
                     child: SvgPicture.asset(
@@ -114,7 +114,7 @@ class SettingsScreen extends StatelessWidget {
                   'Change Password ',
                   fontSize: 16.sp,
                 ),
-                Spacer(),
+                const Spacer(),
                 Transform.rotate(
                     angle: 3.2,
                     child: SvgPicture.asset(
@@ -130,7 +130,7 @@ class SettingsScreen extends StatelessWidget {
                   'Privacy Policy ',
                   fontSize: 16.sp,
                 ),
-                Spacer(),
+                const Spacer(),
                 Transform.rotate(
                     angle: 3.2,
                     child: SvgPicture.asset(
@@ -151,7 +151,7 @@ class SettingsScreen extends StatelessWidget {
                   'Biometric  ',
                   fontSize: 16.sp,
                 ),
-                Spacer(),
+                const Spacer(),
                 Switch(
                   value: false,
                   onChanged: (value) {},

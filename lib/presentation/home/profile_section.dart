@@ -35,7 +35,7 @@ class BuildProfileSection extends StatelessWidget {
                     fontSize: 18, fontWeight: FontWeight.bold),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             CircularCard(
               width: 40.w,
               height: 40.h,

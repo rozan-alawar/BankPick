@@ -38,13 +38,13 @@ class ProfileScreen extends StatelessWidget {
                     height: 45.h,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 PrimaryText(
                   'Profile',
                   fontWeight: FontWeight.w500,
                   fontSize: 18.sp,
                 ),
-                Spacer(),
+                const Spacer(),
                 GestureDetector(
                   onTap: () => sl<NavigationService>().pop(),
                   child: CircularCard(

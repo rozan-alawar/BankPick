@@ -20,7 +20,7 @@ class CircularCard extends StatelessWidget {
               color: Colors.black.withOpacity(0.3),
               blurRadius: 6,
               spreadRadius: 1,
-              offset: Offset(0, 4),
+              offset: const Offset(0, 4),
             )
           ],
           color: const Color(0xffF4F4F4),
