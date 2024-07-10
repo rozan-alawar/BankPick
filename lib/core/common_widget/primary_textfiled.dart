@@ -78,10 +78,10 @@ class PrimaryTextField extends StatelessWidget {
           ),
           filled: true,
 
-          enabledBorder:
- UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorManager.blaceholderText),
-          ),            // borderSide:
+ //          enabledBorder:
+ // UnderlineInputBorder(
+ //            borderSide: BorderSide(color: ColorManager.blaceholderText),
+ //          ),            // borderSide:
             //     BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
         
           focusedBorder: UnderlineInputBorder(

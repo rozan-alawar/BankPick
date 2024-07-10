@@ -1,3 +1,4 @@
+import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
@@ -46,7 +47,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 GestureDetector(
-                  onTap: () => sl<NavigationService>().pop(),
+                  onTap: () => sl<NavigationService>().navigateTo(Routes.edit_profile),
                   child: CircularCard(
                     widget: SvgPicture.asset(
                       IconAssets.edit_profile,

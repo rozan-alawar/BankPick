@@ -10,5 +10,6 @@ class Routes {
   static const String show_cards = '/show_cards';
   static const String language = '/language';
   static const String profile = '/profile';
+  static const String edit_profile = '/edit_profile';
 
 }
