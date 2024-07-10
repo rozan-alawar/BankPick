@@ -24,15 +24,15 @@ class TransactionButtons extends StatelessWidget {
     return SizedBox(
       height: 110.h,
       child: ListView.separated(
-        separatorBuilder: (context, index) => 30.width,
+        separatorBuilder: (context, index) => 40.width,
         physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 4,
         itemBuilder: (context, index) => Column(
           children: [
             CircularCard(
-              width: 70.w,
-              height: 70.h,
+              width: 60.w,
+              height: 60.h,
               widget: Center(
                   child: SvgPicture.asset(
                 transactionnButtonIcons[index],

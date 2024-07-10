@@ -21,6 +21,7 @@ class IconAssets {
   static const String card_icon = "$iconsPath/card_icon.svg";
   static const String notification = "$iconsPath/Bell, Notification.svg";
   static const String union = "$iconsPath/Union.svg";
+  static const String edit_profile = "$iconsPath/single-user-edit-pen.svg";
 
 
 

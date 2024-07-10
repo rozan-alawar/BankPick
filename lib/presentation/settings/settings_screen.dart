@@ -44,44 +44,47 @@ class SettingsScreen extends StatelessWidget {
               color: ColorManager.secondaryText,
             ),
             30.height,
-            Row(
-              children: [
-                PrimaryText(
-                  'Language ',
-                  fontSize: 16.sp,
-                ),
-                Spacer(),
-                const PrimaryText(
-                  'English ',
-                  color: ColorManager.secondaryText,
-                ),
-                16.width,
-                GestureDetector(
-                  onTap: () =>      sl<NavigationService>().navigateTo(Routes.language),
-                  child: Transform.rotate(
+            GestureDetector(
+              onTap: () => sl<NavigationService>().navigateTo(Routes.language),
+              child: Row(
+                children: [
+                  PrimaryText(
+                    'Language ',
+                    fontSize: 16.sp,
+                  ),
+                  Spacer(),
+                  const PrimaryText(
+                    'English ',
+                    color: ColorManager.secondaryText,
+                  ),
+                  16.width,
+                  Transform.rotate(
                       angle: 3.2,
                       child: SvgPicture.asset(
                         IconAssets.arrow_back,
                         color: ColorManager.secondaryText,
                       )),
-                ),
-              ],
+                ],
+              ),
             ),
             30.height,
-            Row(
-              children: [
-                PrimaryText(
-                  'My Profile ',
-                  fontSize: 16.sp,
-                ),
-                Spacer(),
-                Transform.rotate(
-                    angle: 3.2,
-                    child: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: ColorManager.secondaryText,
-                    )),
-              ],
+            GestureDetector(
+              onTap: () => sl<NavigationService>().navigateTo(Routes.profile),
+              child: Row(
+                children: [
+                  PrimaryText(
+                    'My Profile ',
+                    fontSize: 16.sp,
+                  ),
+                  Spacer(),
+                  Transform.rotate(
+                      angle: 3.2,
+                      child: SvgPicture.asset(
+                        IconAssets.arrow_back,
+                        color: ColorManager.secondaryText,
+                      )),
+                ],
+              ),
             ),
             30.height,
             Row(
@@ -149,10 +152,10 @@ class SettingsScreen extends StatelessWidget {
                   fontSize: 16.sp,
                 ),
                 Spacer(),
-
-               Switch(value: false, onChanged: (value) {
-                 
-               },)
+                Switch(
+                  value: false,
+                  onChanged: (value) {},
+                )
               ],
             ),
           ],

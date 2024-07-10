@@ -7,6 +7,7 @@ import 'package:dakakeen/presentation/home/home_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
+import 'package:dakakeen/presentation/profile/profile_screen.dart';
 import 'package:dakakeen/presentation/settings/language_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,9 @@ class AppRoutes {
 
       case Routes.language:
         return _materialRoute(const LanguageScreen());
+
+        case Routes.profile:
+      return _materialRoute(const ProfileScreen());
 
       default:
         return _materialRoute(
