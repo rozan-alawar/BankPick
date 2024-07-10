@@ -5,10 +5,9 @@ import 'package:provider/provider.dart';
 import '../model/user_model.dart';
 
 class ProfileProvider with ChangeNotifier{
-  User? user  ;
+  User? user  =HomeProvider().user;
   void saveProfile(GlobalKey<FormState> formKey, BuildContext context ,String name , String email, String phone) {
     if (formKey.currentState?.validate()??false) {
-user =Provider.of<HomeProvider>(context).user;
           user = User(
             name: name,
             avatarUrl: user!.avatarUrl,

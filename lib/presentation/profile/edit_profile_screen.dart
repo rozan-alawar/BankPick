@@ -18,6 +18,7 @@ import '../../core/common_widget/primary_text.dart';
 import '../../core/common_widget/primary_textfiled.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
+import '../../model/user_model.dart';
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
 
@@ -35,11 +36,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   void initState() {
     super.initState();
-
+User? user = HomeProvider().user;
     formKey = GlobalKey<FormState>();
-    nameController = TextEditingController();
-    phoneController = TextEditingController();
-    emailController = TextEditingController();
+    nameController = TextEditingController(text: user?.name??"Rozan AbuAlawar");
+    phoneController = TextEditingController(text: user?.phoneNumber??"+972592417852");
+    emailController = TextEditingController(text: user?.email??"rosanalawer2002@gmail.com");
   }
   @override
   Widget build(BuildContext context) {
@@ -156,19 +157,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                     ),
                     40.height,
-                    AbsorbPointer(
-                      // absorbing: registerProvider.isLoading,
-                      child: PrimaryButton(
-                        color:ColorManager.primary,
-                        width: double.infinity,
-                        height: 56.h,
-                        onPressed: ()=> profileProvider.saveProfile(formKey!,context,nameController!.text,emailController!.text,phoneController!.text,),
-                        // isDisable: registerProvider.isLoading,
-                        child:  PrimaryText(
-                          'Save',
-                          color: ColorManager.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    PrimaryButton(
+                      color:ColorManager.primary,
+                      width: double.infinity,
+                      height: 56.h,
+                      onPressed: ()=> profileProvider.saveProfile(formKey!,context,nameController!.text,emailController!.text,phoneController!.text,),
+                      child:  PrimaryText(
+                        'Save',
+                        color: ColorManager.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
