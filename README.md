@@ -1,16 +1,28 @@
 # BankPick
 
-A new Flutter project.
+ The BankPick is a mobile application designed to help users manage their finances efficiently. The app allows users to add, view, and manage their credit/debit cards, track transactions, and set spending limits. The app's main features include profile management, transaction tracking, card management, and detailed statistics.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+Profile Management
+Edit Profile: Users can update their profile information such as name, email address, phone number, and birth date.
+View Profile: Displays user information including name, email, phone number, birth date, and the date they joined the app.
 
-A few resources to get you started if this is your first Flutter project:
+Card Management
+Add New Card: Users can add new credit/debit cards with details like card number, cardholder name, expiry date, CVV, and card type.
+View Cards: Displays a list of all the cards the user has added to their profile.
+Card Details: Users can view details of individual cards.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Transaction Tracking
+Add Transactions: Users can add transactions to track their spending.
+View Transactions: Users can view a list of all transactions made with their cards.
+Transaction Details: Provides detailed information about each transaction.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Spending Limit
+Set Spending Limit: Users can set a spending limit to manage their finances better.
+Update Spending Limit: Allows users to update their spending limit as needed.
+
+Statistics
+View Statistics: Users can view detailed statistics of their spending habits.
+
+![BankPick](https://github.com/rozan-alawar/BankPick/assets/89961825/dae867ee-8f98-4f08-abd0-1ad6d13cf246)
