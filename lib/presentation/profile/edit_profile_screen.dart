@@ -1,3 +1,4 @@
+import 'package:dakakeen/core/extensions/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/controller/home_provider.dart';
@@ -10,6 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/theme/assets_manager.dart';
 import '../../config/theme/color_manager.dart';
+import '../../controller/profile_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
@@ -42,9 +44,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
-    nameController!.text = homeProvider.user!.name;
-    emailController!.text = homeProvider.user!.email;
-    phoneController!.text = homeProvider.user!.phoneNumber;
+    final profileProvider = Provider.of<ProfileProvider>(context);
 
     return  Scaffold(
       body: Padding(
@@ -113,7 +113,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       controller: nameController,
                       validator: (value) {
                         // registerProvider.setEmail(value!);
-                        // return value!.isValidName;
+                        return value!.isValidName;
                       },
                       prefixIcon: SvgPicture.asset(
                         IconAssets.user,
@@ -130,6 +130,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     PrimaryTextField(
                       controller: emailController,
                       validator: (value) {
+                        return      value!.isValidEmail;
 
                       },
                       prefixIcon: SvgPicture.asset(
@@ -146,7 +147,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     PrimaryTextField(
                       controller: phoneController,
                       validator: (value) {
-                       
+                  return      value!.isValidPhone;
                       },
                       prefixIcon: SvgPicture.asset(
                         IconAssets.phone,
@@ -161,9 +162,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         color:ColorManager.primary,
                         width: double.infinity,
                         height: 56.h,
-                        onPressed: (){
-
-                        },
+                        onPressed: ()=> profileProvider.saveProfile(formKey!,context,nameController!.text,emailController!.text,phoneController!.text,),
                         // isDisable: registerProvider.isLoading,
                         child:  PrimaryText(
                           'Save',

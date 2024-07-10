@@ -30,5 +30,17 @@ extension ValidationExt on String {
     } else {
       return null;
     }
+
+  }
+
+  String? get isValidPhone {
+    final phoneRegExp = RegExp(r'^\+?\d{10,15}$');
+    if (isEmpty) {
+      return ("Phone number is required");
+    } else if (!phoneRegExp.hasMatch(this)) {
+      return ("Enter a valid phone number");
+    } else {
+      return null;
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'package:dakakeen/config/routes/router.dart';
 import 'package:dakakeen/controller/auth_provider.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/controller/intro_provider.dart';
+import 'package:dakakeen/controller/profile_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -55,15 +56,20 @@ void main() async {
       fallbackLocale: const Locale('ar'),
       child: MultiProvider(
         providers: [
-          ChangeNotifierProvider (
-          create: (context) => IntroProvider(),),
-          ChangeNotifierProvider (
-            create: (context) => AuthProvider(),),
-          ChangeNotifierProvider (
-            create: (context) => HomeProvider(),),
+          ChangeNotifierProvider(
+            create: (context) => IntroProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => AuthProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => HomeProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => ProfileProvider(),
+          ),
         ],
         child: const MyApp(),
-
       ),
     ),
   );
@@ -79,13 +85,13 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return  SafeArea(
+        return SafeArea(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: appTheme(),
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.home ,
+            initialRoute: Routes.home,
             // home: Scaffold(),
             onGenerateRoute: AppRoutes.onGenerateRoutes,
             localizationsDelegates: context.localizationDelegates,
