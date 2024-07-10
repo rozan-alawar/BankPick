@@ -49,7 +49,7 @@ class CardScreen extends StatelessWidget {
                 ],
               ),
               40.height,
-             BuildCardSection(),
+              BuildCardSection(cardNumber:homeProvider.user!.cards[0].cardNumber ,cardHolderName: homeProvider.user!.cards[0].cardHolder,expiryDate: homeProvider.user!.cards[0].expiryDate,cvv: homeProvider.user!.cards[0].cvv,cardType: homeProvider.user!.cards[0].cardType,),
               30.height,
               const TransactionsListSection(),
               30.height,

@@ -21,6 +21,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider= Provider.of<HomeProvider>(context);
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -32,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               const BuildProfileSection(),
               32.height,
 
-            BuildCardSection(),
+            BuildCardSection(cardNumber:homeProvider.user!.cards[0].cardNumber ,cardHolderName: homeProvider.user!.cards[0].cardHolder,expiryDate: homeProvider.user!.cards[0].expiryDate,cvv: homeProvider.user!.cards[0].cvv,cardType: homeProvider.user!.cards[0].cardType,),
               30.height,
               const TransactionButtons(),
               20.height,

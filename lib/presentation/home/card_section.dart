@@ -10,7 +10,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class BuildCardSection extends StatelessWidget {
-  const BuildCardSection({super.key});
+   BuildCardSection({super.key, required this.cardType, required this.cvv, required this.expiryDate, required this.cardNumber, required this.cardHolderName });
+   String cardNumber;
+   String cardHolderName;
+   String expiryDate;
+   String cvv;
+   String cardType;
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +42,13 @@ class BuildCardSection extends StatelessWidget {
             ],
           ),
           20.height,
-          PrimaryText(homeProvider.user!.cards[0].cardNumber,
+          PrimaryText(cardNumber,
             color: Colors.white, fontSize: 20.sp,),
           20.height,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              PrimaryText(homeProvider.user!.cards[0].cardHolder,color: Colors.white,fontWeight:FontWeight.w600,),
+              PrimaryText(cardHolderName,color: Colors.white,fontWeight:FontWeight.w600,),
             ],
           ),
          20.height,
@@ -52,14 +57,14 @@ class BuildCardSection extends StatelessWidget {
               Column(
                 children: [
                   PrimaryText('Exp Date',color: ColorManager.white,fontSize: 10.sp,),
-                  PrimaryText(homeProvider.user!.cards[0].expiryDate,color: ColorManager.white,fontSize: 12.sp,),
+                  PrimaryText(expiryDate,color: ColorManager.white,fontSize: 12.sp,),
                 ],
               ),
               20.width,
               Column(
                 children: [
                   PrimaryText('CVV',color: ColorManager.white,fontSize: 10.sp,),
-                  PrimaryText(homeProvider.user!.cards[0].cvv,color: ColorManager.white,fontSize: 12.sp,),
+                  PrimaryText(cvv,color: ColorManager.white,fontSize: 12.sp,),
                 ],
               ),
               Spacer(),
@@ -67,7 +72,7 @@ class BuildCardSection extends StatelessWidget {
                 children: [
                   SvgPicture.asset(IconAssets.master_card),
                   6.height,
-                  PrimaryText(homeProvider.user!.cards[0].cardType,color: ColorManager.white,fontSize: 11.sp,),
+                  PrimaryText(cardType,color: ColorManager.white,fontSize: 11.sp,),
                 ],
               ),
 
