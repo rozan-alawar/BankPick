@@ -25,4 +25,4 @@ Update Spending Limit: Allows users to update their spending limit as needed.
 Statistics
 View Statistics: Users can view detailed statistics of their spending habits.
 
-![BankPick](https://github.com/rozan-alawar/BankPick/assets/89961825/dae867ee-8f98-4f08-abd0-1ad6d13cf246)
+![BankPick](https://github.com/rozan-alawar/BankPick/assets/89961825/e9d9d129-4e52-4a64-a38c-bc42e3944f92)
