@@ -1,3 +1,6 @@
+import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/presentation/home/transaction_history_screen.dart';
+import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
@@ -38,15 +41,15 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 80.width,
-                Center(child:  PrimaryText('Language',fontSize: 18.sp, ),),
+                Center(child:  PrimaryText('Search',fontSize: 18.sp, ),),
               ],
             ),
             30.height,
             TextField(
               // onChanged: filterLanguages,
               decoration: InputDecoration(
-                hintText: 'Search Language',
-                prefixIcon: Icon(Icons.search),
+                hintText: ' Search ',
+                prefixIcon: SvgPicture.asset(IconAssets.search,color: ColorManager.secondaryText),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
@@ -55,7 +58,7 @@ class SearchScreen extends StatelessWidget {
                 fillColor: Colors.grey[200],
               ),
             ),
-            20.height,
+            30.height,
             // Expanded(
             //   child: ListView.separated(
             //     separatorBuilder:(context, index) =>  16.height,
@@ -80,6 +83,8 @@ class SearchScreen extends StatelessWidget {
             //     },
             //   ),
             // ),
+
+            TransactionsListSection()
           ],
         ),
       ),
