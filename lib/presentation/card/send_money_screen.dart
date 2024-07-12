@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RequestMoneyScreen extends StatelessWidget {
-  const RequestMoneyScreen({super.key});
+class SendMoneyScreen extends StatelessWidget {
+  const SendMoneyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
