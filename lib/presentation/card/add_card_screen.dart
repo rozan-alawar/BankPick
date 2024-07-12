@@ -68,7 +68,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    50.height,
+                    20.height,
                     Row(
                       children: [
                         GestureDetector(
@@ -90,7 +90,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                         ),
                       ],
                     ),
-                    30.height,
+                    40.height,
                     BuildCardSection(
                       cardNumber: homeProvider.user!.cards[0].cardNumber,
                       cardHolderName: homeProvider.user!.cards[0].cardHolder,

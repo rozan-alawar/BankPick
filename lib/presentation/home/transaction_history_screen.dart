@@ -17,31 +17,35 @@ class TransactionHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        50.height,
-        Row(
-          children: [
-            GestureDetector(
-              onTap: () => sl<NavigationService>().pop(),
-              child: CircularCard(
-                widget: SvgPicture.asset(
-                  IconAssets.arrow_back,
-                  color: Colors.black,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+        child: Column(children: [
+          20.height,
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () => sl<NavigationService>().pop(),
+                child: CircularCard(
+                  widget: SvgPicture.asset(
+                    IconAssets.arrow_back,
+                    color: Colors.black,
+                  ),
+                  width: 45.w,
+                  height: 45.h,
                 ),
-                width: 45.w,
-                height: 45.h,
               ),
-            ),
-            80.width,
-            PrimaryText(
-              'Transaction History',
-              fontWeight: FontWeight.w500,
-              fontSize: 18.sp,
-            ),
-          ],
-        ),
-        const TransactionsListSection(),
-      ]),
+              80.width,
+              PrimaryText(
+                'Transaction History',
+                fontWeight: FontWeight.w500,
+                fontSize: 18.sp,
+              ),
+            ],
+          ),
+          40.height,
+          const TransactionsListSection(),
+        ]),
+      ),
     );
   }
 }

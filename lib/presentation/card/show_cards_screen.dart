@@ -28,7 +28,7 @@ class CardsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              20.height,
+              // 20.height,
               Row(
                 children: [
                   GestureDetector(

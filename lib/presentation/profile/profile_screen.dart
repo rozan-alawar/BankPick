@@ -47,7 +47,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 GestureDetector(
-                  onTap: () => sl<NavigationService>().navigateTo(Routes.edit_profile),
+                  onTap: () =>
+                      sl<NavigationService>().navigateTo(Routes.edit_profile),
                   child: CircularCard(
                     widget: SvgPicture.asset(
                       IconAssets.edit_profile,
@@ -90,13 +91,9 @@ class ProfileScreen extends StatelessWidget {
             40.height,
             InfoTile(icon: IconAssets.notification, title: 'Notifications'),
             40.height,
-
             InfoTile(icon: IconAssets.user, title: 'Messages Center'),
-
             40.height,
-            InfoTile(icon: IconAssets.user, title: 'Address'),
-            40.height,
-            InfoTile(icon: IconAssets.setting, title: 'Settings'),
+            InfoTile(icon: IconAssets.location, title: 'Address'),
           ],
         ),
       ),

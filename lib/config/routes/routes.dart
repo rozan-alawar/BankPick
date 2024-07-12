@@ -11,5 +11,7 @@ class Routes {
   static const String language = '/language';
   static const String profile = '/profile';
   static const String edit_profile = '/edit_profile';
+  static const String transaction_history = '/transaction_history';
+  static const String search = '/search';
 
 }

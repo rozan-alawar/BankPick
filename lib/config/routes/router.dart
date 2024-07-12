@@ -5,6 +5,8 @@ import 'package:dakakeen/presentation/card/add_card_screen.dart';
 import 'package:dakakeen/presentation/card/show_cards_screen.dart';
 import 'package:dakakeen/presentation/home/home_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
+import 'package:dakakeen/presentation/home/search_screen.dart';
+import 'package:dakakeen/presentation/home/transaction_history_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
 import 'package:dakakeen/presentation/profile/edit_profile_screen.dart';
@@ -39,11 +41,17 @@ class AppRoutes {
       case Routes.language:
         return _materialRoute(const LanguageScreen());
 
-        case Routes.profile:
-      return _materialRoute(const ProfileScreen());
+      case Routes.profile:
+        return _materialRoute(const ProfileScreen());
 
       case Routes.edit_profile:
         return _materialRoute(const EditProfileScreen());
+
+      case Routes.transaction_history:
+        return _materialRoute(const TransactionHistoryScreen());
+
+      case Routes.search:
+        return _materialRoute(const SearchScreen());
 
       default:
         return _materialRoute(
