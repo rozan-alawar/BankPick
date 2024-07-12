@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/model/transaction_model.dart';
 import 'package:dakakeen/presentation/home/transaction_history_screen.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +14,37 @@ import '../../core/common_widget/circular_card.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return  Scaffold(
+  State<SearchScreen> createState() => _SearchScreenState();
+}
 
+class _SearchScreenState extends State<SearchScreen> {
+  List<TransactionModel> transactions = TransactionModel.transactions;
+  List<TransactionModel> filteredTransactions = [];
+  @override
+  void initState() {
+    super.initState();
+    filteredTransactions = transactions;
+  }
+
+  void filterTransaction(String query) {
+    final filtered = transactions.where((transaction) {
+      final transactionName = transaction.title.toLowerCase();
+      final input = query.toLowerCase();
+      return transactionName.contains(input);
+    }).toList();
+
+    setState(() {
+      filteredTransactions = filtered;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
@@ -28,7 +53,6 @@ class SearchScreen extends StatelessWidget {
             20.height,
             Row(
               children: [
-
                 GestureDetector(
                   onTap: () => sl<NavigationService>().pop(),
                   child: CircularCard(
@@ -41,15 +65,21 @@ class SearchScreen extends StatelessWidget {
                   ),
                 ),
                 80.width,
-                Center(child:  PrimaryText('Search',fontSize: 18.sp, ),),
+                Center(
+                  child: PrimaryText(
+                    'Search',
+                    fontSize: 18.sp,
+                  ),
+                ),
               ],
             ),
             30.height,
             TextField(
-              // onChanged: filterLanguages,
+              onChanged: filterTransaction,
               decoration: InputDecoration(
                 hintText: ' Search ',
-                prefixIcon: SvgPicture.asset(IconAssets.search,color: ColorManager.secondaryText),
+                prefixIcon: SvgPicture.asset(IconAssets.search,
+                    color: ColorManager.secondaryText),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
@@ -59,32 +89,44 @@ class SearchScreen extends StatelessWidget {
               ),
             ),
             30.height,
-            // Expanded(
-            //   child: ListView.separated(
-            //     separatorBuilder:(context, index) =>  16.height,
-            //     itemCount: filteredLanguages.length,
-            //     itemBuilder: (context, index) {
-            //       final language = filteredLanguages[index];
-            //       return ListTile(
-            //         leading: Image.asset(
-            //           language['flag']!,
-            //           width: 40.w,
-            //         ),
-            //         title: PrimaryText(language['name']!, fontSize: 14.sp,),
-            //         trailing: selectedLanguage == language['name']
-            //             ? Icon(Icons.check_circle, color: Colors.blue)
-            //             : null,
-            //         onTap: () {
-            //           setState(() {
-            //             selectedLanguage = language['name']!;
-            //           });
-            //         },
-            //       );
-            //     },
-            //   ),
-            // ),
-
-            TransactionsListSection()
+            Expanded(
+              child: ListView.separated(
+                separatorBuilder: (context, index) => 16.height,
+                itemCount: filteredTransactions.length,
+                itemBuilder: (context, index) {
+                  final transaction = filteredTransactions[index];
+                  return Row(
+                    children: [
+                      CircularCard(
+                        widget: Icon(transaction.icon),
+                      ),
+                      17.width,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PrimaryText(
+                            transaction.title,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.sp,
+                          ),
+                          6.height,
+                          PrimaryText(
+                            transaction.subtitle,
+                            color: ColorManager.secondaryText,
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      PrimaryText(
+                        transaction.amount,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.sp,
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
