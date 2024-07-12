@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/core/common_widget/primary_button.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
@@ -49,9 +50,14 @@ class CardScreen extends StatelessWidget {
                 ],
               ),
               40.height,
-              BuildCardSection(cardNumber:homeProvider.user!.cards[0].cardNumber ,cardHolderName: homeProvider.user!.cards[0].cardHolder,expiryDate: homeProvider.user!.cards[0].expiryDate,cvv: homeProvider.user!.cards[0].cvv,cardType: homeProvider.user!.cards[0].cardType,),
-              30.height,
-              const TransactionsListSection(),
+              BuildCardSection(
+                cardNumber: homeProvider.user!.cards[0].cardNumber,
+                cardHolderName: homeProvider.user!.cards[0].cardHolder,
+                expiryDate: homeProvider.user!.cards[0].expiryDate,
+                cvv: homeProvider.user!.cards[0].cvv,
+                cardType: homeProvider.user!.cards[0].cardType,
+              ),
+
               30.height,
               PrimaryText(
                 'Monthly Spending limit',
@@ -76,8 +82,9 @@ class CardScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     PrimaryText(
-                        'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
-                       fontSize: 14.sp,),
+                      'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                      fontSize: 14.sp,
+                    ),
                     Slider(
                       activeColor: ColorManager.primary,
                       value: homeProvider.spendingLimit,
@@ -100,7 +107,32 @@ class CardScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              40.height,
+              60.height,
+              Row(
+                children: [
+                  Expanded(
+                    child: PrimaryButton(
+                      color: ColorManager.primary,
+                      onPressed: () {},
+                      child: const PrimaryText(
+                        'Request',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  20.width,
+                  Expanded(
+                    child: PrimaryButton(
+                      color: ColorManager.primary,
+                      onPressed: () {},
+                      child: const PrimaryText(
+                        'Send',
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
