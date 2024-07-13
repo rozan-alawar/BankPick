@@ -23,6 +23,7 @@ class IconAssets {
   static const String union = "$iconsPath/Union.svg";
   static const String edit_profile = "$iconsPath/single-user-edit-pen.svg";
   static const String location = "$iconsPath/Pin, Location.svg";
+  static const String history = "$iconsPath/history.svg";
 
 
 

@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_button.dart';
@@ -26,12 +27,12 @@ class RequestMoneyScreen extends StatefulWidget {
   State<RequestMoneyScreen> createState() => _RequestMoneyScreenState();
 }
 
-class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
-  TextEditingController? nameController;
-  TextEditingController? descriptionController;
-  TextEditingController? emailController;
-  GlobalKey<FormState>? formKey;
+TextEditingController? nameController;
+TextEditingController? descriptionController;
+TextEditingController? emailController;
+GlobalKey<FormState>? formKey;
 
+class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
   @override
   void initState() {
     super.initState();
@@ -46,95 +47,158 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Form(
-        key: formKey,
-        child: GestureDetector(
-        onTap: () {
-      FocusScope.of(context).unfocus();
-    },
-    child: Padding(
-    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-        child: Column(
-          children: [
-            20.height,
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () => sl<NavigationService>().pop(),
-                  child: CircularCard(
-                    widget: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: Colors.black,
-                    ),
-                    width: 45.w,
-                    height: 45.h,
+          key: formKey,
+          child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  20.height,
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => sl<NavigationService>().pop(),
+                        child: CircularCard(
+                          widget: SvgPicture.asset(
+                            IconAssets.arrow_back,
+                            color: Colors.black,
+                          ),
+                          width: 45.w,
+                          height: 45.h,
+                        ),
+                      ),
+                      80.width,
+                      PrimaryText(
+                        'Request Money',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18.sp,
+                      ),
+                    ],
                   ),
-                ),
-                80.width,
-                PrimaryText(
-                  'Request Money',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.sp,
-                ),
-              ],
-            ),
-            PrimaryText('Payer Name',color: ColorManager.secondaryText,),
-            PrimaryTextField(
-              controller: nameController,
-              validator: (value) {
-                return value!.isValidName;
-              },
-              prefixIcon: SvgPicture.asset(
-                IconAssets.user,
-                width: 20.w,
-                height: 20.h,
+                  40.height,
+                  const PrimaryText(
+                    'Payer Name',
+                    color: ColorManager.secondaryText,
+                  ),
+                  PrimaryTextField(
+                    controller: nameController,
+                    validator: (value) {
+                      return value!.isValidName;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.user,
+                      width: 16.w,
+                      height: 16.h,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  // 20.height,
+                  PrimaryText(
+                    'Email Address',
+                    color: ColorManager.secondaryText,
+                  ),
+                  PrimaryTextField(
+                    controller: emailController,
+                    validator: (value) {
+                      return value!.isValidEmail;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.email,
+                      width: 20.w,
+                      height: 20.h,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                  // 20.height,
+                  const PrimaryText(
+                    'Description',
+                    color: ColorManager.secondaryText,
+                  ),
+                  PrimaryTextField(
+                    controller: descriptionController,
+                    validator: (value) {},
+                    // multiLines: true,
+                    multiLines: true,
+                  ),
+                  // 20.height,
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 30.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25.r),
+                      border: Border.all(
+                        color: ColorManager.secondaryText,
+                      ),
+                      color: Colors.white.withOpacity(0.8),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            PrimaryText(
+                              'Enter Your Amount',
+                              color: ColorManager.secondaryText,
+                              fontSize: 11.sp,
+                            ),
+                            Spacer(),
+                            PrimaryText(
+                              'Change Currency',
+                              color: Colors.red,
+                              fontSize: 11.sp,
+                            ),
+                          ],
+                        ),
+                        20.height,
+                        Row(
+                          children: [
+                            PrimaryText(
+                              'USD',
+                              color: Colors.lightBlue,
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            16.width,
+                            PrimaryText(
+                              '2200.00',
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  120.height,
+                  PrimaryButton(
+                    color: ColorManager.primary,
+                    onPressed: () =>
+                        sl<NavigationService>().pop(),
+                    child:  PrimaryText(
+                      'Request Money',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
-            20.height,
-            PrimaryText('Email Address',color: ColorManager.secondaryText,),
-            PrimaryTextField(
-              controller: emailController,
-              validator: (value) {
-                return value!.isValidEmail;
-              },
-              prefixIcon: SvgPicture.asset(
-                IconAssets.email,
-                width: 20.w,
-                height: 20.h,
-              ),
-            ),
-            20.height,
-            PrimaryText('Description',color: ColorManager.secondaryText,),
-            PrimaryTextField(
-              controller: descriptionController,
-              validator: (value) {
-              },
-multiLines: true,
-
-            ),
-            20.height,
-            Container(decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25.r),
-              border: Border.all(color: ColorManager.secondaryText,),
-              color: Colors.white.withOpacity(0.8),
-            ),
-            child: Column(
-              children: [
-                Row(children: [
-                  PrimaryText('Enter Your Amount',color: ColorManager.secondaryText,),
-                  PrimaryText('Change Currency',color: Colors.red),
-                ],),  Row(children: [
-                  PrimaryText('USD',color: ColorManager.primary,fontSize: 16, fontWeight: FontWeight.w700,),
-                  PrimaryText('220', fontSize: 16, fontWeight: FontWeight.w700),
-                ],),
-              ],
-            ),
-            )
-          ],
+          ),
         ),
-    ),
-        ),
-    ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    nameController!.dispose();
+    emailController!.dispose();
+    descriptionController!.dispose();
+    super.dispose();
   }
 }

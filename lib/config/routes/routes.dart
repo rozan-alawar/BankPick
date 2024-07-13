@@ -13,5 +13,7 @@ class Routes {
   static const String edit_profile = '/edit_profile';
   static const String transaction_history = '/transaction_history';
   static const String search = '/search';
+  static const String send = '/send';
+  static const String request = '/request';
 
 }

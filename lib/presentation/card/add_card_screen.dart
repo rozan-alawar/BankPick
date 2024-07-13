@@ -203,8 +203,10 @@ class _AddCardScreenState extends State<AddCardScreen> {
                               expiryDate: expiryDateController!.text,
                               cvv: cvvController!.text,
                               cardType: 'Mastercard')),
-                      child: const PrimaryText(
+                      child:  PrimaryText(
                         'Add Card ',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
                         color: Colors.white,
                       ),
                     )

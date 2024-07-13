@@ -44,12 +44,12 @@ class PrimaryTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
-        controller: controller,
+       controller: controller,
         readOnly: readOnly,
         textAlign: textAlign!,
         onChanged: onChanged,
         textInputAction: textInputAction,
-        maxLines: multiLines! ? 6 : 1,
+        maxLines: multiLines! ? 3 : 1,
         inputFormatters: inputFormater,
         obscureText: obscureText,
 
@@ -78,15 +78,18 @@ class PrimaryTextField extends StatelessWidget {
           ),
           filled: true,
 
- //          enabledBorder:
- // UnderlineInputBorder(
- //            borderSide: BorderSide(color: ColorManager.blaceholderText),
- //          ),            // borderSide:
-            //     BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
-        
-          focusedBorder: UnderlineInputBorder(
+          enabledBorder: (multiLines??false)?
+ OutlineInputBorder(
             borderSide: BorderSide(color: ColorManager.blaceholderText),
-          ),
+   borderRadius: BorderRadius.circular(25.r),
+          ):null,            // borderSide:
+                // BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
+        
+          focusedBorder: (multiLines??false)?
+          OutlineInputBorder(
+            borderSide: BorderSide(color: ColorManager.blaceholderText),
+            borderRadius: BorderRadius.circular(25.r),
+          ):null,
           contentPadding:
               EdgeInsets.symmetric(vertical: 17.h, horizontal: 15.w),
           suffixIconConstraints:

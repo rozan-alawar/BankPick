@@ -68,8 +68,10 @@ class CardsScreen extends StatelessWidget {
                 color: ColorManager.primary,
                 onPressed: () =>
                     sl<NavigationService>().navigateTo(Routes.add_card),
-                child: const PrimaryText(
+                child:  PrimaryText(
                   'Add Card +',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16.sp,
                   color: Colors.white,
                 ),
               )

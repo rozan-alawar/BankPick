@@ -22,7 +22,7 @@ class TransactionHistoryScreen extends StatelessWidget {
         child: Column(children: [
           20.height,
           Row(
-            children: [
+            children: <Widget>[
               GestureDetector(
                 onTap: () => sl<NavigationService>().pop(),
                 child: CircularCard(
@@ -39,6 +39,15 @@ class TransactionHistoryScreen extends StatelessWidget {
                 'Transaction History',
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
+              ),
+              const Spacer(),
+              CircularCard(
+                widget: SvgPicture.asset(
+                  IconAssets.arrow_back,
+                  color: Colors.black,
+                ),
+                width: 45.w,
+                height: 45.h,
               ),
             ],
           ),

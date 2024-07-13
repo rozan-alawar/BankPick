@@ -57,7 +57,6 @@ class CardScreen extends StatelessWidget {
                 cvv: homeProvider.user!.cards[0].cvv,
                 cardType: homeProvider.user!.cards[0].cardType,
               ),
-
               30.height,
               PrimaryText(
                 'Monthly Spending limit',
@@ -113,9 +112,12 @@ class CardScreen extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       color: ColorManager.primary,
-                      onPressed: () {},
-                      child: const PrimaryText(
+                      onPressed: () =>
+                          sl<NavigationService>().navigateTo(Routes.request),
+                      child: PrimaryText(
                         'Request',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -124,9 +126,11 @@ class CardScreen extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       color: ColorManager.primary,
-                      onPressed: () {},
-                      child: const PrimaryText(
+                      onPressed: ()=> sl<NavigationService>().navigateTo(Routes.send),
+                      child: PrimaryText(
                         'Send',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
                         color: Colors.white,
                       ),
                     ),

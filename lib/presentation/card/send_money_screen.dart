@@ -28,45 +28,52 @@ class SendMoneyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      body: Column(
-        children: [
-          20.height,
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () => sl<NavigationService>().pop(),
-                child: CircularCard(
-                  widget: SvgPicture.asset(
-                    IconAssets.arrow_back,
-                    color: Colors.black,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+        child: Column(
+          children: [
+            20.height,
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () => sl<NavigationService>().pop(),
+                  child: CircularCard(
+                    widget: SvgPicture.asset(
+                      IconAssets.arrow_back,
+                      color: Colors.black,
+                    ),
+                    width: 45.w,
+                    height: 45.h,
                   ),
-                  width: 45.w,
-                  height: 45.h,
                 ),
-              ),
-              80.width,
-              PrimaryText(
-                'Send Money',
-                fontWeight: FontWeight.w500,
-                fontSize: 18.sp,
-              ),
-            ],
-          ),
-          40.height,
-          ListView.separated(
-              scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (context, index) => BuildCardSection(
-                    cardNumber: homeProvider.user!.cards[index].cardNumber,
-                    cardHolderName: homeProvider.user!.cards[index].cardHolder,
-                    expiryDate: homeProvider.user!.cards[index].expiryDate,
-                    cvv: homeProvider.user!.cards[index].cvv,
-                    cardType: homeProvider.user!.cards[index].cardType,
-                  ),
-              separatorBuilder: (context, index) => 20.height,
-              itemCount: homeProvider.user!.cards.length),
-        ],
+                80.width,
+                PrimaryText(
+                  'Send Money',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18.sp,
+                ),
+              ],
+            ),
+            40.height,
+            SizedBox(
+              height: 250.h,
+              width: double.infinity,
+              child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  // physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => BuildCardSection(
+                        cardNumber: homeProvider.user!.cards[index].cardNumber,
+                        cardHolderName: homeProvider.user!.cards[index].cardHolder,
+                        expiryDate: homeProvider.user!.cards[index].expiryDate,
+                        cvv: homeProvider.user!.cards[index].cvv,
+                        cardType: homeProvider.user!.cards[index].cardType,
+                      ),
+                  separatorBuilder: (context, index) => 20.width,
+                  itemCount: homeProvider.user!.cards.length),
+            ),
+          ],
+        ),
       ),
     );
   }
