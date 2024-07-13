@@ -26,7 +26,7 @@ class SendMoneyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>();
+    final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
       body: Column(
         children: [
