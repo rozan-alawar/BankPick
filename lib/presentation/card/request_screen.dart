@@ -112,6 +112,23 @@ multiLines: true,
 
             ),
             20.height,
+            Container(decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25.r),
+              border: Border.all(color: ColorManager.secondaryText,),
+              color: Colors.white.withOpacity(0.8),
+            ),
+            child: Column(
+              children: [
+                Row(children: [
+                  PrimaryText('Enter Your Amount',color: ColorManager.secondaryText,),
+                  PrimaryText('Change Currency',color: Colors.red),
+                ],),  Row(children: [
+                  PrimaryText('USD',color: ColorManager.primary,fontSize: 16, fontWeight: FontWeight.w700,),
+                  PrimaryText('220', fontSize: 16, fontWeight: FontWeight.w700),
+                ],),
+              ],
+            ),
+            )
           ],
         ),
     ),
