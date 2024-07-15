@@ -11,15 +11,14 @@ class CircularCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      width:width?? 60.w,
-      height:height?? 60.h,
+      width:width?? 50,
+      height:height?? 50,
 
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
+              color: Colors.black.withOpacity(0.1),
               blurRadius: 6,
-              spreadRadius: 1,
               offset: const Offset(0, 4),
             )
           ],

@@ -43,8 +43,8 @@ class CardScreen extends StatelessWidget {
                         sl<NavigationService>().navigateTo(Routes.show_cards),
                     child: CircularCard(
                       widget: const Icon(Icons.add),
-                      width: 45.w,
-                      height: 45.h,
+                      width: 45,
+                      height: 45,
                     ),
                   ),
                 ],

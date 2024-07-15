@@ -19,45 +19,82 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const SizedBox(),
-                PrimaryText(
-                  'Settings',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.sp,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(),
+                  PrimaryText(
+                    'Settings',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
+                  ),
+                  CircularCard(
+                    widget: Icon(Icons.logout_rounded),
+                    width: 45,
+                    height: 45,
+                  ),
+                ],
+              ),
+              40.height,
+              const PrimaryText(
+                'General',
+                color: ColorManager.secondaryText,
+              ),
+              30.height,
+              GestureDetector(
+                onTap: () => sl<NavigationService>().navigateTo(Routes.language),
+                child: Row(
+                  children: [
+                    PrimaryText(
+                      'Language ',
+                      fontSize: 16.sp,
+                    ),
+                    const Spacer(),
+                    const PrimaryText(
+                      'English ',
+                      color: ColorManager.secondaryText,
+                    ),
+                    16.width,
+                    Transform.rotate(
+                        angle: 3.2,
+                        child: SvgPicture.asset(
+                          IconAssets.arrow_back,
+                          color: ColorManager.secondaryText,
+                        )),
+                  ],
                 ),
-                CircularCard(
-                  widget: Icon(Icons.logout_rounded),
-                  width: 45.w,
-                  height: 45.h,
+              ),
+              30.height,
+              GestureDetector(
+                onTap: () => sl<NavigationService>().navigateTo(Routes.profile),
+                child: Row(
+                  children: [
+                    PrimaryText(
+                      'My Profile ',
+                      fontSize: 16.sp,
+                    ),
+                    const Spacer(),
+                    Transform.rotate(
+                        angle: 3.2,
+                        child: SvgPicture.asset(
+                          IconAssets.arrow_back,
+                          color: ColorManager.secondaryText,
+                        )),
+                  ],
                 ),
-              ],
-            ),
-            40.height,
-            const PrimaryText(
-              'General',
-              color: ColorManager.secondaryText,
-            ),
-            30.height,
-            GestureDetector(
-              onTap: () => sl<NavigationService>().navigateTo(Routes.language),
-              child: Row(
+              ),
+              30.height,
+              Row(
                 children: [
                   PrimaryText(
-                    'Language ',
+                    'Contact Us ',
                     fontSize: 16.sp,
                   ),
                   const Spacer(),
-                  const PrimaryText(
-                    'English ',
-                    color: ColorManager.secondaryText,
-                  ),
-                  16.width,
                   Transform.rotate(
                       angle: 3.2,
                       child: SvgPicture.asset(
@@ -66,14 +103,16 @@ class SettingsScreen extends StatelessWidget {
                       )),
                 ],
               ),
-            ),
-            30.height,
-            GestureDetector(
-              onTap: () => sl<NavigationService>().navigateTo(Routes.profile),
-              child: Row(
+              50.height,
+              const PrimaryText(
+                'Security',
+                color: ColorManager.secondaryText,
+              ),
+              30.height,
+              Row(
                 children: [
                   PrimaryText(
-                    'My Profile ',
+                    'Change Password ',
                     fontSize: 16.sp,
                   ),
                   const Spacer(),
@@ -85,80 +124,43 @@ class SettingsScreen extends StatelessWidget {
                       )),
                 ],
               ),
-            ),
-            30.height,
-            Row(
-              children: [
-                PrimaryText(
-                  'Contact Us ',
-                  fontSize: 16.sp,
-                ),
-                const Spacer(),
-                Transform.rotate(
-                    angle: 3.2,
-                    child: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: ColorManager.secondaryText,
-                    )),
-              ],
-            ),
-            50.height,
-            const PrimaryText(
-              'Security',
-              color: ColorManager.secondaryText,
-            ),
-            30.height,
-            Row(
-              children: [
-                PrimaryText(
-                  'Change Password ',
-                  fontSize: 16.sp,
-                ),
-                const Spacer(),
-                Transform.rotate(
-                    angle: 3.2,
-                    child: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: ColorManager.secondaryText,
-                    )),
-              ],
-            ),
-            30.height,
-            Row(
-              children: [
-                PrimaryText(
-                  'Privacy Policy ',
-                  fontSize: 16.sp,
-                ),
-                const Spacer(),
-                Transform.rotate(
-                    angle: 3.2,
-                    child: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: ColorManager.secondaryText,
-                    )),
-              ],
-            ),
-            50.height,
-            const PrimaryText(
-              'Choose what data you share with us ',
-              color: ColorManager.secondaryText,
-            ),
-            30.height,
-            Row(
-              children: [
-                PrimaryText(
-                  'Biometric  ',
-                  fontSize: 16.sp,
-                ),
-                const Spacer(),
-                Switch(
-                  value: false,
-                  onChanged: (value) {},
-                )
-              ],
-            ),
-          ],
+              30.height,
+              Row(
+                children: [
+                  PrimaryText(
+                    'Privacy Policy ',
+                    fontSize: 16.sp,
+                  ),
+                  const Spacer(),
+                  Transform.rotate(
+                      angle: 3.2,
+                      child: SvgPicture.asset(
+                        IconAssets.arrow_back,
+                        color: ColorManager.secondaryText,
+                      )),
+                ],
+              ),
+              50.height,
+              const PrimaryText(
+                'Choose what data you share with us ',
+                color: ColorManager.secondaryText,
+              ),
+              30.height,
+              Row(
+                children: [
+                  PrimaryText(
+                    'Biometric  ',
+                    fontSize: 16.sp,
+                  ),
+                  const Spacer(),
+                  Switch(
+                    value: false,
+                    onChanged: (value) {},
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

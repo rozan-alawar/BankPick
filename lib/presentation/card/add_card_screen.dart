@@ -78,8 +78,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
                               IconAssets.arrow_back,
                               color: Colors.black,
                             ),
-                            width: 45.w,
-                            height: 45.h,
+                            width: 45,
+                            height: 45
+                    ,
                           ),
                         ),
                         80.width,
@@ -209,7 +210,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                         fontSize: 16.sp,
                         color: Colors.white,
                       ),
-                    )
+                    ),
+                    20.height,
                   ],
                 ),
               ),

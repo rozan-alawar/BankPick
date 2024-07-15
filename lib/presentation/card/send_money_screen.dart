@@ -30,7 +30,7 @@ class SendMoneyScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          20.height,
+          // 20.height,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
             child: Row(
@@ -105,7 +105,7 @@ class SendMoneyScreen extends StatelessWidget {
                 PrimaryText(
                   'Send to',
                   fontWeight: FontWeight.w500,
-                ),
+               ),
               ],
             ),
           ),

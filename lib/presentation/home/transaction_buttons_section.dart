@@ -24,29 +24,29 @@ class TransactionButtons extends StatelessWidget {
     return SizedBox(
       height: 110.h,
       child: ListView.separated(
-        separatorBuilder: (context, index) => 40.width,
-        physics: NeverScrollableScrollPhysics(),
+        separatorBuilder: (context, index)=>SizedBox(),
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 4,
-        itemBuilder: (context, index) => Column(
-          children: [
-            CircularCard(
-              width: 60.w,
-              height: 60.h,
-              widget: Center(
-                  child: SvgPicture.asset(
-                transactionnButtonIcons[index],
-                height: 24.h,
-                width: 24.w,
-              )),
-            ),
-            8.height,
-            PrimaryText(
-              transactionnButtonLable[index],
-              // fontWeight: FontWeight.w600,
-              fontSize: 13.sp,
-            ),
-          ],
+        itemBuilder: (context, index) => Padding(
+         padding:  EdgeInsetsDirectional.only(start: index==0?10.w:22.w,end:index==transactionnButtonLable.length-1?10.w:22.w, ),
+          child: Column(
+            children: [
+              CircularCard(
+                widget: Center(
+                    child: SvgPicture.asset(
+                  transactionnButtonIcons[index],
+                  height: 24.h,
+                  width: 24.w,
+                )),
+              ),
+              8.height,
+              PrimaryText(
+                transactionnButtonLable[index],
+                fontSize: 13.sp,
+              ),
+            ],
+          ),
         ),
       ),
     );
