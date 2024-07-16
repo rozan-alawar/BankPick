@@ -2,6 +2,7 @@ import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
+import 'package:dakakeen/presentation/profile/payment_preferance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -84,8 +85,18 @@ class ProfileScreen extends StatelessWidget {
             60.height,
             InfoTile(icon: IconAssets.user, title: 'Personal Information'),
             40.height,
-            InfoTile(
-                icon: IconAssets.credit_cards, title: 'Payment Preferances'),
+            GestureDetector(
+              onTap: () =>   showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+                ),
+                builder: (context) => PaymentPreferanceSection(),
+              ),
+              child: InfoTile(
+                  icon: IconAssets.credit_cards, title: 'Payment Preferances'),
+            ),
             40.height,
             InfoTile(icon: IconAssets.user, title: 'Bank and Cards'),
             40.height,
