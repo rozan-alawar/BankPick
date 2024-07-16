@@ -16,6 +16,7 @@ class Routes {
   static const String search = '/search';
   static const String send = '/send';
   static const String request = '/request';
+  static const String message_center = '/message_center';
   static const String term_condition = '/term_conditions';
 
 }

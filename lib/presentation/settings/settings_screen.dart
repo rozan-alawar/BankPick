@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../config/routes/routes.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
@@ -17,36 +18,31 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PrimaryAppBar(
+        title: 'Settings',
+        withLeading: false,
+        action: [
+          CircularCard(
+            widget: const Icon(Icons.logout_rounded),
+            width: 45,
+            height: 45,
+          ),
+        ],
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(),
-                  PrimaryText(
-                    'Settings',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18.sp,
-                  ),
-                  CircularCard(
-                    widget: Icon(Icons.logout_rounded),
-                    width: 45,
-                    height: 45,
-                  ),
-                ],
-              ),
-              40.height,
               const PrimaryText(
                 'General',
                 color: ColorManager.secondaryText,
               ),
               30.height,
               GestureDetector(
-                onTap: () => sl<NavigationService>().navigateTo(Routes.language),
+                onTap: () =>
+                    sl<NavigationService>().navigateTo(Routes.language),
                 child: Row(
                   children: [
                     PrimaryText(
@@ -109,8 +105,9 @@ class SettingsScreen extends StatelessWidget {
                 color: ColorManager.secondaryText,
               ),
               30.height,
-          GestureDetector(
-            onTap: () => sl<NavigationService>().navigateTo(Routes.change_password),
+              GestureDetector(
+                onTap: () =>
+                    sl<NavigationService>().navigateTo(Routes.change_password),
                 child: Row(
                   children: [
                     PrimaryText(
@@ -128,8 +125,9 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               30.height,
-          GestureDetector(
-            onTap: () => sl<NavigationService>().navigateTo(Routes.term_condition),
+              GestureDetector(
+                onTap: () =>
+                    sl<NavigationService>().navigateTo(Routes.term_condition),
                 child: Row(
                   children: [
                     PrimaryText(

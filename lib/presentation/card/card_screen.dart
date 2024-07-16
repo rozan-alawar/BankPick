@@ -11,6 +11,7 @@ import '../../config/routes/routes.dart';
 import '../../config/theme/assets_manager.dart';
 import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
@@ -22,34 +23,15 @@ class CardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
+      appBar: const PrimaryAppBar(title: 'My Card',withLeading: true,),
+
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              20.height,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(),
-                  PrimaryText(
-                    'My Cards',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18.sp,
-                  ),
-                  GestureDetector(
-                    onTap: () =>
-                        sl<NavigationService>().navigateTo(Routes.show_cards),
-                    child: CircularCard(
-                      widget: const Icon(Icons.add),
-                      width: 45,
-                      height: 45,
-                    ),
-                  ),
-                ],
-              ),
-              40.height,
+
               BuildCardSection(
                 cardNumber: homeProvider.user!.cards[0].cardNumber,
                 cardHolderName: homeProvider.user!.cards[0].cardHolder,

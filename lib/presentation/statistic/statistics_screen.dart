@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../config/routes/routes.dart';
 import '../../config/theme/color_manager.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
@@ -19,37 +20,26 @@ class StatisticsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:  PrimaryAppBar(title: 'Statistics',withLeading: false,action: [ GestureDetector(
+        // onTap: () =>
+        //     sl<NavigationService>().navigateTo(Routes.show_cards),
+        child: CircularCard(
+          widget: SvgPicture.asset(
+            IconAssets.notification,
+            color: Colors.black,
+          ),
+          width: 45,
+          height: 45,
+        ),
+      ),],),
+
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              20.height,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(),
-                  PrimaryText(
-                    'Statistics',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18.sp,
-                  ),
-                  GestureDetector(
-                    // onTap: () =>
-                    //     sl<NavigationService>().navigateTo(Routes.show_cards),
-                    child: CircularCard(
-                      widget: SvgPicture.asset(
-                        IconAssets.notification,
-                        color: Colors.black,
-                      ),
-                      width: 45,
-                      height: 45,
-                    ),
-                  ),
-                ],
-              ),
-              40.height,
+
               Center(
                 child: Column(
                   children: [

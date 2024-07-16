@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
@@ -50,32 +51,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PrimaryAppBar(title: 'Language',withLeading: true,),
 
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            20.height,
-            Row(
-              children: [
 
-                GestureDetector(
-                  onTap: () => sl<NavigationService>().pop(),
-                  child: CircularCard(
-                    widget: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: Colors.black,
-                    ),
-                    width: 45,
-                    height: 45,
-                  ),
-                ),
-                80.width,
-                Center(child:  PrimaryText('Language',fontSize: 18.sp, ),),
-              ],
-            ),
-            30.height,
             TextField(
               onChanged: filterLanguages,
               decoration: InputDecoration(

@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/controller/home_provider.dart';
+import 'package:dakakeen/core/common_widget/primary_appbar.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:dakakeen/presentation/profile/payment_preferance.dart';
@@ -22,46 +23,22 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
+      appBar: PrimaryAppBar(title: 'Profile',withLeading: true,action: [                GestureDetector(
+        onTap: () =>
+            sl<NavigationService>().navigateTo(Routes.edit_profile),
+        child: CircularCard(
+          widget: SvgPicture.asset(
+            IconAssets.edit_profile,
+            color: Colors.black,
+          ),
+          width: 45.w,
+          height: 45.h,
+        ),
+      ),],),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
-            20.height,
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () => sl<NavigationService>().pop(),
-                  child: CircularCard(
-                    widget: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: Colors.black,
-                    ),
-                    width: 45.w,
-                    height: 45.h,
-                  ),
-                ),
-                const Spacer(),
-                PrimaryText(
-                  'Profile',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18.sp,
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () =>
-                      sl<NavigationService>().navigateTo(Routes.edit_profile),
-                  child: CircularCard(
-                    widget: SvgPicture.asset(
-                      IconAssets.edit_profile,
-                      color: Colors.black,
-                    ),
-                    width: 45.w,
-                    height: 45.h,
-                  ),
-                ),
-              ],
-            ),
-            40.height,
             Row(
               children: [
                 CircleAvatar(
@@ -85,24 +62,22 @@ class ProfileScreen extends StatelessWidget {
             60.height,
             InfoTile(icon: IconAssets.user, title: 'Personal Information'),
             40.height,
-            GestureDetector(
-              onTap: () =>   showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
-                ),
-                builder: (context) => PaymentPreferanceSection(),
+            InfoTile(
+                  icon: IconAssets.credit_cards, title: 'Payment Preferances',onTap: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
               ),
-              child: InfoTile(
-                  icon: IconAssets.credit_cards, title: 'Payment Preferances'),
-            ),
+              builder: (context) => const PaymentPreferanceSection(),
+            ),),
+
             40.height,
             InfoTile(icon: IconAssets.user, title: 'Bank and Cards'),
             40.height,
             InfoTile(icon: IconAssets.notification, title: 'Notifications'),
             40.height,
-            InfoTile(icon: IconAssets.user, title: 'Messages Center'),
+            InfoTile(icon: IconAssets.user, title: 'Messages Center',  onTap: () => sl<NavigationService>().navigateTo(Routes.message_center),),
             40.height,
             InfoTile(icon: IconAssets.location, title: 'Address'),
           ],

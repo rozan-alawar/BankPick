@@ -13,6 +13,7 @@ import '../../config/theme/assets_manager.dart';
 import '../../config/theme/color_manager.dart';
 import '../../controller/profile_provider.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/common_widget/primary_textfiled.dart';
@@ -48,6 +49,7 @@ User? user = HomeProvider().user;
     final profileProvider = Provider.of<ProfileProvider>(context);
 
     return  Scaffold(
+      appBar: const PrimaryAppBar(title: 'Profile',withLeading: true,),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child:  Form(
@@ -59,32 +61,7 @@ User? user = HomeProvider().user;
           child: SingleChildScrollView(
             child: Column(
               children: [
-                20.height,
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () => sl<NavigationService>().pop(),
-                      child: CircularCard(
-                        widget: SvgPicture.asset(
-                          IconAssets.arrow_back,
-                          color: Colors.black,
-                        ),
-                        width: 45.w,
-                        height: 45.h,
-                      ),
-                    ),
-                    const Spacer(),
-                    PrimaryText(
-                      'Profile',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.sp,
-                    ),
-                    const Spacer(),
-            
-                  ],
-                ),
-                40.height,
-            
+
                     CircleAvatar(
                       radius: 40.r,
                       backgroundImage: AssetImage(

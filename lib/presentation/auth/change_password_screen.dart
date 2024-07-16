@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
@@ -21,10 +22,10 @@ class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
 
   @override
-  State<ChangePasswordScreen> createState() => _LoginScreenState();
+  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 }
 
-class _LoginScreenState extends State<ChangePasswordScreen> {
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   TextEditingController? emailController;
   TextEditingController? passwordController;
   GlobalKey<FormState>? formKey;
@@ -46,6 +47,8 @@ class _LoginScreenState extends State<ChangePasswordScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        appBar: const PrimaryAppBar(title: 'Change Password',withLeading: true,),
+
         body: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -59,30 +62,7 @@ class _LoginScreenState extends State<ChangePasswordScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap: () => sl<NavigationService>().pop(),
-                                  child: CircularCard(
-                                    widget: SvgPicture.asset(
-                                      IconAssets.arrow_back,
-                                      color: Colors.black,
-                                    ),
-                                    width: 45,
-                                    height: 45,
-                                  ),
-                                ),
-                                PrimaryText(
-                                  'Change Password',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18.sp,
-                                ),
-                                const SizedBox(),
-                              ],
-                            ),
 
-                    40.height,
                     PrimaryText(
                       'Current Password',
                       fontSize: 14.sp,

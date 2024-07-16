@@ -11,6 +11,7 @@ import 'package:dakakeen/presentation/home/transaction_history_screen.dart';
 import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
 import 'package:dakakeen/presentation/profile/edit_profile_screen.dart';
+import 'package:dakakeen/presentation/profile/message_center_screen.dart';
 import 'package:dakakeen/presentation/profile/profile_screen.dart';
 import 'package:dakakeen/presentation/settings/language_screen.dart';
 import 'package:dakakeen/presentation/settings/term_and_condition_screen.dart';
@@ -69,6 +70,8 @@ class AppRoutes {
 
       case Routes.change_password:
         return _materialRoute(const ChangePasswordScreen());
+      case Routes.message_center:
+        return _materialRoute(const MessageCenterScreen());
 
       default:
         return _materialRoute(
