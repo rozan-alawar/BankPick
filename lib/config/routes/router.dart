@@ -12,6 +12,7 @@ import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
 import 'package:dakakeen/presentation/profile/edit_profile_screen.dart';
 import 'package:dakakeen/presentation/profile/profile_screen.dart';
 import 'package:dakakeen/presentation/settings/language_screen.dart';
+import 'package:dakakeen/presentation/settings/term_and_condition_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../presentation/card/request_screen.dart';
@@ -55,11 +56,15 @@ class AppRoutes {
 
       case Routes.search:
         return _materialRoute(const SearchScreen());
+
       case Routes.send:
         return _materialRoute(const SendMoneyScreen());
+
       case Routes.request:
         return _materialRoute(const RequestMoneyScreen());
 
+      case Routes.term_condition:
+        return _materialRoute(const TermAndConditionScreen());
 
       default:
         return _materialRoute(
