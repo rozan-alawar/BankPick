@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/routes/routes.dart';
+import 'package:dakakeen/presentation/auth/change_password_screen.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
 import 'package:dakakeen/presentation/auth/signup_screen.dart';
 import 'package:dakakeen/presentation/card/add_card_screen.dart';
@@ -65,6 +66,9 @@ class AppRoutes {
 
       case Routes.term_condition:
         return _materialRoute(const TermAndConditionScreen());
+
+      case Routes.change_password:
+        return _materialRoute(const ChangePasswordScreen());
 
       default:
         return _materialRoute(

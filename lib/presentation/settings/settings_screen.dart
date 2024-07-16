@@ -109,20 +109,23 @@ class SettingsScreen extends StatelessWidget {
                 color: ColorManager.secondaryText,
               ),
               30.height,
-              Row(
-                children: [
-                  PrimaryText(
-                    'Change Password ',
-                    fontSize: 16.sp,
-                  ),
-                  const Spacer(),
-                  Transform.rotate(
-                      angle: 3.2,
-                      child: SvgPicture.asset(
-                        IconAssets.arrow_back,
-                        color: ColorManager.secondaryText,
-                      )),
-                ],
+          GestureDetector(
+            onTap: () => sl<NavigationService>().navigateTo(Routes.change_password),
+                child: Row(
+                  children: [
+                    PrimaryText(
+                      'Change Password ',
+                      fontSize: 16.sp,
+                    ),
+                    const Spacer(),
+                    Transform.rotate(
+                        angle: 3.2,
+                        child: SvgPicture.asset(
+                          IconAssets.arrow_back,
+                          color: ColorManager.secondaryText,
+                        )),
+                  ],
+                ),
               ),
               30.height,
           GestureDetector(
