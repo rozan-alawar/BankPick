@@ -20,6 +20,8 @@ class PrimaryTextField extends StatelessWidget {
   final bool hideError;
   final bool obscureText;
   final ValueChanged<String>? onChanged;
+  final TextStyle? hintStyle;
+  final TextStyle? textStyle;
 
   const PrimaryTextField(
       {Key? key,
@@ -37,7 +39,7 @@ class PrimaryTextField extends StatelessWidget {
       this.textAlign = TextAlign.start,
       this.onChanged,
       this.inputFormater,
-      this.textInputAction = TextInputAction.none})
+      this.textInputAction = TextInputAction.none, this.hintStyle, this.textStyle})
       : super(key: key);
 
   @override
@@ -53,10 +55,10 @@ class PrimaryTextField extends StatelessWidget {
         inputFormatters: inputFormater,
         obscureText: obscureText,
 
-        style: TextStyle(
+        style:textStyle?? TextStyle(
           // color: ColorManager.secondryTextColor,
           // fontWeight: FontWeightManager.regular,
-          fontSize: 14.sp,
+          fontSize: 16.sp,
           // fontFamily: FontConstants.arabicFontFamily
         ),
         keyboardType: keyboardType,
@@ -70,7 +72,7 @@ class PrimaryTextField extends StatelessWidget {
           hintText: hintText ?? '',
           fillColor: ColorManager.transparent,
 
-          hintStyle: TextStyle(
+          hintStyle:hintStyle?? TextStyle(
             // color: ColorManager.hintTextColor,
             fontSize: 14.sp,
             height: 0,

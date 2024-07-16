@@ -31,6 +31,10 @@ TextEditingController? nameController;
 TextEditingController? descriptionController;
 TextEditingController? emailController;
 GlobalKey<FormState>? formKey;
+TextEditingController? currencyController;
+
+
+
 
 class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
   @override
@@ -40,18 +44,20 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     nameController = TextEditingController();
     descriptionController = TextEditingController();
     emailController = TextEditingController();
+    currencyController = TextEditingController();
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: Form(
+            key: formKey,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
               child: Column(
@@ -126,8 +132,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   ),
                   // 20.height,
                   Container(
+                    // height: 180.h,
                     padding:
-                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 30.h),
+                        EdgeInsets.symmetric(horizontal: 16.w,),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25.r),
                       border: Border.all(
@@ -137,6 +144,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     ),
                     child: Column(
                       children: [
+                        30.height,
                         Row(
                           children: [
                             PrimaryText(
@@ -152,7 +160,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                             ),
                           ],
                         ),
-                        20.height,
+                        // 20.height,
                         Row(
                           children: [
                             PrimaryText(
@@ -162,17 +170,33 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                               fontWeight: FontWeight.w700,
                             ),
                             16.width,
-                            PrimaryText(
-                              '2200.00',
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.w700,
+                            Column(
+                              children: [
+                                25.height,
+                                SizedBox(
+                                  height: 80.h,width: 200.w,
+                                  child: PrimaryTextField(
+                                    hintText: '2200.00',
+                                    hintStyle: TextStyle(
+                                      fontSize: 24.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    textStyle:    TextStyle(
+                                      fontSize: 24.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    controller: currencyController,
+                                    validator: (value) {},
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
                       ],
                     ),
                   ),
-                  120.height,
+                  60.height,
                   PrimaryButton(
                     color: ColorManager.primary,
                     onPressed: () =>
@@ -199,6 +223,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     nameController!.dispose();
     emailController!.dispose();
     descriptionController!.dispose();
+    currencyController!.dispose();
     super.dispose();
   }
 }
