@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
@@ -56,6 +57,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
       },
       child: Scaffold(
         extendBody: true,
+        appBar: const PrimaryAppBar(title: 'Add New Card',withLeading: true,),
+
         body: Form(
           key: formKey,
           child: GestureDetector(
@@ -68,30 +71,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    20.height,
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () => sl<NavigationService>().pop(),
-                          child: CircularCard(
-                            widget: SvgPicture.asset(
-                              IconAssets.arrow_back,
-                              color: Colors.black,
-                            ),
-                            width: 45,
-                            height: 45
-                    ,
-                          ),
-                        ),
-                        80.width,
-                        PrimaryText(
-                          'Add New Card ',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.sp,
-                        ),
-                      ],
-                    ),
-                    40.height,
+
                     BuildCardSection(
                       cardNumber: homeProvider.user!.cards[0].cardNumber,
                       cardHolderName: homeProvider.user!.cards[0].cardHolder,

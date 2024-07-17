@@ -11,6 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
@@ -22,37 +23,17 @@ class CardsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
+      appBar: const PrimaryAppBar(title: 'All Cards',withLeading: true,),
+
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 20.height,
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => sl<NavigationService>().pop(),
-                    child: CircularCard(
-                      widget: SvgPicture.asset(
-                        IconAssets.arrow_back,
-                        color: Colors.black,
-                      ),
-                      width: 45,
-                      height: 45,
-                    ),
-                  ),
-                  100.width,
-                  PrimaryText(
-                    'All Cards ',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18.sp,
-                  ),
-                ],
-              ),
-              40.height,
+
               ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) => BuildCardSection(
                         cardNumber: homeProvider.user!.cards[index].cardNumber,

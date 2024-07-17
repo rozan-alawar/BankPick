@@ -16,7 +16,7 @@ class MessageCenterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PrimaryAppBar(title: 'Message Center',withLeading: true,),
+      appBar: const PrimaryAppBar(title: 'Message Center',withLeading: true,),
       body: ListView.builder(
         itemCount: Message.messages.length,
         itemBuilder: (context, index) {

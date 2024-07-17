@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
@@ -43,6 +44,8 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
+      appBar: const PrimaryAppBar(title: 'Send Money',withLeading: true,),
+
       body: Form(
         key: formKey,
         child: GestureDetector(
@@ -52,32 +55,6 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // 20.height,
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => sl<NavigationService>().pop(),
-                        child: CircularCard(
-                          widget: SvgPicture.asset(
-                            IconAssets.arrow_back,
-                            color: Colors.black,
-                          ),
-                          width: 45.w,
-                          height: 45.h,
-                        ),
-                      ),
-                      80.width,
-                      PrimaryText(
-                        'Send Money',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18.sp,
-                      ),
-                    ],
-                  ),
-                ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(

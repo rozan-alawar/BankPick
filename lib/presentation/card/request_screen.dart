@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
@@ -51,6 +52,8 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PrimaryAppBar(title: 'Request Money',withLeading: true,),
+
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () {
@@ -63,29 +66,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  20.height,
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () => sl<NavigationService>().pop(),
-                        child: CircularCard(
-                          widget: SvgPicture.asset(
-                            IconAssets.arrow_back,
-                            color: Colors.black,
-                          ),
-                          width: 45.w,
-                          height: 45.h,
-                        ),
-                      ),
-                      80.width,
-                      PrimaryText(
-                        'Request Money',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18.sp,
-                      ),
-                    ],
-                  ),
-                  40.height,
+
                   const PrimaryText(
                     'Payer Name',
                     color: ColorManager.secondaryText,
@@ -103,7 +84,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     ),
                   ),
                   // 20.height,
-                  PrimaryText(
+                  const PrimaryText(
                     'Email Address',
                     color: ColorManager.secondaryText,
                   ),
