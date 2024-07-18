@@ -27,10 +27,14 @@ class IconAssets {
 
 
 
-  static const String loan = "$iconsPath/Loan.svg";
-  static const String receive = "$iconsPath/Receive.svg";
-  static const String sent = "$iconsPath/sent.svg";
-  static const String topup = "$iconsPath/Top-up.svg";
+  static const String loanLight = "$iconsPath/LoanLight.svg";
+  static const String loanDark = "$iconsPath/LoanDark.svg";
+  static const String receiveLight = "$iconsPath/ReceiveLight.svg";
+  static const String receiveDark = "$iconsPath/ReceiveDark.svg";
+  static const String sentLight = "$iconsPath/sentLight.svg";
+  static const String sentDark = "$iconsPath/sentDark.svg";
+  static const String topupLight = "$iconsPath/Top-upLight.svg";
+  static const String topupDark = "$iconsPath/Top-upDark.svg";
 
 
 

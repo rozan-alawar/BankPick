@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/model/transaction_model.dart';
@@ -27,7 +28,9 @@ class TransactionsListSection extends StatelessWidget {
       itemBuilder: (context, index) => Row(
         children: [
           CircularCard(
-            widget: Icon(TransactionModel.transactions[index].icon,color: Colors.black,),
+            widget: Icon(TransactionModel.transactions[index].icon,color:
+            Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light? Colors.black : Colors.white,
+            ),
           ),
           17.width,
           Column(

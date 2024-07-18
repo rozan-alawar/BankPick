@@ -1,7 +1,10 @@
+import 'package:dakakeen/config/theme/theme_manager.dart';
+import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/theme/assets_manager.dart';
 import '../../injection_container.dart';
@@ -25,7 +28,7 @@ final String title;
             child: CircularCard(
               widget: SvgPicture.asset(
                 IconAssets.arrow_back,
-                color: Colors.black,),
+                color:Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light? Colors.black : Colors.white,),
               width: 45,
               height: 45,
             ),
