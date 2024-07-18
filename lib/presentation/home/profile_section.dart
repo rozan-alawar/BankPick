@@ -44,7 +44,7 @@ class BuildProfileSection extends StatelessWidget {
               child: CircularCard(
                 width: 40.w,
                 height: 40.h,
-                widget: SvgPicture.asset(IconAssets.search),
+                widget: SvgPicture.asset(IconAssets.search,color: Colors.black,),
               ),
             ),
           ],

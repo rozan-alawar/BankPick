@@ -25,8 +25,7 @@ final String title;
             child: CircularCard(
               widget: SvgPicture.asset(
                 IconAssets.arrow_back,
-                color: Colors.black,
-              ),
+                color: Colors.black,),
               width: 45,
               height: 45,
             ),

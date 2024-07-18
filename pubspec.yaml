@@ -40,7 +40,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
 
   # For rendering SVG images
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.10+1
 
   # Date picker
   syncfusion_flutter_datepicker: 
@@ -65,7 +65,7 @@ dev_dependencies:
     sdk: flutter
 
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^4.0.0
 
 
 flutter:

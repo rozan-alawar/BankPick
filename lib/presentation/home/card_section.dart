@@ -23,7 +23,7 @@ class BuildCardSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal:20.w, vertical: 20.h),
       decoration: BoxDecoration(
-        image: DecorationImage(
+        image: const DecorationImage(
             image: AssetImage(
               ImageAssets.card,
             ),
@@ -36,7 +36,7 @@ class BuildCardSection extends StatelessWidget {
           Row(
             children: [
               SvgPicture.asset(IconAssets.card_icon),
-              Spacer(),
+              const Spacer(),
               SvgPicture.asset(IconAssets.union),
 
             ],

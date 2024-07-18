@@ -84,14 +84,19 @@ class MyApp extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
+
       builder: (context, child) {
         return SafeArea(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: appTheme(),
+            // theme: appTheme(),
+            theme: Provider.of<HomeProvider>(context).getTheme(), // Light/Default mode styles
+            darkTheme: ThemeDataStyle.dark, // Dark mode styles
+            // themeMode: ThemeData.dark(useMaterial3: true),
+            // darkTheme: ThemeData.dark(),
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.home,
+            initialRoute: Routes.splash,
             onGenerateRoute: AppRoutes.onGenerateRoutes,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,

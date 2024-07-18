@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
+import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/utils/navigation.dart';
 import 'package:dakakeen/injection_container.dart';
 import 'package:dakakeen/model/card_model.dart';
@@ -15,6 +16,7 @@ class HomeProvider with ChangeNotifier {
   String _name = 'Tanya Myroniuk';
 
   int _currentIndex = 0;
+  bool _isDark=false;
   double _spendingLimit = 8545;
   int get currentIndex => _currentIndex;
   User? _user = User(
@@ -42,6 +44,9 @@ class HomeProvider with ChangeNotifier {
       ),
     ],
   );
+
+  ThemeData _themeDataStyle = ThemeDataStyle.light;
+
 
   User? get user => _user;
 
@@ -88,5 +93,30 @@ class HomeProvider with ChangeNotifier {
       notifyListeners();
       sl<NavigationService>().pop();
     }
+  }
+
+  void changeTheme({required bool isDark}){
+    if(isDark){
+      _isDark=isDark;
+      _themeDataStyle=ThemeDataStyle.dark;
+    }else{
+      _isDark=isDark;
+
+      _themeDataStyle=ThemeDataStyle.light;
+
+    }
+    // _isDark=isDark;
+
+    notifyListeners();
+
+    print('in provider $_isDark');
+
+  }
+
+  bool getThemeValue(){
+    return _isDark;
+  }
+  ThemeData getTheme(){
+    return _themeDataStyle;
   }
 }

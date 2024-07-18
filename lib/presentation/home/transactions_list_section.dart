@@ -19,7 +19,7 @@ class TransactionsListSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return    ListView.separated(
+    return ListView.separated(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemCount: TransactionModel.transactions.length,
@@ -27,7 +27,7 @@ class TransactionsListSection extends StatelessWidget {
       itemBuilder: (context, index) => Row(
         children: [
           CircularCard(
-            widget: Icon(TransactionModel.transactions[index].icon),
+            widget: Icon(TransactionModel.transactions[index].icon,color: Colors.black,),
           ),
           17.width,
           Column(
