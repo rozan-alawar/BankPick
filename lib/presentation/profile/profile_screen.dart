@@ -69,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
               ),
-              builder: (context) => const PaymentPreferanceSection(),
+              builder: (context) => const PaymentPreferancesSection(),
             ),),
 
             40.height,

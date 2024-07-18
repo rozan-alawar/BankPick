@@ -1,3 +1,4 @@
+import 'package:dakakeen/model/reciver_model.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -14,6 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
@@ -115,6 +117,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                             Column(
                               children: [
                                 GestureDetector(
+                                  onTap:()=> sl<NavigationService>().navigateTo(Routes.add_new_reciver),
                                   child: Container(
                                     width: 60,
                                     height: 60,
@@ -140,7 +143,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                             Expanded(
                               child: ListView.separated(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: 6,
+                                itemCount: ReciverModel.recivers.length,
                                 separatorBuilder: (context, index) => 12.width,
                                 itemBuilder: (context, index) => Column(
                                   children: [
@@ -152,20 +155,17 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                                         width: 60,
                                         height: 60,
                                         decoration: BoxDecoration(
+                                          image: DecorationImage(image:AssetImage( ReciverModel.recivers[index].avatarUrl),fit: BoxFit.cover),
                                           shape: BoxShape.circle,
-                                          border: Border.all(
-                                              color: ColorManager.primary),
-                                        ),
-                                        child: const Icon(
-                                          Icons.add,
-                                          color: ColorManager.primary,
+
                                         ),
                                       ),
                                     ),
                                     6.height,
                                     PrimaryText(
-                                      'Add',
+                                      ReciverModel.recivers[index].firstName,
                                       fontSize: 13.sp,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ],
                                 ),

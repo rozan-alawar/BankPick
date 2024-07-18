@@ -3,6 +3,7 @@ import 'package:dakakeen/presentation/auth/change_password_screen.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
 import 'package:dakakeen/presentation/auth/signup_screen.dart';
 import 'package:dakakeen/presentation/card/add_card_screen.dart';
+import 'package:dakakeen/presentation/card/add_new_reciver.dart';
 import 'package:dakakeen/presentation/card/show_cards_screen.dart';
 import 'package:dakakeen/presentation/home/home_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
@@ -70,8 +71,12 @@ class AppRoutes {
 
       case Routes.change_password:
         return _materialRoute(const ChangePasswordScreen());
+
       case Routes.message_center:
         return _materialRoute(const MessageCenterScreen());
+
+      case Routes.add_new_reciver:
+        return _materialRoute(const AddNewReciver());
 
       default:
         return _materialRoute(

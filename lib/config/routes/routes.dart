@@ -18,5 +18,6 @@ class Routes {
   static const String request = '/request';
   static const String message_center = '/message_center';
   static const String term_condition = '/term_conditions';
+  static const String add_new_reciver = '/add_new_reciver';
 
 }

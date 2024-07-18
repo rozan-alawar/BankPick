@@ -4,8 +4,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PaymentPreferanceSection extends StatelessWidget {
-  const PaymentPreferanceSection({super.key});
+class PaymentPreferancesSection extends StatelessWidget {
+  const PaymentPreferancesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,6 @@ class PaymentPreferanceSection extends StatelessWidget {
         value: 20,
         title: '',
         radius: 50,
-
       ),
       PieChartSectionData(
         color: Colors.blue[300],
