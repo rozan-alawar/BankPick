@@ -5,8 +5,10 @@ import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
+import '../../controller/home_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/utils/navigation.dart';
@@ -17,13 +19,15 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomeProvider>(context);
+
     return Scaffold(
       appBar: PrimaryAppBar(
         title: 'Settings',
         withLeading: false,
         action: [
           CircularCard(
-            widget: const Icon(Icons.logout_rounded),
+            widget: const Icon(Icons.logout_rounded,color: Colors.black),
             width: 45,
             height: 45,
           ),
@@ -160,6 +164,23 @@ class SettingsScreen extends StatelessWidget {
                   Switch(
                     value: false,
                     onChanged: (value) {},
+                  )
+                ],
+              ),
+              30.height,
+              Row(
+                children: [
+                  PrimaryText(
+                    'Dark Mode',
+                    fontSize: 16.sp,
+                  ),
+                  const Spacer(),
+                  Switch(
+                    value: homeProvider.getThemeValue(),
+                    onChanged: (value) {
+                      print('in setting $value');
+                      homeProvider.changeTheme(isDark: value);
+                    },
                   )
                 ],
               ),

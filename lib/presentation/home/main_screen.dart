@@ -19,7 +19,6 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
    final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-
       body:homeProvider.screens[homeProvider.currentIndex],
       bottomNavigationBar: Consumer<HomeProvider>(builder: (context, value, child) =>  BottomNavigationBar(
           iconSize: 24.h,

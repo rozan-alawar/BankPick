@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Timer(Duration(milliseconds: 800), ()=>sl<NavigationService>().navigateTo(Routes.onboarding) );
+    Timer(const Duration(milliseconds: 800), ()=>sl<NavigationService>().navigateTo(Routes.onboarding) );
   }
   @override
 
