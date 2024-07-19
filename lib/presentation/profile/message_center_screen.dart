@@ -1,5 +1,6 @@
 import 'package:dakakeen/core/common_widget/primary_appbar.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
+import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/model/message_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,22 +18,18 @@ class MessageCenterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PrimaryAppBar(title: 'Message Center',withLeading: true,),
-      body: ListView.builder(
+      body: ListView.separated(
+        separatorBuilder: (context, index) => 16.height,
         itemCount: Message.messages.length,
         itemBuilder: (context, index) {
           final message = Message.messages[index];
           return ListTile(
-            title: Text(message.sender),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(message.subject, style: TextStyle(fontWeight: FontWeight.bold)),
-                Text(message.body, maxLines: 1, overflow: TextOverflow.ellipsis),
-              ],
-            ),
+            leading: Image.asset(ImageAssets.profile),
+            title: Text(message.sender.name),
+            subtitle: PrimaryText(message.body, maxLines: 1, overflow: TextOverflow.ellipsis,fontSize: 12.sp,),
             trailing: Text(
               "${message.date.day}/${message.date.month}/${message.date.year}",
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
             onTap: () {
               Navigator.push(
@@ -57,15 +54,15 @@ class MessageDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Message Details'),
+      appBar: const PrimaryAppBar(
+     title:   'Message Details',withLeading: true,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(message.sender, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(message.sender.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
             Text(message.subject, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             SizedBox(height: 10),

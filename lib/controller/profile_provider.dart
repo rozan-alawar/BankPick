@@ -15,7 +15,6 @@ class ProfileProvider with ChangeNotifier{
             phoneNumber: phone,
             birthDate: user!.birthDate,
             joinedDate: user!.joinedDate,
-            designation: user!.designation,
             cards: user!.cards,
           );
           notifyListeners();

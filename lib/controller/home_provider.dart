@@ -24,7 +24,7 @@ class HomeProvider with ChangeNotifier {
     phoneNumber: '+8801712663389',
     birthDate: DateTime(2000, 9, 28),
     joinedDate: DateTime(2021, 1, 28),
-    designation: 'Senior Designer',
+
     cards: [
       CardModel(
         cardNumber: '1234 5678 9876 5432',

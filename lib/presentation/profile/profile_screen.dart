@@ -23,18 +23,24 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar: PrimaryAppBar(title: 'Profile',withLeading: true,action: [                GestureDetector(
-        onTap: () =>
-            sl<NavigationService>().navigateTo(Routes.edit_profile),
-        child: CircularCard(
-          widget: SvgPicture.asset(
-            IconAssets.edit_profile,
-            color: Colors.black,
+      appBar: PrimaryAppBar(
+        title: 'Profile',
+        withLeading: true,
+        action: [
+          GestureDetector(
+            onTap: () =>
+                sl<NavigationService>().navigateTo(Routes.edit_profile),
+            child: CircularCard(
+              widget: SvgPicture.asset(
+                IconAssets.edit_profile,
+                color: Colors.black,
+              ),
+              width: 45.w,
+              height: 45.h,
+            ),
           ),
-          width: 45.w,
-          height: 45.h,
-        ),
-      ),],),
+        ],
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
@@ -60,24 +66,39 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             60.height,
-            InfoTile(icon: IconAssets.user, title: 'Personal Information'),
+            InfoTile(icon: IconAssets.user, title: 'Personal Information',
+              onTap: () =>
+                  sl<NavigationService>().navigateTo(Routes.personal_information),),
             40.height,
             InfoTile(
-                  icon: IconAssets.credit_cards, title: 'Payment Preferances',onTap: () => showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+              icon: IconAssets.credit_cards,
+              title: 'Payment Preferances',
+              onTap: () => showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(25.0)),
+                ),
+                builder: (context) => const PaymentPreferancesSection(),
               ),
-              builder: (context) => const PaymentPreferancesSection(),
-            ),),
-
+            ),
             40.height,
             InfoTile(icon: IconAssets.user, title: 'Bank and Cards'),
             40.height,
-            InfoTile(icon: IconAssets.notification, title: 'Notifications'),
+            InfoTile(
+              icon: IconAssets.notification,
+              title: 'Notifications',
+              onTap: () =>
+                  sl<NavigationService>().navigateTo(Routes.notification),
+            ),
             40.height,
-            InfoTile(icon: IconAssets.user, title: 'Messages Center',  onTap: () => sl<NavigationService>().navigateTo(Routes.message_center),),
+            InfoTile(
+              icon: IconAssets.user,
+              title: 'Messages Center',
+              onTap: () =>
+                  sl<NavigationService>().navigateTo(Routes.message_center),
+            ),
             40.height,
             InfoTile(icon: IconAssets.location, title: 'Address'),
           ],

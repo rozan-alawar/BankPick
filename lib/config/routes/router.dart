@@ -13,9 +13,11 @@ import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
 import 'package:dakakeen/presentation/profile/edit_profile_screen.dart';
 import 'package:dakakeen/presentation/profile/message_center_screen.dart';
+import 'package:dakakeen/presentation/profile/personal_information_screen.dart';
 import 'package:dakakeen/presentation/profile/profile_screen.dart';
 import 'package:dakakeen/presentation/settings/language_screen.dart';
 import 'package:dakakeen/presentation/settings/term_and_condition_screen.dart';
+import 'package:dakakeen/presentation/statistic/notification_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../presentation/card/request_screen.dart';
@@ -77,6 +79,12 @@ class AppRoutes {
 
       case Routes.add_new_reciver:
         return _materialRoute(const AddNewReciver());
+
+      case Routes.notification:
+        return _materialRoute(const NotificationScreen());
+
+      case Routes.personal_information:
+        return _materialRoute(const PersonalInformationScreen());
 
       default:
         return _materialRoute(

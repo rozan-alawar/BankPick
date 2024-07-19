@@ -19,5 +19,7 @@ class Routes {
   static const String message_center = '/message_center';
   static const String term_condition = '/term_conditions';
   static const String add_new_reciver = '/add_new_reciver';
+  static const String notification = '/notification';
+  static const String personal_information = '/personal_information';
 
 }
