@@ -1,6 +1,7 @@
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/utils/navigation.dart';
@@ -44,7 +45,8 @@ class BuildProfileSection extends StatelessWidget {
               child: CircularCard(
                 width: 40.w,
                 height: 40.h,
-                widget: SvgPicture.asset(IconAssets.search),
+                widget: SvgPicture.asset(IconAssets.search,color:Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light? Colors.black : Colors.white,
+                ),
               ),
             ),
           ],

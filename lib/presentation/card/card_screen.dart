@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
@@ -23,15 +24,13 @@ class CardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'My Card',withLeading: true,),
-
+      appBar: const PrimaryAppBar(title: 'My Card',withLeading:true,),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               BuildCardSection(
                 cardNumber: homeProvider.user!.cards[0].cardNumber,
                 cardHolderName: homeProvider.user!.cards[0].cardHolder,
@@ -46,6 +45,7 @@ class CardScreen extends StatelessWidget {
                 fontSize: 16.sp,
               ),
               20.height,
+              Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light?
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                 decoration: BoxDecoration(
@@ -56,7 +56,7 @@ class CardScreen extends StatelessWidget {
                       offset: Offset(0, 2),
                     )
                   ],
-                  color: Color(0xffF4F4F4),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Column(
@@ -65,6 +65,7 @@ class CardScreen extends StatelessWidget {
                     PrimaryText(
                       'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
                       fontSize: 14.sp,
+                      color: Colors.black,
                     ),
                     Slider(
                       activeColor: ColorManager.primary,
@@ -80,14 +81,56 @@ class CardScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('\$0', style: TextStyle(fontSize: 14.sp)),
-                        Text('\$4,600', style: TextStyle(fontSize: 14.sp)),
-                        Text('\$10,000', style: TextStyle(fontSize: 14.sp)),
+                        Text('\$0', style: TextStyle(fontSize: 14.sp,color: Colors.black,)),
+                        Text('\$4,600', style: TextStyle(fontSize: 14.sp,color: Colors.black,)),
+                        Text('\$10,000', style: TextStyle(fontSize: 14.sp,color: Colors.black,)),
                       ],
                     ),
                   ],
                 ),
-              ),
+              ) : Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 6,
+                      offset: Offset(0, 2),
+                    )
+                  ],
+                  color: Color(0xff232533),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PrimaryText(
+                      'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                      fontSize: 14.sp,
+                      color: Colors.white,
+                    ),
+                    Slider(
+                      activeColor:Colors.white,
+                      value: homeProvider.spendingLimit,
+                      min: 0,
+                      max: 10000,
+                      divisions: 100,
+                      label: homeProvider.spendingLimit.round().toString(),
+                      onChanged: (value) {
+                        homeProvider.updateSpendingLimit(value);
+                      },
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('\$0', style: TextStyle(fontSize: 14.sp,color: Colors.white,)),
+                        Text('\$4,600', style: TextStyle(fontSize: 14.sp,color: Colors.white,)),
+                        Text('\$10,000', style: TextStyle(fontSize: 14.sp,color: Colors.white,)),
+                      ],
+                    ),
+                  ],
+                ),
+              ) ,
               60.height,
               Row(
                 children: [
