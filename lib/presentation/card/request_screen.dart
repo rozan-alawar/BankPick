@@ -51,6 +51,8 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider =Provider.of<HomeProvider>(context);
+
     return Scaffold(
       appBar: const PrimaryAppBar(title: 'Request Money',withLeading: true,),
 
@@ -119,9 +121,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25.r),
                       border: Border.all(
-                        color: ColorManager.secondaryText,
+                        color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.black.withOpacity(0.4),
                       ),
-                      color: Colors.white.withOpacity(0.8),
+                      color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.white.withOpacity(0.8),
                     ),
                     child: Column(
                       children: [
@@ -133,7 +135,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                               color: ColorManager.secondaryText,
                               fontSize: 11.sp,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             PrimaryText(
                               'Change Currency',
                               color: Colors.red,

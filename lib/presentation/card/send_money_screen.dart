@@ -46,8 +46,10 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'Send Money',withLeading: true,),
-
+      appBar: const PrimaryAppBar(
+        title: 'Send Money',
+        withLeading: true,
+      ),
       body: Form(
         key: formKey,
         child: GestureDetector(
@@ -99,9 +101,9 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.r),
                     border: Border.all(
-                      color: ColorManager.secondaryText,
+                      color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.black.withOpacity(0.4),
                     ),
-                    color: Colors.white.withOpacity(0.8),
+                    color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.white.withOpacity(0.8),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,14 +119,16 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                             Column(
                               children: [
                                 GestureDetector(
-                                  onTap:()=> sl<NavigationService>().navigateTo(Routes.add_new_reciver),
+                                  onTap: () => sl<NavigationService>()
+                                      .navigateTo(Routes.add_new_reciver),
                                   child: Container(
                                     width: 60,
                                     height: 60,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                          color: ColorManager.primary),
+                                        color: ColorManager.primary,
+                                      ),
                                     ),
                                     child: const Icon(
                                       Icons.add,
@@ -155,9 +159,11 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                                         width: 60,
                                         height: 60,
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(image:AssetImage( ReciverModel.recivers[index].avatarUrl),fit: BoxFit.cover),
+                                          image: DecorationImage(
+                                              image: AssetImage(ReciverModel
+                                                  .recivers[index].avatarUrl),
+                                              fit: BoxFit.cover),
                                           shape: BoxShape.circle,
-
                                         ),
                                       ),
                                     ),
@@ -180,14 +186,13 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                 20.height,
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 20.w),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 16.w),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.r),
                     border: Border.all(
-                      color: ColorManager.secondaryText,
+                      color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.black.withOpacity(0.4),
                     ),
-                    color: Colors.white.withOpacity(0.8),
+                    color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.white.withOpacity(0.8),
                   ),
                   child: Column(
                     children: [
@@ -221,17 +226,18 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                             children: [
                               25.height,
                               SizedBox(
-                                height: 80.h,width: 200.w,
+                                height: 80.h,
+                                width: 200.w,
                                 child: PrimaryTextField(
                                   hintText: '2200.00',
                                   hintStyle: TextStyle(
                                     fontSize: 24.sp,
                                     fontWeight: FontWeight.w700,
                                   ),
-                                  textStyle:    TextStyle(
-                                  fontSize: 24.sp,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                                  textStyle: TextStyle(
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.w700,
+                                  ),
                                   controller: currencyController,
                                   validator: (value) {},
                                 ),

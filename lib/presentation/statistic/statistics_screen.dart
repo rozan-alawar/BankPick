@@ -1,10 +1,12 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
+import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../config/theme/color_manager.dart';
@@ -19,14 +21,14 @@ class StatisticsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider =Provider.of<HomeProvider>(context);
     return Scaffold(
       appBar:  PrimaryAppBar(title: 'Statistics',withLeading: false,action: [ GestureDetector(
         onTap: () =>
             sl<NavigationService>().navigateTo(Routes.notification),
         child: CircularCard(
           widget: SvgPicture.asset(
-            IconAssets.notification,
-            color: Colors.black,
+            IconAssets.notification,color:homeProvider.isDark??false?Colors.white:Colors.black,
           ),
           width: 45,
           height: 45,

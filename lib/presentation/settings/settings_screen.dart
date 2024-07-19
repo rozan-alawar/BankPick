@@ -27,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
         withLeading: false,
         action: [
           CircularCard(
-            widget: const Icon(Icons.logout_rounded,color: Colors.black),
+            widget:  Icon(Icons.logout_rounded,color:homeProvider.isDark??false?Colors.white:Colors.black ),
             width: 45,
             height: 45,
           ),

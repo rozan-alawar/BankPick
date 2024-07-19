@@ -1,6 +1,8 @@
+import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
@@ -11,6 +13,7 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
       appBar: const PrimaryAppBar(
         title: 'Notification',
@@ -24,7 +27,7 @@ class NotificationScreen extends StatelessWidget {
           return Container(
             margin: EdgeInsetsDirectional.symmetric(horizontal: 8.w),
             padding: EdgeInsetsDirectional.symmetric(vertical: 8.w),
-            decoration: BoxDecoration(color: Colors.white, boxShadow: [
+            decoration: BoxDecoration(color: (homeProvider.isDark??false)?Colors.black: Colors.white, boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.4),
                 offset: const Offset(0, 2),

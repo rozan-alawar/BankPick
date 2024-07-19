@@ -13,10 +13,8 @@ import '../model/transaction_model.dart';
 import '../model/user_model.dart';
 
 class HomeProvider with ChangeNotifier {
-  String _name = 'Tanya Myroniuk';
-
   int _currentIndex = 0;
-  bool _isDark=false;
+  bool _isDark = false;
   double _spendingLimit = 8545;
   int get currentIndex => _currentIndex;
   User? _user = User(
@@ -26,7 +24,6 @@ class HomeProvider with ChangeNotifier {
     phoneNumber: '+8801712663389',
     birthDate: DateTime(2000, 9, 28),
     joinedDate: DateTime(2021, 1, 28),
-
     cards: [
       CardModel(
         cardNumber: '1234 5678 9876 5432',
@@ -47,8 +44,8 @@ class HomeProvider with ChangeNotifier {
 
   ThemeData _themeDataStyle = ThemeDataStyle.light;
 
-
   User? get user => _user;
+  bool get isDark => _isDark;
 
   void setUser(User user) {
     _user = user;
@@ -85,38 +82,36 @@ class HomeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addCard({ required GlobalKey<FormState> formkey, required CardModel newCard}) {
+  void addCard(
+      {required GlobalKey<FormState> formkey, required CardModel newCard}) {
     print(formkey.currentState?.validate());
-    if (formkey.currentState?.validate()??false) {
-
+    if (formkey.currentState?.validate() ?? false) {
       _user?.cards.add(newCard);
       notifyListeners();
       sl<NavigationService>().pop();
     }
   }
 
-  void changeTheme({required bool isDark}){
-    if(isDark){
-      _isDark=isDark;
-      _themeDataStyle=ThemeDataStyle.dark;
-    }else{
-      _isDark=isDark;
-
-      _themeDataStyle=ThemeDataStyle.light;
-
+  void changeTheme({required bool isDark}) {
+    if (isDark) {
+      _isDark = isDark;
+      _themeDataStyle = ThemeDataStyle.dark;
+    } else {
+      _isDark = isDark;
+      _themeDataStyle = ThemeDataStyle.light;
     }
     // _isDark=isDark;
 
     notifyListeners();
 
     print('in provider $_isDark');
-
   }
 
-  bool getThemeValue(){
+  bool getThemeValue() {
     return _isDark;
   }
-  ThemeData getTheme(){
+
+  ThemeData getTheme() {
     return _themeDataStyle;
   }
 }

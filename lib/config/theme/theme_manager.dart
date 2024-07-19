@@ -123,6 +123,7 @@
 // }
 
 
+import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class ThemeDataStyle {
@@ -130,9 +131,11 @@ class ThemeDataStyle {
   static ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
+    appBarTheme: const AppBarTheme(backgroundColor: ColorManager.transparent),
     colorScheme: ColorScheme.light(
+
       background: Colors.grey.shade100,
-      primary: Colors.deepPurple.shade200,
+      primary: ColorManager.primary,
       secondary: Colors.deepPurple.shade300,
     ),
   );
@@ -140,11 +143,14 @@ class ThemeDataStyle {
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+    appBarTheme: const AppBarTheme(backgroundColor: ColorManager.transparent),
     colorScheme: ColorScheme.dark(
       background: Colors.grey.shade900,
-      primary: Colors.deepPurple.shade500,
+      primary: ColorManager.primary,
       secondary: Colors.deepPurple.shade700,
+
     ),
+
   );
 
 }

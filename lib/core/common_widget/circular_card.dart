@@ -21,7 +21,7 @@ class CircularCard extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withOpacity(0.2),
               blurRadius: 6,
               offset: const Offset(0, 4),
             )

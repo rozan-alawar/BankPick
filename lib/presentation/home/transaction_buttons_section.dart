@@ -17,7 +17,9 @@ class TransactionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List transactionnButtonIconsLight = [
+    final homeProvider =Provider.of<HomeProvider>(context);
+
+    List transactionnButtonIcons = [
       IconAssets.sentLight,
       IconAssets.receiveLight,
       IconAssets.loanLight,
@@ -33,29 +35,28 @@ class TransactionButtons extends StatelessWidget {
     return SizedBox(
       height: 110.h,
       child: ListView.separated(
-        separatorBuilder: (context, index)=>SizedBox(),
+        separatorBuilder: (context, index)=>const SizedBox(),
         physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: 4,
         itemBuilder: (context, index) => Padding(
-         padding:  EdgeInsetsDirectional.only(start: index==0?10.w:22.w,end:index==transactionnButtonLable.length-1?10.w:22.w, ),
+         padding:  EdgeInsetsDirectional.only(start: index==0?10.w:20.w,end:index==transactionnButtonLable.length-1?10.w:20.w, ),
           child: Column(
             children: [
               CircularCard(
+                width: 60,
+                height: 60,
                 widget: Center(
                     child: SvgPicture.asset(
-                      // color: Colors.black,
-                      Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light?
-                      transactionnButtonIconsDark[index] :transactionnButtonIconsLight[index]  ,
-                  // height: 24.h,
-                  // width: 24.w,
+                      color:homeProvider.isDark??false?Colors.white:Colors.black,
+                      transactionnButtonIconsDark[index]   ,
+
                 )),
               ),
-              8.height,
+              12.height,
               PrimaryText(
                 transactionnButtonLable[index],
                 fontSize: 13.sp,
-                color:Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light?Colors.black:Color(0xffA2A2A7),
 
               ),
             ],

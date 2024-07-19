@@ -24,7 +24,20 @@ class CardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'My Card',withLeading:true,),
+      appBar: PrimaryAppBar(
+        title: 'My Card',
+        withLeading: false,
+        action: [
+          GestureDetector(
+            onTap: () => sl<NavigationService>().navigateTo(Routes.show_cards),
+            child: CircularCard(
+              widget: const Icon(Icons.add),
+              width: 45,
+              height: 45,
+            ),
+          ),
+        ],
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: SingleChildScrollView(
@@ -45,92 +58,122 @@ class CardScreen extends StatelessWidget {
                 fontSize: 16.sp,
               ),
               20.height,
-              Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light?
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 6,
-                      offset: Offset(0, 2),
+              Provider.of<HomeProvider>(context).getTheme() ==
+                      ThemeDataStyle.light
+                  ? Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 20.h),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 6,
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PrimaryText(
+                            'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                            fontSize: 14.sp,
+                            color: Colors.black,
+                          ),
+                          Slider(
+                            activeColor: ColorManager.primary,
+                            value: homeProvider.spendingLimit,
+                            min: 0,
+                            max: 10000,
+                            divisions: 100,
+                            label:
+                                homeProvider.spendingLimit.round().toString(),
+                            onChanged: (value) {
+                              homeProvider.updateSpendingLimit(value);
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('\$0',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  )),
+                              Text('\$4,600',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  )),
+                              Text('\$10,000',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  )),
+                            ],
+                          ),
+                        ],
+                      ),
                     )
-                  ],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PrimaryText(
-                      'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
-                      fontSize: 14.sp,
-                      color: Colors.black,
+                  : Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 20.w, vertical: 20.h),
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 6,
+                            offset: Offset(0, 2),
+                          )
+                        ],
+                        color: Color(0xff232533),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PrimaryText(
+                            'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                            fontSize: 14.sp,
+                            color: Colors.white,
+                          ),
+                          Slider(
+                            activeColor: Colors.white,
+                            value: homeProvider.spendingLimit,
+                            min: 0,
+                            max: 10000,
+                            divisions: 100,
+                            label:
+                                homeProvider.spendingLimit.round().toString(),
+                            onChanged: (value) {
+                              homeProvider.updateSpendingLimit(value);
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('\$0',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.white,
+                                  )),
+                              Text('\$4,600',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.white,
+                                  )),
+                              Text('\$10,000',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.white,
+                                  )),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    Slider(
-                      activeColor: ColorManager.primary,
-                      value: homeProvider.spendingLimit,
-                      min: 0,
-                      max: 10000,
-                      divisions: 100,
-                      label: homeProvider.spendingLimit.round().toString(),
-                      onChanged: (value) {
-                        homeProvider.updateSpendingLimit(value);
-                      },
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('\$0', style: TextStyle(fontSize: 14.sp,color: Colors.black,)),
-                        Text('\$4,600', style: TextStyle(fontSize: 14.sp,color: Colors.black,)),
-                        Text('\$10,000', style: TextStyle(fontSize: 14.sp,color: Colors.black,)),
-                      ],
-                    ),
-                  ],
-                ),
-              ) : Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 6,
-                      offset: Offset(0, 2),
-                    )
-                  ],
-                  color: Color(0xff232533),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PrimaryText(
-                      'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
-                      fontSize: 14.sp,
-                      color: Colors.white,
-                    ),
-                    Slider(
-                      activeColor:Colors.white,
-                      value: homeProvider.spendingLimit,
-                      min: 0,
-                      max: 10000,
-                      divisions: 100,
-                      label: homeProvider.spendingLimit.round().toString(),
-                      onChanged: (value) {
-                        homeProvider.updateSpendingLimit(value);
-                      },
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('\$0', style: TextStyle(fontSize: 14.sp,color: Colors.white,)),
-                        Text('\$4,600', style: TextStyle(fontSize: 14.sp,color: Colors.white,)),
-                        Text('\$10,000', style: TextStyle(fontSize: 14.sp,color: Colors.white,)),
-                      ],
-                    ),
-                  ],
-                ),
-              ) ,
               60.height,
               Row(
                 children: [
@@ -151,7 +194,8 @@ class CardScreen extends StatelessWidget {
                   Expanded(
                     child: PrimaryButton(
                       color: ColorManager.primary,
-                      onPressed: ()=> sl<NavigationService>().navigateTo(Routes.send),
+                      onPressed: () =>
+                          sl<NavigationService>().navigateTo(Routes.send),
                       child: PrimaryText(
                         'Send',
                         fontWeight: FontWeight.w600,

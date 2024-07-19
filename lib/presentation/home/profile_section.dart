@@ -24,10 +24,12 @@ class BuildProfileSection extends StatelessWidget {
         return Row(
           children: [
             CircleAvatar(
-              radius: 40.r,
-              backgroundImage:AssetImage(
+              radius: 35.r,
+              foregroundImage:AssetImage(
                 homeProvider.user!.avatarUrl,
-              ), // Add a profile image in assets folder
+
+              ), // Add a profile imag
+              // e in assets folder
             ),
             16.width,
             Column(
@@ -43,9 +45,10 @@ class BuildProfileSection extends StatelessWidget {
             GestureDetector(
               onTap: () => sl<NavigationService>().navigateTo(Routes.search),
               child: CircularCard(
-                width: 40.w,
-                height: 40.h,
-                widget: SvgPicture.asset(IconAssets.search,color:Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light? Colors.black : Colors.white,
+                width: 50,
+                height: 50,
+                widget: SvgPicture.asset(IconAssets.search,color:homeProvider.isDark? Colors.white : Colors.black,
+                  width: 30,height: 30,
                 ),
               ),
             ),
