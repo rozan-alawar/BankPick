@@ -21,8 +21,8 @@ class StatisticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  PrimaryAppBar(title: 'Statistics',withLeading: false,action: [ GestureDetector(
-        // onTap: () =>
-        //     sl<NavigationService>().navigateTo(Routes.show_cards),
+        onTap: () =>
+            sl<NavigationService>().navigateTo(Routes.notification),
         child: CircularCard(
           widget: SvgPicture.asset(
             IconAssets.notification,
