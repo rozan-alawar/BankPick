@@ -7,7 +7,6 @@ class User {
   final String phoneNumber;
   final DateTime birthDate;
   final DateTime joinedDate;
-  final String designation;
   final List<CardModel> cards;
 
   User({
@@ -17,7 +16,6 @@ class User {
     required this.phoneNumber,
     required this.birthDate,
     required this.joinedDate,
-    required this.designation,
     required this.cards,
   });
 }

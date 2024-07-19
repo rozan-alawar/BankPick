@@ -7,7 +7,7 @@ class AddNewReciver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  const Scaffold(
       appBar:  PrimaryAppBar(
         title: 'Add New Reciver',
         withLeading: true,
