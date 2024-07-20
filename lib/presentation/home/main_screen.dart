@@ -17,37 +17,73 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   final homeProvider = Provider.of<HomeProvider>(context);
+    final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      body:homeProvider.screens[homeProvider.currentIndex],
-      bottomNavigationBar: Consumer<HomeProvider>(builder: (context, value, child) =>  BottomNavigationBar(
-          iconSize: 24.h,
-          selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
-currentIndex: homeProvider.currentIndex,
-          selectedItemColor: ColorManager.primary,
-        unselectedItemColor:Color(0xff8B8B94) ,
-          showUnselectedLabels: true,
-          showSelectedLabels: true,
-          unselectedLabelStyle: const TextStyle(color:  Color(0xff8B8B94),fontWeight: FontWeight.w600,),
-          onTap: (value) => homeProvider.setIndex(value),
-          items:  [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(IconAssets.home, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==0?ColorManager.primary:const Color(0xff8B8B94),),
-              label: 'Home',
+      body: homeProvider.screens[homeProvider.currentIndex],
+      bottomNavigationBar: Consumer<HomeProvider>(
+        builder: (context, value, child) => SizedBox(
+          height: 80.h,
+          child: BottomNavigationBar(
+            elevation: 0,
+
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
+            currentIndex: homeProvider.currentIndex,
+            selectedItemColor: ColorManager.primary,
+            unselectedItemColor: const Color(0xff8B8B94),
+            showUnselectedLabels: true,
+            showSelectedLabels: true,
+            unselectedLabelStyle: const TextStyle(
+              color: Color(0xff8B8B94),
+              fontWeight: FontWeight.w600,
             ),
-            BottomNavigationBarItem(
-              icon:SvgPicture.asset(IconAssets.wallet, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==1?ColorManager.primary:const Color(0xff8B8B94),),
-              label: 'My Cards',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(IconAssets.chart, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==2?ColorManager.primary:const Color(0xff8B8B94),),
-              label: 'Statistics',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(IconAssets.setting, width: 24.w,height: 24.h,color: homeProvider.currentIndex ==3?ColorManager.primary:const Color(0xff8B8B94),),
-              label: 'Settings',
-            ),
-          ],
+            onTap: (value) => homeProvider.setIndex(value),
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  IconAssets.home,
+                  width: 30.w,
+                  height: 30.h,
+                  color: homeProvider.currentIndex == 0
+                      ? ColorManager.primary
+                      : const Color(0xff8B8B94),
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  IconAssets.wallet,
+                  width: 30.w,
+                  height: 30.h,
+                  color: homeProvider.currentIndex == 1
+                      ? ColorManager.primary
+                      : const Color(0xff8B8B94),
+                ),
+                label: 'My Cards',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  IconAssets.chart,
+                  width: 30.w,
+                  height: 30.h,
+                  color: homeProvider.currentIndex == 2
+                      ? ColorManager.primary
+                      : const Color(0xff8B8B94),
+                ),
+                label: 'Statistics',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  IconAssets.setting,
+                  width: 30.w,
+                  height: 30.h,
+                  color: homeProvider.currentIndex == 3
+                      ? ColorManager.primary
+                      : const Color(0xff8B8B94),
+                ),
+                label: 'Settings',
+              ),
+            ],
+          ),
         ),
       ),
     );

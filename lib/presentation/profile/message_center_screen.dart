@@ -64,8 +64,6 @@ class MessageDetailScreen extends StatelessWidget {
           children: [
             Text(message.sender.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             SizedBox(height: 10),
-            Text(message.subject, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
             Text("${message.date.day}/${message.date.month}/${message.date.year}", style: TextStyle(color: Colors.grey)),
             SizedBox(height: 20),
             Text(message.body),

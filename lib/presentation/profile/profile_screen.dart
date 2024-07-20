@@ -34,8 +34,9 @@ class ProfileScreen extends StatelessWidget {
             child: CircularCard(
               widget: SvgPicture.asset(
                 IconAssets.edit_profile,
-                color: Colors.black,
-              ),
+                color: homeProvider.isDark
+                    ? Colors.white
+                    : Colors.black,              ),
               width: 45.w,
               height: 45.h,
             ),
@@ -105,9 +106,6 @@ class ProfileScreen extends StatelessWidget {
             ),
             30.height,
 
-            // InfoTile(icon: IconAssets.user, title: 'Personal Information',
-            //   onTap: () =>
-            //       sl<NavigationService>().navigateTo(Routes.personal_information),),
             InfoTile(
               icon: IconAssets.credit_cards,
               title: 'Payment Preferances',

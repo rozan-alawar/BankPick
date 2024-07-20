@@ -88,20 +88,24 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               30.height,
-              Row(
-                children: [
-                  PrimaryText(
-                    'Contact Us ',
-                    fontSize: 16.sp,
-                  ),
-                  const Spacer(),
-                  Transform.rotate(
-                      angle: 3.2,
-                      child: SvgPicture.asset(
-                        IconAssets.arrow_back,
-                        color: ColorManager.secondaryText,
-                      )),
-                ],
+              GestureDetector(
+                onTap: () =>
+                    sl<NavigationService>().navigateTo(Routes.contact_us),
+                child: Row(
+                  children: [
+                    PrimaryText(
+                      'Contact Us ',
+                      fontSize: 16.sp,
+                    ),
+                    const Spacer(),
+                    Transform.rotate(
+                        angle: 3.2,
+                        child: SvgPicture.asset(
+                          IconAssets.arrow_back,
+                          color: ColorManager.secondaryText,
+                        )),
+                  ],
+                ),
               ),
               50.height,
               const PrimaryText(

@@ -145,7 +145,7 @@ class ThemeDataStyle {
     brightness: Brightness.dark,
     appBarTheme: const AppBarTheme(backgroundColor: ColorManager.transparent),
     colorScheme: ColorScheme.dark(
-      background: Colors.grey.shade900,
+      background: const Color(0xff161622),
       primary: ColorManager.primary,
       secondary: Colors.deepPurple.shade700,
 

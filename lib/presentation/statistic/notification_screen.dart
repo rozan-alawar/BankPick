@@ -1,5 +1,7 @@
+import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/model/notification_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -21,29 +23,67 @@ class NotificationScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         separatorBuilder: (context, index) => 16.height,
-        itemCount: Message.messages.length,
+        itemCount: NotificationModel.notifications.length,
         itemBuilder: (context, index) {
-          final message = Message.messages[index];
+          final notification = NotificationModel.notifications[index];
           return Container(
             margin: EdgeInsetsDirectional.symmetric(horizontal: 8.w),
             padding: EdgeInsetsDirectional.symmetric(vertical: 8.w),
-            decoration: BoxDecoration(color: (homeProvider.isDark??false)?Colors.black: Colors.white, boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.4),
-                offset: const Offset(0, 2),
-                blurRadius: 12,
-              ),
-            ],
-            borderRadius: BorderRadius.circular(8.r)),
+            decoration: BoxDecoration(
+                color: (homeProvider.isDark ?? false)
+                    ? Colors.black
+                    : Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    offset: const Offset(0, 2),
+                    blurRadius: 12,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(8.r)),
             child: ListTile(
-              title: PrimaryText(
-                message.body,
-                maxLines: 3,
-                fontSize: 12.sp,
-              ),
-              subtitle: Text(
-                "${message.date.day}/${message.date.month}/${message.date.year}",
-                style: const TextStyle(color: Colors.grey),
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        notification.isRead
+                            ? Icons.notifications
+                            : Icons.notifications_active,
+                        color: notification.isRead ? Colors.grey : Colors.blue,
+                      ),
+                      20.width,
+                      PrimaryText(
+                        notification.title,
+                        fontSize: 14.sp,
+                      ),
+                    ],
+                  ),
+                  12.height,
+                  PrimaryText(
+                    notification.message,
+                    maxLines: 6,
+                    fontSize: 12.sp,
+                  ),
+                  8.height,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PrimaryText(
+                        "${notification.date.day}/${notification.date.month}/${notification.date.year}",
+                        color: Colors.grey,
+                        fontSize: 11.sp,
+                      ),
+                      notification.isRead
+                          ? const SizedBox()
+                          : CircleAvatar(
+                              backgroundColor: ColorManager.primary,
+                              radius: 6.r,
+                            ),
+                    ],
+                  ),
+                ],
               ),
             ),
           );
