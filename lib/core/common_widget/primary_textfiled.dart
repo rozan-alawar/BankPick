@@ -25,7 +25,8 @@ class PrimaryTextField extends StatelessWidget {
 
   const PrimaryTextField(
       {Key? key,
-        this.hintText, this.obscureText =false,
+      this.hintText,
+      this.obscureText = false,
       required this.controller,
       required this.validator,
       this.keyboardType = TextInputType.text,
@@ -39,14 +40,16 @@ class PrimaryTextField extends StatelessWidget {
       this.textAlign = TextAlign.start,
       this.onChanged,
       this.inputFormater,
-      this.textInputAction = TextInputAction.none, this.hintStyle, this.textStyle})
+      this.textInputAction = TextInputAction.none,
+      this.hintStyle,
+      this.textStyle})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
-       controller: controller,
+        controller: controller,
         readOnly: readOnly,
         textAlign: textAlign!,
         onChanged: onChanged,
@@ -54,13 +57,13 @@ class PrimaryTextField extends StatelessWidget {
         maxLines: multiLines! ? 3 : 1,
         inputFormatters: inputFormater,
         obscureText: obscureText,
-
-        style:textStyle?? TextStyle(
-          // color: ColorManager.secondryTextColor,
-          // fontWeight: FontWeightManager.regular,
-          fontSize: 16.sp,
-          // fontFamily: FontConstants.arabicFontFamily
-        ),
+        style: textStyle ??
+            TextStyle(
+              // color: ColorManager.secondryTextColor,
+              // fontWeight: FontWeightManager.regular,
+              fontSize: 16.sp,
+              // fontFamily: FontConstants.arabicFontFamily
+            ),
         keyboardType: keyboardType,
         onTap: onTap ?? () {},
         onFieldSubmitted: onFieldSubmitted ?? (v) {},
@@ -72,26 +75,33 @@ class PrimaryTextField extends StatelessWidget {
           hintText: hintText ?? '',
           fillColor: ColorManager.transparent,
 
-          hintStyle:hintStyle?? TextStyle(
-            // color: ColorManager.hintTextColor,
-            fontSize: 14.sp,
-            height: 0,
-            // fontFamily: FontConstants.arabicFontFamily,
-          ),
+          hintStyle: hintStyle ??
+              TextStyle(
+                // color: ColorManager.hintTextColor,
+                fontSize: 14.sp,
+                height: 0,
+                // fontFamily: FontConstants.arabicFontFamily,
+              ),
           filled: true,
 
-          enabledBorder: (multiLines??false)?
- OutlineInputBorder(
+          enabledBorder: (multiLines ?? false)
+              ? OutlineInputBorder(
+                  borderSide: const BorderSide(color: ColorManager.blaceholderText),
+                  borderRadius: BorderRadius.circular(25.r),
+                )
+              :  const UnderlineInputBorder(
             borderSide: BorderSide(color: ColorManager.blaceholderText),
-   borderRadius: BorderRadius.circular(25.r),
-          ):null,            // borderSide:
-                // BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
-        
-          focusedBorder: (multiLines??false)?
-          OutlineInputBorder(
+          ), // borderSide:
+          // BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
+
+          focusedBorder: (multiLines ?? false)
+              ? OutlineInputBorder(
+                  borderSide: const BorderSide(color: ColorManager.blaceholderText),
+                  borderRadius: BorderRadius.circular(25.r),
+                )
+              : const UnderlineInputBorder(
             borderSide: BorderSide(color: ColorManager.blaceholderText),
-            borderRadius: BorderRadius.circular(25.r),
-          ):null,
+          ),
           contentPadding:
               EdgeInsets.symmetric(vertical: 17.h, horizontal: 15.w),
           suffixIconConstraints:
@@ -103,7 +113,7 @@ class PrimaryTextField extends StatelessWidget {
               // color: ColorManager.primary,
               fontFamily: 'Almarai',
               fontSize: 12.sp),
-          focusedErrorBorder:  UnderlineInputBorder(
+          focusedErrorBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
           ),
           errorBorder: UnderlineInputBorder(

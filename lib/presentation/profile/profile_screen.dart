@@ -13,6 +13,7 @@ import '../../config/theme/assets_manager.dart';
 import '../../config/theme/color_manager.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_text.dart';
+import '../../core/utils/date_to_String.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
@@ -44,6 +45,7 @@ class ProfileScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -57,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    PrimaryText('Name',
+                    PrimaryText('Full Name',
                         fontSize: 12.sp, color: ColorManager.secondaryText),
                     PrimaryText(homeProvider.user?.name ?? "Rozan AbuAlawar",
                         fontSize: 18, fontWeight: FontWeight.bold),
@@ -65,11 +67,47 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ],
             ),
-            60.height,
-            InfoTile(icon: IconAssets.user, title: 'Personal Information',
-              onTap: () =>
-                  sl<NavigationService>().navigateTo(Routes.personal_information),),
-            40.height,
+            30.height,
+            PrimaryText(
+              'Email Address',
+              fontSize: 12.sp,
+              color: ColorManager.secondaryText,
+            ),
+            8.height,
+            PrimaryText(
+              homeProvider.user?.email ?? "xyz@gmail.com",
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+            ),
+            24.height,
+            PrimaryText(
+              'Phone Number',
+              fontSize: 12.sp,
+              color: ColorManager.secondaryText,
+            ),
+            8.height,
+            PrimaryText(
+              homeProvider.user?.phoneNumber ?? "0147822368",
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+            ),
+            24.height,
+            PrimaryText(
+              'Birth Date',
+              fontSize: 12.sp,
+              color: ColorManager.secondaryText,
+            ),
+            8.height,
+            PrimaryText(
+              ConvertDate.dateToString(homeProvider.user!.birthDate) ?? "0147822368",
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w500,
+            ),
+            30.height,
+
+            // InfoTile(icon: IconAssets.user, title: 'Personal Information',
+            //   onTap: () =>
+            //       sl<NavigationService>().navigateTo(Routes.personal_information),),
             InfoTile(
               icon: IconAssets.credit_cards,
               title: 'Payment Preferances',
@@ -99,8 +137,13 @@ class ProfileScreen extends StatelessWidget {
               onTap: () =>
                   sl<NavigationService>().navigateTo(Routes.message_center),
             ),
-            40.height,
-            InfoTile(icon: IconAssets.location, title: 'Address'),
+            100.height,
+            Center(
+              child: PrimaryText(
+                'Joined ${homeProvider.user!.joinedDate.day}/${homeProvider.user!.joinedDate.month}/${homeProvider.user!.joinedDate.year}',
+                color: ColorManager.secondaryText,
+              ),
+            ),
           ],
         ),
       ),

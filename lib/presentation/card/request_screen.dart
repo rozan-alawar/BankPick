@@ -20,6 +20,7 @@ import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
+import 'money_amount_section.dart';
 
 class RequestMoneyScreen extends StatefulWidget {
   const RequestMoneyScreen({super.key});
@@ -113,71 +114,11 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     // multiLines: true,
                     multiLines: true,
                   ),
-                  // 20.height,
-                  Container(
-                    // height: 180.h,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 16.w,),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25.r),
-                      border: Border.all(
-                        color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.black.withOpacity(0.4),
-                      ),
-                      color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.white.withOpacity(0.8),
-                    ),
-                    child: Column(
-                      children: [
-                        30.height,
-                        Row(
-                          children: [
-                            PrimaryText(
-                              'Enter Your Amount',
-                              color: ColorManager.secondaryText,
-                              fontSize: 11.sp,
-                            ),
-                            const Spacer(),
-                            PrimaryText(
-                              'Change Currency',
-                              color: Colors.red,
-                              fontSize: 11.sp,
-                            ),
-                          ],
-                        ),
-                        // 20.height,
-                        Row(
-                          children: [
-                            PrimaryText(
-                              'USD',
-                              color: Colors.lightBlue,
-                              fontSize: 24.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                            16.width,
-                            Column(
-                              children: [
-                                25.height,
-                                SizedBox(
-                                  height: 80.h,width: 200.w,
-                                  child: PrimaryTextField(
-                                    hintText: '2200.00',
-                                    hintStyle: TextStyle(
-                                      fontSize: 24.sp,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    textStyle:    TextStyle(
-                                      fontSize: 24.sp,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    controller: currencyController,
-                                    validator: (value) {},
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                  MoneyAmountSection(
+                    currencyController: currencyController!,
+                    validator: (value) {
+                      return value??"";
+                    },
                   ),
                   60.height,
                   PrimaryButton(

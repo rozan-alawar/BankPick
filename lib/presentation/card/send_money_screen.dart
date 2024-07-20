@@ -1,4 +1,5 @@
 import 'package:dakakeen/model/reciver_model.dart';
+import 'package:dakakeen/presentation/card/money_amount_section.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -101,9 +102,13 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.r),
                     border: Border.all(
-                      color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.black.withOpacity(0.4),
+                      color: homeProvider.isDark
+                          ? Colors.black.withOpacity(0.3)
+                          : Colors.black.withOpacity(0.4),
                     ),
-                    color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.white.withOpacity(0.8),
+                    color: homeProvider.isDark
+                        ? Colors.black.withOpacity(0.3)
+                        : Colors.white.withOpacity(0.8),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,69 +189,12 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   ),
                 ),
                 20.height,
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20.w),
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.r),
-                    border: Border.all(
-                      color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.black.withOpacity(0.4),
-                    ),
-                    color:homeProvider.isDark?Colors.black.withOpacity(0.3): Colors.white.withOpacity(0.8),
-                  ),
-                  child: Column(
-                    children: [
-                      30.height,
-                      Row(
-                        children: [
-                          PrimaryText(
-                            'Enter Your Amount',
-                            color: ColorManager.secondaryText,
-                            fontSize: 12.sp,
-                          ),
-                          Spacer(),
-                          PrimaryText(
-                            'Change Currency',
-                            color: Colors.red,
-                            fontSize: 12.sp,
-                          ),
-                        ],
-                      ),
-                      10.height,
-                      Row(
-                        children: [
-                          PrimaryText(
-                            'USD',
-                            color: Colors.lightBlue,
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          16.width,
-                          Column(
-                            children: [
-                              25.height,
-                              SizedBox(
-                                height: 80.h,
-                                width: 200.w,
-                                child: PrimaryTextField(
-                                  hintText: '2200.00',
-                                  hintStyle: TextStyle(
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  textStyle: TextStyle(
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  controller: currencyController,
-                                  validator: (value) {},
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),                  child: MoneyAmountSection(
+                    currencyController: currencyController!,
+                    validator: (value) {
+                      return value??"";
+                    },
                   ),
                 ),
                 40.height,
