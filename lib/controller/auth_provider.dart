@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../config/routes/routes.dart';
@@ -43,23 +44,26 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> login(GlobalKey<FormState> formKey) async {
+  Future<void> login(
+      {required GlobalKey<FormState> formKey,
+      required String email,
+      required String password}) async {
     if (formKey.currentState!.validate()) {
       _isLoading = true;
       notifyListeners();
 
-      print(isLoading);
       // _isLoggedIn = await _authenticationService.login(_email, _password);
-      await Timer(
-        Duration(seconds: 3),
-        () {
-          _isLoading = false;
-          sl<NavigationService>().navigateToAndRemove(Routes.home);
-          notifyListeners();
-        },
-      );
+      try {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+        _isLoading = false;
+        notifyListeners();
+      } on FirebaseAuthException catch (e) {
+        print(e.message);
+        _isLoading = false;
+        notifyListeners();
+      }
 
-      notifyListeners();
     }
   }
 

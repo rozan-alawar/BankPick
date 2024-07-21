@@ -80,10 +80,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onPressed: () {
                 if (introProvider.currentPage ==
                     introProvider.titles.length - 1) {
-                  sl<NavigationService>().navigateTo(Routes.login);
+                  sl<NavigationService>().navigateTo(Routes.auth);
                 } else {
                   pageController!.nextPage(
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.ease,
                   );
                 }

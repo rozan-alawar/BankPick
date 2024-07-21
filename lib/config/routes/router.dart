@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/routes/routes.dart';
+import 'package:dakakeen/presentation/auth/auth_screen.dart';
 import 'package:dakakeen/presentation/auth/change_password_screen.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
 import 'package:dakakeen/presentation/auth/signup_screen.dart';
@@ -38,6 +39,9 @@ class AppRoutes {
 
       case Routes.signup:
         return _materialRoute(const SignupScreen());
+
+      case Routes.auth:
+        return _materialRoute(const AuthScreen());
 
       case Routes.home:
         return _materialRoute(const MainScreen());

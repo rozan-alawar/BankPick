@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             : ColorManager.primary,
                         width: double.infinity,
                         height: 56.h,
-                        onPressed: () => loginProvider.login(formKey!),
+                        onPressed: () => loginProvider.login(formKey: formKey!, email: emailController!.text, password: passwordController!.text),
                         isDisable: loginProvider.isLoading,
                         child: PrimaryText(
                           'Sign In',

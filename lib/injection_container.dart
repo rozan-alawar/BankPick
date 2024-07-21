@@ -1,23 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 
-import 'config/api/api_paths.dart';
 import 'core/utils/navigation.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  // Dio
-  Dio client = Dio(
-    BaseOptions(
-      baseUrl: Links.baseLink,
-      receiveDataWhenStatusError: true,
-    ),
-  );
 
-
-
-  sl.registerLazySingleton<Dio>(() => client);
 
   // Dependencies
 

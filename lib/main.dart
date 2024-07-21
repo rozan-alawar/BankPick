@@ -9,15 +9,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import 'config/api/network_helper/dio_helper.dart';
+
 import 'config/routes/routes.dart';
 import 'config/theme/theme_manager.dart';
 import 'core/utils/cache_helper.dart';
 import 'core/utils/navigation.dart';
 import 'injection_container.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
 
   // Ensure that ScreenUtil's screen size is initialized
   await ScreenUtil.ensureScreenSize();
@@ -31,8 +37,7 @@ void main() async {
   // Initialize cache
   await CacheHelper.init();
 
-  // Initialize dio
-  DioHelper.init();
+
 
   // Set preferred device orientations and system UI overlay style.
   SystemChrome.setPreferredOrientations([
@@ -86,6 +91,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return SafeArea(
+
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: Provider.of<HomeProvider>(context)
@@ -93,7 +99,7 @@ class MyApp extends StatelessWidget {
             darkTheme: ThemeDataStyle.dark, // Dark mode styles
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.home,
+            initialRoute: Routes.splash,
             onGenerateRoute: AppRoutes.onGenerateRoutes,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
