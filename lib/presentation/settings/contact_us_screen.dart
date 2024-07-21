@@ -3,12 +3,14 @@ import 'dart:ui';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/presentation/profile/message_bubble_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/profile_provider.dart';
 import '../../core/common_widget/primary_appbar.dart';
+import '../../core/common_widget/primary_text.dart';
 import '../../model/message_model.dart';
 
 class ContactUsScreen extends StatefulWidget {
@@ -54,7 +56,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   itemBuilder: (context, index) {
                     final message = profileProvider.contactUsMessages[
                         profileProvider.contactUsMessages.length - 1 - index];
-                    return _buildMessageBubble(message);
+                    return MessageBubbleWidget(message: message);
                   },
                 ),
               ),
@@ -102,54 +104,6 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildMessageBubble(Message message) {
-    final profileProvider = Provider.of<ProfileProvider>(context);
-
-    bool isSentByUser = message.sender.name == profileProvider.user!.name;
-    return Align(
-      alignment: isSentByUser ? Alignment.centerRight : Alignment.centerLeft,
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 20.r,
-            backgroundColor: ColorManager.transparent,
-            child: Image.asset(message.sender.avatarUrl),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-            padding:
-                const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-            decoration: BoxDecoration(
-              color: isSentByUser ? Colors.blue : Colors.grey[300],
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Column(
-              crossAxisAlignment: isSentByUser
-                  ? CrossAxisAlignment.end
-                  : CrossAxisAlignment.start,
-              children: [
-                Text(
-                  message.body,
-                  style: TextStyle(
-                    color: isSentByUser ? Colors.white : Colors.black,
-                  ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  "${message.date.hour}:${message.date.minute}",
-                  style: TextStyle(
-                    fontSize: 10,
-                    color: isSentByUser ? Colors.white60 : Colors.black54,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

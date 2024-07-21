@@ -17,7 +17,10 @@ class MessageCenterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'Message Center',withLeading: true,),
+      appBar: const PrimaryAppBar(
+        title: 'Message Center',
+        withLeading: true,
+      ),
       body: ListView.separated(
         separatorBuilder: (context, index) => 16.height,
         itemCount: Message.messages.length,
@@ -26,7 +29,12 @@ class MessageCenterScreen extends StatelessWidget {
           return ListTile(
             leading: Image.asset(ImageAssets.profile),
             title: Text(message.sender.name),
-            subtitle: PrimaryText(message.body, maxLines: 1, overflow: TextOverflow.ellipsis,fontSize: 12.sp,),
+            subtitle: PrimaryText(
+              message.body,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              fontSize: 12.sp,
+            ),
             trailing: Text(
               "${message.date.day}/${message.date.month}/${message.date.year}",
               style: const TextStyle(color: Colors.grey),
@@ -55,17 +63,21 @@ class MessageDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const PrimaryAppBar(
-     title:   'Message Details',withLeading: true,
+        title: 'Message Details',
+        withLeading: true,
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(message.sender.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            Text("${message.date.day}/${message.date.month}/${message.date.year}", style: TextStyle(color: Colors.grey)),
-            SizedBox(height: 20),
+            Text(message.sender.name,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            10.height,
+            Text(
+                "${message.date.day}/${message.date.month}/${message.date.year}",
+                style: TextStyle(color: Colors.grey)),
+            10.height,
             Text(message.body),
           ],
         ),
