@@ -32,7 +32,7 @@ class MessageBubbleWidget extends StatelessWidget {
           backgroundColor: ColorManager.transparent,
           child: Image.asset(message.sender.avatarUrl),
         ),
-        Transform.translate(offset:  Offset(isSentByUser ?-45:45,0),
+        Transform.translate(offset:  Offset(isSentByUser ?-42:42,0),
           child: Container(
             margin: EdgeInsetsDirectional.only(
                 end: 10.w,
