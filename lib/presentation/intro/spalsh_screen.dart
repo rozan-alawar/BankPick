@@ -11,6 +11,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../core/utils/cache_helper.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,8 +26,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    bool isFirstTime = CacheHelper.getData(key: 'isFirstTime') ?? true;
 
-    Timer(const Duration(milliseconds: 800), ()=>sl<NavigationService>().navigateTo(Routes.onboarding) );
+    if (isFirstTime) {
+       CacheHelper.saveData(key: 'isFirstTime',value:  false);
+      Timer(const Duration(milliseconds: 800), ()=>sl<NavigationService>().navigateToAndRemove(Routes.onboarding) );
+
+    } else {
+      Timer(const Duration(milliseconds: 800), ()=>sl<NavigationService>().navigateTo(Routes.auth) );
+
+
+  }
   }
   @override
 
