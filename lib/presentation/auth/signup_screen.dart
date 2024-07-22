@@ -154,7 +154,7 @@ class _LoginScreenState extends State<SignupScreen> {
                       color:registerProvider.isLoading?ColorManager.secondaryText: ColorManager.primary,
                       width: double.infinity,
                       height: 56.h,
-                      onPressed: () => registerProvider.signUp(formKey!),
+                      onPressed: () => registerProvider.signup(formKey:formKey!,email:emailController!.text,password: passwordController!.text,fullName: nameController!.text,phoneNumber: phoneController!.text),
                       isDisable: registerProvider.isLoading,
                       child:  PrimaryText(
                         'Sign Up',
@@ -172,7 +172,7 @@ class _LoginScreenState extends State<SignupScreen> {
                         color: ColorManager.secondaryText,
                       ),
                       GestureDetector(
-                        onTap: () =>   sl<NavigationService>().navigateToAndRemove(Routes.login),
+                        onTap: () =>   sl<AuthProvider>().togglePages(),
                         child: PrimaryText(
                           ' Sign In',
                           color: ColorManager.primary,

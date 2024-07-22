@@ -1,3 +1,4 @@
+import 'package:dakakeen/presentation/auth/login_register_screen.dart';
 import 'package:dakakeen/presentation/auth/login_screen.dart';
 import 'package:dakakeen/presentation/home/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,7 +15,7 @@ class AuthScreen extends StatelessWidget {
       if(snapshot.hasData){
         return const MainScreen();
       }else{
-        return const LoginScreen();
+        return const LoginRegisterScreen();
       }
     },),);
   }

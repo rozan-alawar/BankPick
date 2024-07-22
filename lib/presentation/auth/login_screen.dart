@@ -143,8 +143,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: ColorManager.secondaryText,
                         ),
                         GestureDetector(
-                          onTap: () => sl<NavigationService>()
-                              .navigateToAndRemove(Routes.signup),
+                          onTap: () {
+                            sl<AuthProvider>().togglePages();
+                            print("object");
+                          },
                           child: PrimaryText(
                             ' Sign up',
                             color: ColorManager.primary,
