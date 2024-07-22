@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dakakeen/core/utils/app_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -52,7 +53,6 @@ class AuthProvider extends ChangeNotifier {
       _isLoading = true;
       notifyListeners();
 
-      // _isLoggedIn = await _authenticationService.login(_email, _password);
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
@@ -60,6 +60,10 @@ class AuthProvider extends ChangeNotifier {
         notifyListeners();
       } on FirebaseAuthException catch (e) {
         print(e.message);
+        String  message = 'Authentication failed. Please check your email or password';
+
+        sl<AppConfig>().showCustomSnackBar(message, Success: false);
+      } finally {
         _isLoading = false;
         notifyListeners();
       }
@@ -85,4 +89,19 @@ class AuthProvider extends ChangeNotifier {
     isPasswordVisible = !isPasswordVisible;
     notifyListeners();
   }
+
+
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      _isLoggedIn = false;
+      notifyListeners();
+    } catch (e) {
+      // Handle error
+      sl<AppConfig>().showCustomSnackBar('Error logging out: $e'??"Auth faild , Try again later!",Success: false,);
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
 }

@@ -1,5 +1,6 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/controller/auth_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,13 @@ class SettingsScreen extends StatelessWidget {
         title: 'Settings',
         withLeading: false,
         action: [
-          CircularCard(
-            widget:  Icon(Icons.logout_rounded,color:homeProvider.isDark??false?Colors.white:Colors.black ),
-            width: 45,
-            height: 45,
+          GestureDetector(
+            onTap: () =>     sl<AuthProvider>().logout(),
+            child: CircularCard(
+              widget:  Icon(Icons.logout_rounded,color:homeProvider.isDark??false?Colors.white:Colors.black ),
+              width: 45,
+              height: 45,
+            ),
           ),
         ],
       ),

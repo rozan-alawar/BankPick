@@ -15,15 +15,15 @@ import 'config/theme/theme_manager.dart';
 import 'core/utils/cache_helper.dart';
 import 'core/utils/navigation.dart';
 import 'injection_container.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // Ensure that ScreenUtil's screen size is initialized
   await ScreenUtil.ensureScreenSize();
