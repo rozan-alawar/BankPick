@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 56.h,
                         onPressed: () => loginProvider.login(formKey: formKey!, email: emailController!.text, password: passwordController!.text),
                         isDisable: loginProvider.isLoading,
-                        child: PrimaryText(
+                        child: const PrimaryText(
                           'Sign In',
                           color: ColorManager.white,
                           fontWeight: FontWeight.bold,
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        PrimaryText(
+                        const PrimaryText(
                           'I’m a new user.',
                           color: ColorManager.secondaryText,
                         ),
@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             sl<AuthProvider>().togglePages();
                             print("object");
                           },
-                          child: PrimaryText(
+                          child: const PrimaryText(
                             ' Sign up',
                             color: ColorManager.primary,
                             fontWeight: FontWeight.w500,
