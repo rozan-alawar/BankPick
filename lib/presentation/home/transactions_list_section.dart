@@ -13,7 +13,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
+import '../../injection_container.dart';
 import 'card_section.dart';
 class TransactionsListSection extends StatelessWidget {
   const TransactionsListSection({super.key});
@@ -29,7 +31,7 @@ class TransactionsListSection extends StatelessWidget {
         children: [
           CircularCard(
             widget: Icon(TransactionModel.transactions[index].icon,color:
-            Provider.of<HomeProvider>(context).getTheme() == ThemeDataStyle.light? Colors.black : Colors.white,
+            sl<ServiceProvider>().getTheme() == ThemeDataStyle.light? Colors.black : Colors.white,
             ),
           ),
           17.width,

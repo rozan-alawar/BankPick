@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/utils/navigation.dart';
@@ -184,10 +185,10 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   Switch(
-                    value: homeProvider.getThemeValue(),
+                    value: sl<ServiceProvider>().isDark,
                     onChanged: (value) {
                       print('in setting $value');
-                      homeProvider.changeTheme(isDark: value);
+                      sl<ServiceProvider>().changeTheme(isDark: value);
                     },
                   )
                 ],

@@ -71,7 +71,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     PrimaryTextField(
                       controller: emailController,
                       validator: (value) {
-                        loginProvider.setEmail(value!);
                         return value!.isValidEmail;
                       },
                       prefixIcon: SvgPicture.asset(
@@ -89,7 +88,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       obscureText: loginProvider.isPasswordVisible,
                       controller: passwordController,
                       validator: (value) {
-                        loginProvider.setPassword(value!);
                         return value!.isValidPassword;
                       },
                       prefixIcon: SvgPicture.asset(
@@ -124,7 +122,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       obscureText: loginProvider.isPasswordVisible,
                       controller: passwordController,
                       validator: (value) {
-                        loginProvider.setPassword(value!);
                         return value!.isValidPassword;
                       },
                       prefixIcon: SvgPicture.asset(

@@ -1,48 +1,38 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:dakakeen/core/utils/app_config.dart';
+import 'package:dakakeen/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../config/routes/routes.dart';
+import '../config/theme/assets_manager.dart';
+import '../core/utils/cache_helper.dart';
 import '../core/utils/navigation.dart';
 import '../injection_container.dart';
+import '../model/card_model.dart';
 
 class AuthProvider extends ChangeNotifier {
   bool isPasswordVisible = true;
 
-  String _fullName = '';
-  String _phoneNumber = '';
-  String _email = '';
-  String _password = '';
   bool _isLoading = false;
   bool showLoginScreen = true;
 
-  String get fullName => _fullName;
-  String get phoneNumber => _phoneNumber;
-  String get email => _email;
-  String get password => _password;
   bool get isLoading => _isLoading;
 
-  void setFullName(String name) {
-    _fullName = name;
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
     notifyListeners();
   }
 
-  void setPhoneNumber(String number) {
-    _phoneNumber = number;
+  void togglePages() {
+    showLoginScreen = !showLoginScreen;
+    print(showLoginScreen);
     notifyListeners();
   }
 
-  void setEmail(String email) {
-    _email = email;
-    notifyListeners();
-  }
-
-  void setPassword(String password) {
-    _password = password;
-    notifyListeners();
-  }
+  //-------------------------------------------------- LOGIN --------------------------------------------------------------------
 
   Future<void> login(
       {required GlobalKey<FormState> formKey,
@@ -55,21 +45,48 @@ class AuthProvider extends ChangeNotifier {
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
+        User_Model user =User_Model(
+          name: 'Tanya Myroniuk',
+          avatarUrl: ImageAssets.profile,
+          email: 'tanya.myroniuk@gmail.com',
+          phoneNumber: '+8801712663389',
+          birthDate: DateTime(2000, 9, 28),
+          joinedDate: DateTime(2021, 1, 28),
+          cards: [
+            CardModel(
+              cardNumber: '1234 5678 9876 5432',
+              cardHolder: 'Rozan AbuAlawar',
+              expiryDate: '09/25',
+              cvv: '123',
+              cardType: 'Visa',
+            ),
+            CardModel(
+              cardNumber: '4321 8765 6789 1234',
+              cardHolder: 'Tanya Myroniuk',
+              expiryDate: '11/24',
+              cvv: '456',
+              cardType: 'Mastercard',
+            ),
+          ],
+        );
+        CacheHelper.saveData(key: 'user',value:  json.encode(user));
+
         _isLoading = false;
         notifyListeners();
       } on FirebaseAuthException catch (e) {
         print(e.message);
-        String  message = 'Authentication failed. Please check your email or password';
+        String message =
+            'Authentication failed. Please check your email or password';
 
         sl<AppConfig>().showCustomSnackBar(message, Success: false);
       } finally {
         _isLoading = false;
         notifyListeners();
       }
-
     }
   }
 
+  //-------------------------------------------------- SIGN UP --------------------------------------------------------------------
   Future<void> signup({
     required GlobalKey<FormState> formKey,
     required String fullName,
@@ -82,18 +99,16 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
 
       try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
 
         // Update user profile
         User? user = FirebaseAuth.instance.currentUser;
-        await user?.updateProfile(displayName: fullName);
+        await user?.updateProfile(
+          displayName: fullName,
+        );
 
         // Optionally, add additional user information to Firestore or another database
-
-        _fullName = fullName;
-        _phoneNumber = phoneNumber;
-        _email = email;
-        _password = password;
 
         String message = 'Signup successful. Welcome, $fullName!';
         sl<AppConfig>().showCustomSnackBar(message, Success: true);
@@ -124,29 +139,27 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  void togglePasswordVisibility() {
-    isPasswordVisible = !isPasswordVisible;
-    notifyListeners();
-  }
 
-
-  void togglePages() {
-    showLoginScreen = !showLoginScreen;
-    print(showLoginScreen);
-    notifyListeners();
-  }
-
+  //-------------------------------------------------- LOGOUT --------------------------------------------------------------------
 
   Future<void> logout() async {
+    _isLoading = true;
+    notifyListeners();
+
     try {
       await FirebaseAuth.instance.signOut();
       notifyListeners();
     } catch (e) {
+      _isLoading = false;
+      notifyListeners();
       // Handle error
-      sl<AppConfig>().showCustomSnackBar('Error logging out: $e'??"Auth faild , Try again later!",Success: false,);
+      sl<AppConfig>().showCustomSnackBar(
+        'Error logging out: $e' ?? "Auth faild , Try again later!",
+        Success: false,
+      );
+    } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
-
 }

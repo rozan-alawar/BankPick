@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../config/theme/assets_manager.dart';
+import '../../controller/service_provider.dart';
 import '../../injection_container.dart';
 import '../utils/navigation.dart';
 import 'circular_card.dart';
@@ -32,7 +33,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
                   child: CircularCard(
                     widget: SvgPicture.asset(
                       IconAssets.arrow_back,
-                      color: homeProvider.isDark
+                      color: sl<ServiceProvider>().isDark
                           ? Colors.white
                           : Colors.black,
                     ),

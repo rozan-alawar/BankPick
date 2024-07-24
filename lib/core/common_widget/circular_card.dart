@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
+import '../../injection_container.dart';
 
 class CircularCard extends StatelessWidget {
    CircularCard({super.key,required this.widget, this.width, this.height});
@@ -26,7 +28,7 @@ class CircularCard extends StatelessWidget {
               offset: const Offset(0, 4),
             )
           ],
-          color:Provider.of<HomeProvider>(context).getTheme()==ThemeDataStyle.light? Color(0xffF4F4F4): Color(0xff1E1E2D),
+          color:sl<ServiceProvider>().getTheme()==ThemeDataStyle.light? Color(0xffF4F4F4): Color(0xff1E1E2D),
           borderRadius: BorderRadius.circular(50.r)),
       child: Center(
         child:widget,

@@ -9,15 +9,16 @@ import 'package:dakakeen/presentation/settings/settings_screen.dart';
 import 'package:dakakeen/presentation/statistic/statistics_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../core/utils/cache_helper.dart';
 import '../model/transaction_model.dart';
 import '../model/user_model.dart';
 
 class HomeProvider with ChangeNotifier {
+
   int _currentIndex = 0;
   bool _isDark = false;
-  double _spendingLimit = 8545;
   int get currentIndex => _currentIndex;
-  User? _user = User(
+  final User_Model? _user = CacheHelper.getData(key: 'user')??User_Model(
     name: 'Tanya Myroniuk',
     avatarUrl: ImageAssets.profile,
     email: 'tanya.myroniuk@gmail.com',
@@ -42,28 +43,15 @@ class HomeProvider with ChangeNotifier {
     ],
   );
 
-  ThemeData _themeDataStyle = ThemeDataStyle.light;
 
-  User? get user => _user;
-  bool get isDark => _isDark;
 
-  void setUser(User user) {
-    _user = user;
-    notifyListeners();
-  }
 
   void setIndex(int index) {
     _currentIndex = index;
     notifyListeners();
   }
 
-  // String get name => _name;
-  double get spendingLimit => _spendingLimit;
 
-  // void updateName(String newName) {
-  //   _name = newName;
-  //   notifyListeners();
-  // }
 
   void addTransaction(TransactionModel transaction) {
     // _transactions.add(transaction);
@@ -77,41 +65,4 @@ class HomeProvider with ChangeNotifier {
     const SettingsScreen()
   ];
 
-  void updateSpendingLimit(double newLimit) {
-    _spendingLimit = newLimit;
-    notifyListeners();
-  }
-
-  void addCard(
-      {required GlobalKey<FormState> formkey, required CardModel newCard}) {
-    print(formkey.currentState?.validate());
-    if (formkey.currentState?.validate() ?? false) {
-      _user?.cards.add(newCard);
-      notifyListeners();
-      sl<NavigationService>().pop();
-    }
-  }
-
-  void changeTheme({required bool isDark}) {
-    if (isDark) {
-      _isDark = isDark;
-      _themeDataStyle = ThemeDataStyle.dark;
-    } else {
-      _isDark = isDark;
-      _themeDataStyle = ThemeDataStyle.light;
-    }
-    // _isDark=isDark;
-
-    notifyListeners();
-
-    print('in provider $_isDark');
-  }
-
-  bool getThemeValue() {
-    return _isDark;
-  }
-
-  ThemeData getTheme() {
-    return _themeDataStyle;
-  }
 }

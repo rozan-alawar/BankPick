@@ -1,6 +1,6 @@
 import 'package:dakakeen/model/card_model.dart';
 
-class User {
+class User_Model {
   final String name;
   final String avatarUrl;
   final String email;
@@ -9,7 +9,7 @@ class User {
   final DateTime joinedDate;
   final List<CardModel> cards;
 
-  User({
+  User_Model({
     required this.name,
     required this.avatarUrl,
     required this.email,

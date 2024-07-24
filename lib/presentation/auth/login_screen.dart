@@ -72,7 +72,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     PrimaryTextField(
                       controller: emailController,
                       validator: (value) {
-                        loginProvider.setEmail(value!);
                         return value!.isValidEmail;
                       },
                       prefixIcon: SvgPicture.asset(
@@ -92,7 +91,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: loginProvider.isPasswordVisible,
                       controller: passwordController,
                       validator: (value) {
-                        loginProvider.setPassword(value!);
                         return value!.isValidPassword;
                       },
                       prefixIcon: SvgPicture.asset(

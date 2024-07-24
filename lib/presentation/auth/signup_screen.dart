@@ -72,7 +72,6 @@ class _LoginScreenState extends State<SignupScreen> {
                   PrimaryTextField(
                     controller: nameController,
                     validator: (value) {
-                      registerProvider.setEmail(value!);
                       return value!.isValidName;
                     },
                     prefixIcon: SvgPicture.asset(
@@ -93,7 +92,6 @@ class _LoginScreenState extends State<SignupScreen> {
                   PrimaryTextField(
                     controller: phoneController,
                     validator: (value) {
-                      registerProvider.setEmail(value!);
                       return value!.isValidName;
                     },
                     prefixIcon: SvgPicture.asset(
@@ -112,7 +110,7 @@ class _LoginScreenState extends State<SignupScreen> {
                   PrimaryTextField(
                     controller: emailController,
                     validator: (value) {
-                      registerProvider.setEmail(value!);
+
                       return value!.isValidEmail;
                     },
                     prefixIcon: SvgPicture.asset(
@@ -133,7 +131,6 @@ class _LoginScreenState extends State<SignupScreen> {
 
                     controller: passwordController,
                     validator: (value) {
-                      registerProvider.setPassword(value!);
                       return value!.isValidPassword;
                     },
                     prefixIcon: SvgPicture.asset(

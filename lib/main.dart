@@ -3,12 +3,13 @@ import 'package:dakakeen/controller/auth_provider.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/controller/intro_provider.dart';
 import 'package:dakakeen/controller/profile_provider.dart';
+import 'package:dakakeen/controller/service_provider.dart';
+import 'package:dakakeen/controller/wallet_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
 
 import 'config/routes/routes.dart';
 import 'config/theme/theme_manager.dart';
@@ -17,7 +18,6 @@ import 'core/utils/navigation.dart';
 import 'injection_container.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,8 +36,6 @@ void main() async {
 
   // Initialize cache
   await CacheHelper.init();
-
-
 
   // Set preferred device orientations and system UI overlay style.
   SystemChrome.setPreferredOrientations([
@@ -61,17 +59,23 @@ void main() async {
       fallbackLocale: const Locale('ar'),
       child: MultiProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (context) => IntroProvider(),
+          ChangeNotifierProvider.value(
+            value: sl<IntroProvider>(),
           ),
-          ChangeNotifierProvider(
-            create: (context) => AuthProvider(),
+          ChangeNotifierProvider.value(
+            value: sl<ServiceProvider>(),
           ),
-          ChangeNotifierProvider(
-            create: (context) => HomeProvider(),
+          ChangeNotifierProvider.value(
+            value: sl<AuthProvider>(),
           ),
-          ChangeNotifierProvider(
-            create: (context) => ProfileProvider(),
+          ChangeNotifierProvider.value(
+            value: sl<HomeProvider>(),
+          ),
+          ChangeNotifierProvider.value(
+            value: sl<WalletProvider>(),
+          ),
+          ChangeNotifierProvider.value(
+            value: sl<ProfileProvider>(),
           ),
         ],
         child: const MyApp(),
@@ -91,11 +95,10 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return SafeArea(
-
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: Provider.of<HomeProvider>(context)
-                .getTheme(), // Light/Default mode styles
+            theme:
+                sl<ServiceProvider>().getTheme(), // Light/Default mode styles
             darkTheme: ThemeDataStyle.dark, // Dark mode styles
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,

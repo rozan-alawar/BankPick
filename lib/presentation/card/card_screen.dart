@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../../config/routes/routes.dart';
 import '../../config/theme/assets_manager.dart';
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
@@ -58,7 +59,7 @@ class CardScreen extends StatelessWidget {
                 fontSize: 16.sp,
               ),
               20.height,
-              Provider.of<HomeProvider>(context).getTheme() ==
+              sl<ServiceProvider>().getTheme() ==
                       ThemeDataStyle.light
                   ? Container(
                       padding: EdgeInsets.symmetric(
