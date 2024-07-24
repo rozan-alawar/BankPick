@@ -15,7 +15,6 @@ import 'package:dakakeen/presentation/intro/onboarding_screen.dart';
 import 'package:dakakeen/presentation/intro/spalsh_screen.dart';
 import 'package:dakakeen/presentation/profile/edit_profile_screen.dart';
 import 'package:dakakeen/presentation/profile/message_center_screen.dart';
-import 'package:dakakeen/presentation/profile/personal_information_screen.dart';
 import 'package:dakakeen/presentation/profile/profile_screen.dart';
 import 'package:dakakeen/presentation/settings/contact_us_screen.dart';
 import 'package:dakakeen/presentation/settings/language_screen.dart';
@@ -88,9 +87,6 @@ class AppRoutes {
 
       case Routes.notification:
         return _materialRoute(const NotificationScreen());
-
-      case Routes.personal_information:
-        return _materialRoute(const PersonalInformationScreen());
 
       case Routes.contact_us:
         return _materialRoute(const ContactUsScreen());
