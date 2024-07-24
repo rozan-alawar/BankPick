@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/theme/assets_manager.dart';
 import '../../config/theme/color_manager.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/date_to_String.dart';
@@ -34,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
             child: CircularCard(
               widget: SvgPicture.asset(
                 IconAssets.edit_profile,
-                color: homeProvider.isDark
+                color: sl<ServiceProvider>().isDark
                     ? Colors.white
                     : Colors.black,              ),
               width: 45.w,

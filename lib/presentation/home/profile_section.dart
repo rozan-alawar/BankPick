@@ -12,6 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 
 class BuildProfileSection extends StatelessWidget {
@@ -47,7 +48,7 @@ class BuildProfileSection extends StatelessWidget {
               child: CircularCard(
                 width: 50,
                 height: 50,
-                widget: SvgPicture.asset(IconAssets.search,color:homeProvider.isDark? Colors.white : Colors.black,
+                widget: SvgPicture.asset(IconAssets.search,color:sl<ServiceProvider>().isDark? Colors.white : Colors.black,
                   width: 30,height: 30,
                 ),
               ),

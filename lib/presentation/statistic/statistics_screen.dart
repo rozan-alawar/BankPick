@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../config/theme/color_manager.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
@@ -28,7 +29,7 @@ class StatisticsScreen extends StatelessWidget {
             sl<NavigationService>().navigateTo(Routes.notification),
         child: CircularCard(
           widget: SvgPicture.asset(
-            IconAssets.notification,color:homeProvider.isDark??false?Colors.white:Colors.black,
+            IconAssets.notification,color:sl<ServiceProvider>().isDark??false?Colors.white:Colors.black,
           ),
           width: 45,
           height: 45,

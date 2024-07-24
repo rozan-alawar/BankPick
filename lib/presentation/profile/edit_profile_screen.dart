@@ -37,7 +37,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   void initState() {
     super.initState();
-User? user = HomeProvider().user;
+User_Model? user = HomeProvider().user;
     formKey = GlobalKey<FormState>();
     nameController = TextEditingController(text: user?.name??"Rozan AbuAlawar");
     phoneController = TextEditingController(text: user?.phoneNumber??"+972592417852");

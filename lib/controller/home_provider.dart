@@ -18,7 +18,7 @@ class HomeProvider with ChangeNotifier {
   int _currentIndex = 0;
   bool _isDark = false;
   int get currentIndex => _currentIndex;
-  final User_Model? _user = CacheHelper.getData(key: 'user')??User_Model(
+   User_Model? user = CacheHelper.getData(key: 'user')??User_Model(
     name: 'Tanya Myroniuk',
     avatarUrl: ImageAssets.profile,
     email: 'tanya.myroniuk@gmail.com',

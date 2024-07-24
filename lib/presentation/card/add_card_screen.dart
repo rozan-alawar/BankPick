@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/controller/wallet_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/extensions/validation.dart';
@@ -175,7 +176,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     60.height,
                     PrimaryButton(
                       color: ColorManager.primary,
-                      onPressed: () => homeProvider.addCard(
+                      onPressed: () => sl<WalletProvider>().addCard(
                           formkey: formKey!,
                           newCard: CardModel(
                               cardNumber:

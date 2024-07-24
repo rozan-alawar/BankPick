@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
@@ -102,11 +103,11 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25.r),
                     border: Border.all(
-                      color: homeProvider.isDark
+                      color: sl<ServiceProvider>().isDark
                           ? Colors.black.withOpacity(0.3)
                           : Colors.black.withOpacity(0.4),
                     ),
-                    color: homeProvider.isDark
+                    color: sl<ServiceProvider>().isDark
                         ? Colors.black.withOpacity(0.3)
                         : Colors.white.withOpacity(0.8),
                   ),

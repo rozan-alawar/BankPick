@@ -12,6 +12,7 @@ import '../../config/routes/routes.dart';
 import '../../config/theme/assets_manager.dart';
 import '../../controller/home_provider.dart';
 import '../../controller/service_provider.dart';
+import '../../controller/wallet_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
@@ -23,7 +24,7 @@ class CardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
+    final walletProvider = sl<WalletProvider>();
     return Scaffold(
       appBar: PrimaryAppBar(
         title: 'My Card',
@@ -46,11 +47,11 @@ class CardScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BuildCardSection(
-                cardNumber: homeProvider.user!.cards[0].cardNumber,
-                cardHolderName: homeProvider.user!.cards[0].cardHolder,
-                expiryDate: homeProvider.user!.cards[0].expiryDate,
-                cvv: homeProvider.user!.cards[0].cvv,
-                cardType: homeProvider.user!.cards[0].cardType,
+                cardNumber: walletProvider.user!.cards[0].cardNumber,
+                cardHolderName: walletProvider.user!.cards[0].cardHolder,
+                expiryDate: walletProvider.user!.cards[0].expiryDate,
+                cvv: walletProvider.user!.cards[0].cvv,
+                cardType: walletProvider.user!.cards[0].cardType,
               ),
               30.height,
               PrimaryText(
@@ -79,20 +80,20 @@ class CardScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           PrimaryText(
-                            'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                            'Amount: \$${ sl<WalletProvider>().spendingLimit.toStringAsFixed(2)}',
                             fontSize: 14.sp,
                             color: Colors.black,
                           ),
                           Slider(
                             activeColor: ColorManager.primary,
-                            value: homeProvider.spendingLimit,
+                            value:  walletProvider.spendingLimit,
                             min: 0,
                             max: 10000,
                             divisions: 100,
                             label:
-                                homeProvider.spendingLimit.round().toString(),
+                            walletProvider.spendingLimit.round().toString(),
                             onChanged: (value) {
-                              homeProvider.updateSpendingLimit(value);
+                              walletProvider.updateSpendingLimit(value);
                             },
                           ),
                           Row(
@@ -136,20 +137,20 @@ class CardScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           PrimaryText(
-                            'Amount: \$${homeProvider.spendingLimit.toStringAsFixed(2)}',
+                            'Amount: \$${walletProvider.spendingLimit.toStringAsFixed(2)}',
                             fontSize: 14.sp,
                             color: Colors.white,
                           ),
                           Slider(
                             activeColor: Colors.white,
-                            value: homeProvider.spendingLimit,
+                            value: walletProvider.spendingLimit,
                             min: 0,
                             max: 10000,
                             divisions: 100,
                             label:
-                                homeProvider.spendingLimit.round().toString(),
+                            walletProvider.spendingLimit.round().toString(),
                             onChanged: (value) {
-                              homeProvider.updateSpendingLimit(value);
+                              walletProvider.updateSpendingLimit(value);
                             },
                           ),
                           Row(

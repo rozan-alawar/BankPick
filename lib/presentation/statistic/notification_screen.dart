@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../../controller/service_provider.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
+import '../../injection_container.dart';
 import '../../model/message_model.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -30,7 +32,7 @@ class NotificationScreen extends StatelessWidget {
             margin: EdgeInsetsDirectional.symmetric(horizontal: 8.w),
             padding: EdgeInsetsDirectional.symmetric(vertical: 8.w),
             decoration: BoxDecoration(
-                color: (homeProvider.isDark ?? false)
+                color: (sl<ServiceProvider>().isDark ?? false)
                     ? Colors.black
                     : Colors.white,
                 boxShadow: [

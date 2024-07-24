@@ -31,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
           GestureDetector(
             onTap: () =>     sl<AuthProvider>().logout(),
             child: CircularCard(
-              widget:  Icon(Icons.logout_rounded,color:homeProvider.isDark??false?Colors.white:Colors.black ),
+              widget:  Icon(Icons.logout_rounded,color:sl<ServiceProvider>().isDark??false?Colors.white:Colors.black ),
               width: 45,
               height: 45,
             ),

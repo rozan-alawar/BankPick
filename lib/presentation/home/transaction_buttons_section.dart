@@ -11,6 +11,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+import '../../controller/service_provider.dart';
+import '../../injection_container.dart';
 
 class TransactionButtons extends StatelessWidget {
   const TransactionButtons({super.key});
@@ -48,7 +50,7 @@ class TransactionButtons extends StatelessWidget {
                 height: 60,
                 widget: Center(
                     child: SvgPicture.asset(
-                      color:homeProvider.isDark??false?Colors.white:Colors.black,
+                      color:sl<ServiceProvider>().isDark??false?Colors.white:Colors.black,
                       transactionnButtonIconsDark[index]   ,
 
                 )),
