@@ -3,7 +3,7 @@ class Routes {
 
   static const String splash = '/splash'; // Route name for the splash screen
   static const String home = '/home'; // Route name for the home screen
-  static const String login = '/login';
+  static const String login_register = '/login';
   static const String auth = '/auth';
   static const String change_password = '/change_password';
   static const String signup = '/signup';

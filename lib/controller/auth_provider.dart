@@ -132,6 +132,7 @@ class AuthProvider extends ChangeNotifier {
 
   void togglePages() {
     showLoginScreen = !showLoginScreen;
+    print(showLoginScreen);
     notifyListeners();
   }
 

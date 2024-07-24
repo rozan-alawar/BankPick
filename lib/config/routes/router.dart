@@ -35,7 +35,7 @@ class AppRoutes {
       case Routes.onboarding:
         return _materialRoute(const OnboardingScreen());
 
-      case Routes.login:
+      case Routes.login_register:
         return _materialRoute(const LoginRegisterScreen());
 
       // case Routes.signup:

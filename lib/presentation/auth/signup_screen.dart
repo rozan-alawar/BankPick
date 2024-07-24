@@ -156,7 +156,7 @@ class _LoginScreenState extends State<SignupScreen> {
                       height: 56.h,
                       onPressed: () => registerProvider.signup(formKey:formKey!,email:emailController!.text,password: passwordController!.text,fullName: nameController!.text,phoneNumber: phoneController!.text),
                       isDisable: registerProvider.isLoading,
-                      child:  PrimaryText(
+                      child:  const PrimaryText(
                         'Sign Up',
                         color: ColorManager.white,
                         fontWeight: FontWeight.bold,
@@ -167,13 +167,13 @@ class _LoginScreenState extends State<SignupScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      PrimaryText(
+                      const PrimaryText(
                         'I’m a new user.',
                         color: ColorManager.secondaryText,
                       ),
                       GestureDetector(
                         onTap: () =>   sl<AuthProvider>().togglePages(),
-                        child: PrimaryText(
+                        child: const PrimaryText(
                           ' Sign In',
                           color: ColorManager.primary,
                           fontWeight: FontWeight.w500,
