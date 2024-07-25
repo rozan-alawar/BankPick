@@ -61,7 +61,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
                 child: Row(
                   children: [
                     Expanded(
@@ -91,7 +91,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     8.width,
                     GestureDetector(
                       onTap: () => profileProvider.sendMessage(
-                          controller: messageController!),
+                          controller: messageController!, withOtherUser: false),
                       child: const Icon(
                         Icons.send_outlined,
                         color: ColorManager.primary,

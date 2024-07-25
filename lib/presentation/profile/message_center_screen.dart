@@ -87,10 +87,12 @@ class _MessageDetailScreenState extends State<MessageDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
+    bool isSentByUser =
+        widget.message.sender.name == profileProvider.user!.name;
 
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Message Details',
+      appBar: PrimaryAppBar(
+        title: widget.message.sender.name,
         withLeading: true,
       ),
       body: GestureDetector(
@@ -98,17 +100,53 @@ class _MessageDetailScreenState extends State<MessageDetailScreen> {
           FocusScope.of(context).unfocus();
         },
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding:  EdgeInsets.symmetric(horizontal: 8.w),
           child: Form(
             key: formKey,
             child: Column(
               children: [
 
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width/1.3,
-                      child: MessageBubbleWidget(message:widget.message)),
-
-const Spacer(),
+                Align(
+                  alignment: isSentByUser
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: Container(
+                    margin: EdgeInsetsDirectional.only(
+                        end: isSentByUser?10.w:70.w,
+                        top: 5.h,
+                        start: isSentByUser ? 70.w : 10,
+                        bottom: 5.h),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 15.0),
+                    decoration: BoxDecoration(
+                      color: isSentByUser ? Colors.blue : Colors.grey[300],
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: isSentByUser
+                          ? CrossAxisAlignment.end
+                          : CrossAxisAlignment.start,
+                      children: [
+                        PrimaryText(
+                          widget.message.body,
+                          maxLines: 8,
+                          fontSize: 14.sp,
+                          color: isSentByUser ? Colors.white : Colors.black,
+                        ),
+                        5.height,
+                        Text(
+                          "${widget.message.date.hour}:${widget.message.date.minute}",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color:
+                                isSentByUser ? Colors.white60 : Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const Spacer(),
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
@@ -141,7 +179,7 @@ const Spacer(),
                       8.width,
                       GestureDetector(
                         onTap: () => profileProvider.sendMessage(
-                            controller: messageController!),
+                            controller: messageController!,withOtherUser: true,),
                         child: const Icon(
                           Icons.send_outlined,
                           color: ColorManager.primary,

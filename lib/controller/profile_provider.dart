@@ -52,6 +52,8 @@ class ProfileProvider with ChangeNotifier {
     }
   }
 
+  List<Message> userMessages = [...Message.messages];
+
   List<Message> contactUsMessages = [
     Message(
       sender: User_Model(
@@ -96,17 +98,25 @@ class ProfileProvider with ChangeNotifier {
     ),
   ];
 
-  void sendMessage({
-    required TextEditingController controller,
-  }) {
+  void sendMessage(
+      {required TextEditingController controller,
+      required bool withOtherUser}) {
     if (controller.text.trim().isNotEmpty) {
-      contactUsMessages.add(
-        Message(
-          sender: user!,
-          body: controller.text.trim(),
-          date: DateTime.now(),
-        ),
-      );
+      withOtherUser
+          ? userMessages.add(
+              Message(
+                sender: user!,
+                body: controller.text.trim(),
+                date: DateTime.now(),
+              ),
+            )
+          : contactUsMessages.add(
+              Message(
+                sender: user!,
+                body: controller.text.trim(),
+                date: DateTime.now(),
+              ),
+            );
       notifyListeners();
       controller.clear();
     }
