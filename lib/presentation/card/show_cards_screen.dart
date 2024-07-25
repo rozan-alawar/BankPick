@@ -23,7 +23,7 @@ class CardsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'All Cards',withLeading: true,),
+      appBar:  PrimaryAppBar(title: 'All Cards',withLeading: true,),
 
       body: SingleChildScrollView(
         child: Padding(

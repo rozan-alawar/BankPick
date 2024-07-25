@@ -1,6 +1,8 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,7 +53,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'Language',withLeading: true,),
+      appBar:  PrimaryAppBar(title: LocaleKeys.language.tr(),withLeading: true,),
 
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
@@ -62,7 +64,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             TextField(
               onChanged: filterLanguages,
               decoration: InputDecoration(
-                hintText: 'Search Language',
+                hintText:LocaleKeys.search_language.tr(),
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),

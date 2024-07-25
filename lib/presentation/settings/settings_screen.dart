@@ -22,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final serviceProvider = Provider.of<ServiceProvider>(context);
+    final serviceProvider = sl<ServiceProvider>();
 
     return Scaffold(
       appBar: PrimaryAppBar(
@@ -32,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
           GestureDetector(
             onTap: () =>     sl<AuthProvider>().logout(),
             child: CircularCard(
-              widget:  Icon(Icons.logout_rounded,color:sl<ServiceProvider>().isDark??false?Colors.white:Colors.black ),
+              widget:  Icon(Icons.logout_rounded,color:serviceProvider.isDark??false?Colors.white:Colors.black ),
               width: 45,
               height: 45,
             ),
@@ -186,12 +186,11 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   Switch(
-                    value: serviceProvider.isDark,
+                    value: Provider.of<ServiceProvider>(context).getThemeValue(),
                     onChanged: (value) {
-
-                      print('in setting $value');
-                      serviceProvider.changeTheme(isDark: value);
-                      CacheHelper.saveData(key: 'isDark',value: serviceProvider.isDark);
+                      // print(                      CacheHelper.getData(key: 'isDark'));
+                      CacheHelper.saveData(key: 'isDark',value: value);
+                      Provider.of<ServiceProvider>(context,listen: false).changeTheme(isDark: value);
                     },
                   )
                 ],

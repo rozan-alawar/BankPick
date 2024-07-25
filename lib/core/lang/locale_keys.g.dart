@@ -1,0 +1,66 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+abstract class  LocaleKeys {
+  static const bank_pick = 'bank_pick';
+  static const fastest_payment_in_the_world = 'fastest_payment_in_the_world';
+  static const most_secure_platform_for_customer = 'most_secure_platform_for_customer';
+  static const paying_for_everything_is_easy_and_convenient = 'paying_for_everything_is_easy_and_convenient';
+  static const integrate_multiple_payment_methods_to_help_you_up_the_process_quickly = 'integrate_multiple_payment_methods_to_help_you_up_the_process_quickly';
+  static const built_in_fingerprint_face_recognition_and_more_keeping_you_completely_safe = 'built_in_fingerprint_face_recognition_and_more_keeping_you_completely_safe';
+  static const get_started = 'get_started';
+  static const next = 'next';
+  static const sign_in = 'sign_in';
+  static const email_address = 'email_address';
+  static const password = 'password';
+  static const i_am_a_new_user = 'i_am_a_new_user';
+  static const sign_up = 'sign_up';
+  static const full_name = 'full_name';
+  static const phone_number = 'phone_number';
+  static const transaction = 'transaction';
+  static const see_all = 'see_all';
+  static const monthly_spending_limit = 'monthly_spending_limit';
+  static const amount = 'amount';
+  static const request = 'request';
+  static const send = 'send';
+  static const my_card = 'my_card';
+  static const current_balance = 'current_balance';
+  static const general = 'general';
+  static const language = 'language';
+  static const my_profile = 'my_profile';
+  static const contact_us = 'contact_us';
+  static const security = 'security';
+  static const change_password = 'change_password';
+  static const privacy_policy = 'privacy_policy';
+  static const choose_what_data_you_share_with_us = 'choose_what_data_you_share_with_us';
+  static const biometric = 'biometric';
+  static const dark_mode = 'dark_mode';
+  static const settings = 'settings';
+  static const search_language = 'search_language';
+  static const profile = 'profile';
+  static const name = 'name';
+  static const personal_information = 'personal_information';
+  static const payment_preferences = 'payment_preferences';
+  static const bank_and_cards = 'bank_and_cards';
+  static const notifications = 'notifications';
+  static const messages_center = 'messages_center';
+  static const address = 'address';
+  static const save = 'save';
+  static const joined = 'joined';
+  static const transaction_history = 'transaction_history';
+  static const search = 'search';
+  static const send_money = 'send_money';
+  static const send_to = 'send_to';
+  static const add = 'add';
+  static const enter_your_amount = 'enter_your_amount';
+  static const change_currency = 'change_currency';
+  static const request_money = 'request_money';
+  static const payer_name = 'payer_name';
+  static const description = 'description';
+  static const term_and_condition = 'term_and_condition';
+  static const current_password = 'current_password';
+  static const new_password = 'new_password';
+  static const confirm_new_password = 'confirm_new_password';
+  static const message_center = 'message_center';
+  static const message_details = 'message_details';
+
+}

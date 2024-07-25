@@ -51,7 +51,7 @@ void main() async {
   );
   runApp(
     EasyLocalization(
-      path: 'assets/l10n',
+      path: 'assets/translations',
       supportedLocales: const [
         Locale('ar'),
         Locale('en'),
@@ -98,7 +98,8 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme:
-                Provider.of<ServiceProvider>(context).getTheme(), // Light/Default mode styles
+                // sl<ServiceProvider>().getTheme(), // Light/Default mode styles
+            Provider.of<ServiceProvider>(context).getTheme(),
             darkTheme: ThemeDataStyle.dark, // Dark mode styles
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
