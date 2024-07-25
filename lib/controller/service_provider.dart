@@ -4,7 +4,6 @@ import '../config/theme/theme_manager.dart';
 
 class ServiceProvider with ChangeNotifier {
   bool isDark = false;
-
   ThemeData _themeDataStyle = ThemeDataStyle.light;
 
   ThemeData getTheme() {
@@ -12,6 +11,7 @@ class ServiceProvider with ChangeNotifier {
   }
 
   void changeTheme({required bool isDark}) {
+    print(isDark);
     if (isDark) {
       _themeDataStyle = ThemeDataStyle.dark;
     } else {

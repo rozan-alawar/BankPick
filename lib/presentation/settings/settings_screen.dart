@@ -187,6 +187,7 @@ class SettingsScreen extends StatelessWidget {
                   Switch(
                     value: sl<ServiceProvider>().isDark,
                     onChanged: (value) {
+
                       print('in setting $value');
                       sl<ServiceProvider>().changeTheme(isDark: value);
                     },

@@ -98,11 +98,11 @@ class MyApp extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme:
-                sl<ServiceProvider>().getTheme(), // Light/Default mode styles
+                Provider.of<ServiceProvider>(context).getTheme(), // Light/Default mode styles
             darkTheme: ThemeDataStyle.dark, // Dark mode styles
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.splash,
+            initialRoute: Routes.home,
             onGenerateRoute: AppRoutes.onGenerateRoutes,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
