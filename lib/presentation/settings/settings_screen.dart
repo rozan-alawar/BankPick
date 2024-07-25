@@ -13,6 +13,7 @@ import '../../controller/home_provider.dart';
 import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
+import '../../core/utils/cache_helper.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
@@ -190,6 +191,7 @@ class SettingsScreen extends StatelessWidget {
 
                       print('in setting $value');
                       serviceProvider.changeTheme(isDark: value);
+                      CacheHelper.saveData(key: 'isDark',value: serviceProvider.isDark);
                     },
                   )
                 ],

@@ -113,10 +113,10 @@ class PrimaryTextField extends StatelessWidget {
               // color: ColorManager.primary,
               fontFamily: 'Almarai',
               fontSize: 12.sp),
-          focusedErrorBorder: UnderlineInputBorder(
+          focusedErrorBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
           ),
-          errorBorder: UnderlineInputBorder(
+          errorBorder: const UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.red),
           ),
         ),

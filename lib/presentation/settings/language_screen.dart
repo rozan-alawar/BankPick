@@ -69,7 +69,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Colors.grey[200],
+                fillColor: Colors.grey.withOpacity(0.3),
               ),
             ),
           20.height,

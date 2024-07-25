@@ -1,4 +1,5 @@
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/core/common_widget/primary_appbar.dart';
 import 'package:dakakeen/model/transaction_model.dart';
 import 'package:dakakeen/presentation/home/transaction_history_screen.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
@@ -45,38 +46,16 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PrimaryAppBar(title: "Search",withLeading: true,),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            20.height,
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () => sl<NavigationService>().pop(),
-                  child: CircularCard(
-                    widget: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: Colors.black,
-                    ),
-                    width: 45.w,
-                    height: 45.h,
-                  ),
-                ),
-                80.width,
-                Center(
-                  child: PrimaryText(
-                    'Search',
-                    fontSize: 18.sp,
-                  ),
-                ),
-              ],
-            ),
-            30.height,
             TextField(
               onChanged: filterTransaction,
               decoration: InputDecoration(
+
                 hintText: ' Search ',
                 prefixIcon: SvgPicture.asset(IconAssets.search,
                     color: ColorManager.secondaryText),
@@ -85,7 +64,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Colors.grey[200],
+                  fillColor: Colors.grey.withOpacity(0.3),
+
               ),
             ),
             30.height,
