@@ -21,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
+    final serviceProvider = Provider.of<ServiceProvider>(context);
 
     return Scaffold(
       appBar: PrimaryAppBar(
@@ -185,11 +185,11 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   Switch(
-                    value: sl<ServiceProvider>().isDark,
+                    value: serviceProvider.isDark,
                     onChanged: (value) {
 
                       print('in setting $value');
-                      sl<ServiceProvider>().changeTheme(isDark: value);
+                      serviceProvider.changeTheme(isDark: value);
                     },
                   )
                 ],
