@@ -108,6 +108,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     'Description',
                     color: ColorManager.secondaryText,
                   ),
+                  4.height,
                   PrimaryTextField(
                     controller: descriptionController,
                     validator: (value) {},

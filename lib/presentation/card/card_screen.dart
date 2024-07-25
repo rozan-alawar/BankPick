@@ -93,7 +93,7 @@ class CardScreen extends StatelessWidget {
                             label:
                             walletProvider.spendingLimit.round().toString(),
                             onChanged: (value) {
-                              walletProvider.updateSpendingLimit(value);
+                              // walletProvider.updateSpendingLimit(value);
                             },
                           ),
                           Row(
@@ -150,7 +150,7 @@ class CardScreen extends StatelessWidget {
                             label:
                             walletProvider.spendingLimit.round().toString(),
                             onChanged: (value) {
-                              walletProvider.updateSpendingLimit(value);
+                              // walletProvider.updateSpendingLimit(value);
                             },
                           ),
                           Row(
