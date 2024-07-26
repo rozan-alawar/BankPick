@@ -49,7 +49,7 @@ class MainScreen extends StatelessWidget {
                       ? ColorManager.primary
                       : const Color(0xff8B8B94),
                 ),
-                label: 'Home',
+                label: LocaleKeys.home.tr(),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
@@ -71,7 +71,7 @@ class MainScreen extends StatelessWidget {
                       ? ColorManager.primary
                       : const Color(0xff8B8B94),
                 ),
-                label: 'Statistics',
+                label: LocaleKeys.statistics.tr(),
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(

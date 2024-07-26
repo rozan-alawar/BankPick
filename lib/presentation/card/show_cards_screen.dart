@@ -4,7 +4,9 @@ import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,7 +25,7 @@ class CardsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar:  PrimaryAppBar(title: 'All Cards',withLeading: true,),
+      appBar:  PrimaryAppBar(title:LocaleKeys.my_card.tr(),withLeading: true,),
 
       body: SingleChildScrollView(
         child: Padding(
@@ -50,7 +52,7 @@ class CardsScreen extends StatelessWidget {
                 onPressed: () =>
                     sl<NavigationService>().navigateTo(Routes.add_card),
                 child:  PrimaryText(
-                  'Add Card +',
+                  '${LocaleKeys.add_card.tr()} +',
                   fontWeight: FontWeight.w600,
                   fontSize: 16.sp,
                   color: Colors.white,

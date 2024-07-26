@@ -6,8 +6,10 @@ import 'package:dakakeen/controller/wallet_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/extensions/validation.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/model/card_model.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +60,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
       },
       child: Scaffold(
         extendBody: true,
-        appBar: const PrimaryAppBar(title: 'Add New Card',withLeading: true,),
+        appBar:  PrimaryAppBar(title:LocaleKeys.add_card.tr(),withLeading: true,),
 
         body: Form(
           key: formKey,
@@ -81,8 +83,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       cardType: homeProvider.user!.cards[0].cardType,
                     ),
                     30.height,
-                    const PrimaryText(
-                      'Cardholder Name',
+                     PrimaryText(
+                      LocaleKeys.cardholder_name.tr(),
                       color: ColorManager.secondaryText,
                       fontWeight: FontWeight.w500,
                     ),
@@ -107,8 +109,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const PrimaryText(
-                                'Expiry Date',
+                               PrimaryText(
+                                LocaleKeys.expiry_date.tr(),
                                 color: ColorManager.secondaryText,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -148,8 +150,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       ],
                     ),
                     10.height,
-                    const PrimaryText(
-                      'Card Number',
+                     PrimaryText(
+                      LocaleKeys.card_number.tr(),
                       color: ColorManager.secondaryText,
                       fontWeight: FontWeight.w500,
                     ),
@@ -186,7 +188,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                               cvv: cvvController!.text,
                               cardType: 'Mastercard')),
                       child:  PrimaryText(
-                        'Add Card ',
+                        LocaleKeys.add_card.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 16.sp,
                         color: Colors.white,

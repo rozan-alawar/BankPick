@@ -1,5 +1,7 @@
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/model/reciver_model.dart';
 import 'package:dakakeen/presentation/card/money_amount_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -48,8 +50,8 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Send Money',
+      appBar:  PrimaryAppBar(
+        title:LocaleKeys.send_money.tr(),
         withLeading: true,
       ),
       body: Form(
@@ -94,8 +96,11 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   ),
                 ),
                 30.height,
+
+
+
                 Container(
-                  height: 160.h,
+                  height: 180.h,
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(horizontal: 20.w),
                   padding:
@@ -114,13 +119,14 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const PrimaryText(
-                        'Send to',
+                      PrimaryText(
+                        LocaleKeys.send_to.tr(),
                         fontWeight: FontWeight.w500,
                       ),
                       12.height,
                       Expanded(
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               children: [
@@ -144,12 +150,12 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                                 ),
                                 6.height,
                                 PrimaryText(
-                                  'Add',
+                                  LocaleKeys.add.tr(),
                                   fontSize: 13.sp,
                                 ),
                               ],
                             ),
-                            12.width,
+                            // 12.width,
                             Expanded(
                               child: ListView.separated(
                                 scrollDirection: Axis.horizontal,
@@ -189,6 +195,10 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                     ],
                   ),
                 ),
+
+
+
+
                 20.height,
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),                  child: MoneyAmountSection(
@@ -205,7 +215,7 @@ class _SendMoneyScreenState extends State<SendMoneyScreen> {
                     color: ColorManager.primary,
                     onPressed: () => sl<NavigationService>().pop(),
                     child: PrimaryText(
-                      'Send Money',
+                      LocaleKeys.send_money.tr(),
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
                       color: Colors.white,

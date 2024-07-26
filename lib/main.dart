@@ -51,12 +51,13 @@ void main() async {
   );
   runApp(
     EasyLocalization(
-      path: 'assets/translations',
+      path: 'assets/lang',
       supportedLocales: const [
         Locale('ar'),
         Locale('en'),
       ],
-      fallbackLocale: const Locale('ar'),
+      // startLocale: const Locale('ar'),
+      fallbackLocale: const Locale('en'),
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider.value(

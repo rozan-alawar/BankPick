@@ -9,7 +9,8 @@ class AddNewReciver extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const Scaffold(
       appBar:  PrimaryAppBar(
-        title: 'Add New Reciver',
+        // title: LocaleKeys.notifications.tr()'Add New Reciver',
+        title:'Add New Reciver',
         withLeading: true,
       ),
     );

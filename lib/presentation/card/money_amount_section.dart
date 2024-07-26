@@ -1,4 +1,6 @@
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/model/reciver_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
@@ -49,13 +51,13 @@ class MoneyAmountSection extends StatelessWidget {
           Row(
             children: [
               PrimaryText(
-                'Enter Your Amount',
+                LocaleKeys.enter_your_amount.tr(),
                 color: ColorManager.secondaryText,
                 fontSize: 12.sp,
               ),
               Spacer(),
               PrimaryText(
-                'Change Currency',
+                LocaleKeys.change_currency.tr(),
                 color: Colors.red,
                 fontSize: 12.sp,
               ),

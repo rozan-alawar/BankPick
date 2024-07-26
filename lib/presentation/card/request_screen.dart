@@ -1,4 +1,5 @@
-import 'package:dakakeen/controller/wallet_provider.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
@@ -15,6 +16,7 @@ import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
+import '../../controller/wallet_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
@@ -54,10 +56,8 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     final walletProvider = Provider.of<WalletProvider>(context);
 
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Request Money',
-        withLeading: true,
-      ),
+      appBar:  PrimaryAppBar(title: LocaleKeys.request_money.tr(),withLeading: true,),
+
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () {
@@ -70,8 +70,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const PrimaryText(
-                    'Payer Name',
+
+                   PrimaryText(
+                    LocaleKeys.payer_name.tr(),
                     color: ColorManager.secondaryText,
                   ),
                   PrimaryTextField(
@@ -86,9 +87,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  12.height,
-                  const PrimaryText(
-                    'Email Address',
+                  // 20.height,
+                   PrimaryText(
+                    LocaleKeys.email_address.tr(),
                     color: ColorManager.secondaryText,
                   ),
                   PrimaryTextField(
@@ -103,13 +104,12 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       fit: BoxFit.fitWidth,
                     ),
                   ),
-                  12.height,
                   // 20.height,
-                  const PrimaryText(
-                    'Description',
+                   PrimaryText(
+                     LocaleKeys.description.tr(),
                     color: ColorManager.secondaryText,
                   ),
-                  8.height,
+                  4.height,
                   PrimaryTextField(
                     controller: descriptionController,
                     validator: (value) {},
@@ -140,8 +140,8 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       currency: currency,
                       date: dueDate,
                     ),
-                    child: PrimaryText(
-                      'Request Money',
+                    child:  PrimaryText(
+                      LocaleKeys.request_money.tr()  ,
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
                       color: Colors.white,

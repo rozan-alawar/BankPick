@@ -1,7 +1,9 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -24,7 +26,7 @@ class StatisticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider =Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar:  PrimaryAppBar(title: 'Statistics',withLeading: false,action: [ GestureDetector(
+      appBar:  PrimaryAppBar(title: LocaleKeys.statistics.tr(),withLeading: false,action: [ GestureDetector(
         onTap: () =>
             sl<NavigationService>().navigateTo(Routes.notification),
         child: CircularCard(
@@ -47,7 +49,7 @@ class StatisticsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     PrimaryText(
-                      'Current Balance',
+                      LocaleKeys.current_balance.tr(),
                       fontSize: 18.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -119,16 +121,16 @@ interval: 1                    ),
                 ),
               ),
               30.height,
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   PrimaryText(
-                    'Transaction',
+                    LocaleKeys.transaction.tr(),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   PrimaryText(
-                    'See All',
+                    LocaleKeys.see_all.tr(),
                     color: ColorManager.primary,
                   ),
                 ],

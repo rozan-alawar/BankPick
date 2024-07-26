@@ -1,4 +1,6 @@
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,8 +20,8 @@ class TermAndConditionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Term & Condition',
+      appBar: PrimaryAppBar(
+        title:LocaleKeys.term_and_condition.tr(),
         withLeading: true,
       ),
       body: Padding(

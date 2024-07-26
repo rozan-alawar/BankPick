@@ -3,6 +3,8 @@ import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/controller/auth_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: PrimaryAppBar(
-        title: 'Settings',
+        title: LocaleKeys.settings.tr(),
         withLeading: false,
         action: [
           GestureDetector(
@@ -45,8 +47,8 @@ class SettingsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const PrimaryText(
-                'General',
+               PrimaryText(
+                 LocaleKeys.general.tr(),
                 color: ColorManager.secondaryText,
               ),
               30.height,
@@ -56,8 +58,7 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     PrimaryText(
-                      'Language ',
-                      fontSize: 16.sp,
+                      LocaleKeys.language.tr(),                      fontSize: 16.sp,
                     ),
                     const Spacer(),
                     const PrimaryText(
@@ -80,7 +81,7 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     PrimaryText(
-                      'My Profile ',
+                      LocaleKeys.my_profile.tr(),
                       fontSize: 16.sp,
                     ),
                     const Spacer(),
@@ -100,7 +101,7 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     PrimaryText(
-                      'Contact Us ',
+                      LocaleKeys.contact_us.tr(),
                       fontSize: 16.sp,
                     ),
                     const Spacer(),
@@ -114,8 +115,8 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               50.height,
-              const PrimaryText(
-                'Security',
+               PrimaryText(
+                LocaleKeys.security.tr(),
                 color: ColorManager.secondaryText,
               ),
               30.height,
@@ -125,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     PrimaryText(
-                      'Change Password ',
+                      LocaleKeys.change_password.tr(),
                       fontSize: 16.sp,
                     ),
                     const Spacer(),
@@ -145,7 +146,7 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     PrimaryText(
-                      'Privacy Policy ',
+                      LocaleKeys.privacy_policy.tr(),
                       fontSize: 16.sp,
                     ),
                     const Spacer(),
@@ -159,15 +160,15 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               50.height,
-              const PrimaryText(
-                'Choose what data you share with us ',
+               PrimaryText(
+                LocaleKeys.choose_what_data_you_share_with_us.tr(),
                 color: ColorManager.secondaryText,
               ),
               30.height,
               Row(
                 children: [
                   PrimaryText(
-                    'Biometric  ',
+                    LocaleKeys.biometric.tr(),
                     fontSize: 16.sp,
                   ),
                   const Spacer(),
@@ -181,7 +182,7 @@ class SettingsScreen extends StatelessWidget {
               Row(
                 children: [
                   PrimaryText(
-                    'Dark Mode',
+                    LocaleKeys.dark_mode.tr(),
                     fontSize: 16.sp,
                   ),
                   const Spacer(),
