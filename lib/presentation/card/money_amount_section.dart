@@ -80,6 +80,7 @@ class MoneyAmountSection extends StatelessWidget {
                     child: PrimaryTextField(
                       keyboardType: TextInputType.number,
                       hintText: '2200.00',
+
                       hintStyle: TextStyle(
                         fontSize: 24.sp,
                         fontWeight: FontWeight.w700,

@@ -1,3 +1,4 @@
+import 'package:dakakeen/controller/wallet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
@@ -33,10 +34,9 @@ TextEditingController? nameController;
 TextEditingController? descriptionController;
 TextEditingController? emailController;
 GlobalKey<FormState>? formKey;
-TextEditingController? currencyController;
-
-
-
+TextEditingController? amountController;
+DateTime dueDate = DateTime.now();
+String currency = "USD";
 
 class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
   @override
@@ -46,17 +46,18 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     nameController = TextEditingController();
     descriptionController = TextEditingController();
     emailController = TextEditingController();
-    currencyController = TextEditingController();
-
+    amountController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider =Provider.of<HomeProvider>(context);
+    final walletProvider = Provider.of<WalletProvider>(context);
 
     return Scaffold(
-      appBar: const PrimaryAppBar(title: 'Request Money',withLeading: true,),
-
+      appBar: const PrimaryAppBar(
+        title: 'Request Money',
+        withLeading: true,
+      ),
       body: SingleChildScrollView(
         child: GestureDetector(
           onTap: () {
@@ -69,7 +70,6 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   const PrimaryText(
                     'Payer Name',
                     color: ColorManager.secondaryText,
@@ -116,17 +116,30 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     multiLines: true,
                   ),
                   MoneyAmountSection(
-                    currencyController: currencyController!,
+                    currencyController: amountController!,
                     validator: (value) {
-                      return value??"";
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter an amount';
+                      }
+                      if (double.tryParse(value) == null) {
+                        return 'Please enter a valid amount';
+                      }
+                      return "";
                     },
                   ),
                   60.height,
                   PrimaryButton(
                     color: ColorManager.primary,
-                    onPressed: () =>
-                        sl<NavigationService>().pop(),
-                    child:  PrimaryText(
+                    onPressed: () => walletProvider.requestMoneyFromFriend(
+                      email: emailController!.text,
+                      formKey: formKey!,
+                      amount: double.tryParse(amountController!.text) ?? 0,
+                      description: descriptionController!.text,
+                      payerName: nameController!.text,
+                      currency: currency,
+                      date: dueDate,
+                    ),
+                    child: PrimaryText(
                       'Request Money',
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
@@ -148,7 +161,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     nameController!.dispose();
     emailController!.dispose();
     descriptionController!.dispose();
-    currencyController!.dispose();
+    amountController!.dispose();
     super.dispose();
   }
 }

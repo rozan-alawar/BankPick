@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../config/theme/assets_manager.dart';
+import '../core/utils/app_config.dart';
 import '../core/utils/cache_helper.dart';
 import '../core/utils/navigation.dart';
 import '../injection_container.dart';
 import '../model/card_model.dart';
+import '../model/money_transaction_model.dart';
 import '../model/user_model.dart';
 
 class WalletProvider with ChangeNotifier {
@@ -77,14 +79,32 @@ class WalletProvider with ChangeNotifier {
     required GlobalKey<FormState> formKey,
     required String payerName,
     required String email,
-    required String amount,
+    required String currency,
+    required double amount,
+    DateTime? date,
     String? description,
   }) {
     if (formKey.currentState!.validate()) {
-      isLoading = true;
+      final moneyRequest = MoneyTransactionModel(
+        payerName: payerName,
+        emailAddress: email,
+        description: description,
+        dueDate: date ?? DateTime.now(),
+        amount: amount,
+        currency: currency,
+        isRequest: true, // Set to true for money request
+      );
+
+      // You can now use this moneyRequest object to send a request to the backend or handle it as needed.
+      print(moneyRequest);
+
+      // Show a confirmation message to the user
+
+      sl<AppConfig>()
+          .showCustomSnackBar('Request sent successfully!', Success: true);
+
+      isLoading = false;
       notifyListeners();
     }
-    isLoading = false;
-    notifyListeners();
   }
 }
