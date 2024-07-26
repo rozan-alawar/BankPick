@@ -57,24 +57,20 @@ class PrimaryTextField extends StatelessWidget {
         maxLines: multiLines! ? 3 : 1,
         inputFormatters: inputFormater,
         obscureText: obscureText,
-        style: textStyle ??
-            TextStyle(
-              // color: ColorManager.secondryTextColor,
-              // fontWeight: FontWeightManager.regular,
-              fontSize: 16.sp,
-              // fontFamily: FontConstants.arabicFontFamily
-            ),
+        style: textStyle ?? TextStyle(fontSize: 16.sp),
         keyboardType: keyboardType,
         onTap: onTap ?? () {},
         onFieldSubmitted: onFieldSubmitted ?? (v) {},
         decoration: InputDecoration(
           isDense: true,
-          prefixIcon: prefixIcon,
+          prefixIcon: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: prefixIcon,
+          ),
           helperText: ' ',
           suffixIcon: suffixIcon,
           hintText: hintText ?? '',
-          fillColor: ColorManager.transparent,
-
+          fillColor: Colors.grey.withOpacity(0.2),
           hintStyle: hintStyle ??
               TextStyle(
                 // color: ColorManager.hintTextColor,
@@ -84,40 +80,34 @@ class PrimaryTextField extends StatelessWidget {
               ),
           filled: true,
 
-          enabledBorder: (multiLines ?? false)
-              ? OutlineInputBorder(
-                  borderSide: const BorderSide(color: ColorManager.blaceholderText),
-                  borderRadius: BorderRadius.circular(25.r),
-                )
-              :  const UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorManager.blaceholderText),
-          ), // borderSide:
-          // BorderSide(color: ColorManager.chineseSilver.withOpacity(0.3)),
-
-          focusedBorder: (multiLines ?? false)
-              ? OutlineInputBorder(
-                  borderSide: const BorderSide(color: ColorManager.blaceholderText),
-                  borderRadius: BorderRadius.circular(25.r),
-                )
-              : const UnderlineInputBorder(
-            borderSide: BorderSide(color: ColorManager.blaceholderText),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: ColorManager.transparent),
+            borderRadius: BorderRadius.circular(15.r),
           ),
-          contentPadding:
-              EdgeInsets.symmetric(vertical: 17.h, horizontal: 15.w),
+
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: ColorManager.transparent),
+            borderRadius: BorderRadius.circular(15.r),
+          ),
+
+          contentPadding: EdgeInsets.symmetric(vertical: 17.h),
+
           suffixIconConstraints:
-              BoxConstraints(minWidth: 40.w, minHeight: 50.h),
+              BoxConstraints(minWidth: 45.w, minHeight: 45.h),
           prefixIconConstraints:
-              BoxConstraints(minWidth: 40.w, minHeight: 50.h),
+              BoxConstraints(minWidth: 45.w, minHeight: 45.h),
           // fillColor: fillColor,
           errorStyle: TextStyle(
               // color: ColorManager.primary,
               fontFamily: 'Almarai',
               fontSize: 12.sp),
-          focusedErrorBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(15.r),
           ),
-          errorBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.red),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(15.r),
           ),
         ),
         validator: validator,

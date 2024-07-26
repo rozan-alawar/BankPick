@@ -97,6 +97,7 @@ class MoneyAmountSection extends StatelessWidget {
               ),
             ],
           ),
+          20.height,
         ],
       ),
     );

@@ -86,7 +86,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       fit: BoxFit.contain,
                     ),
                   ),
-                  // 20.height,
+                  12.height,
                   const PrimaryText(
                     'Email Address',
                     color: ColorManager.secondaryText,
@@ -103,12 +103,13 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       fit: BoxFit.fitWidth,
                     ),
                   ),
+                  12.height,
                   // 20.height,
                   const PrimaryText(
                     'Description',
                     color: ColorManager.secondaryText,
                   ),
-                  4.height,
+                  8.height,
                   PrimaryTextField(
                     controller: descriptionController,
                     validator: (value) {},
