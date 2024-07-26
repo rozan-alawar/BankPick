@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/profile/message_bubble_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +39,8 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
     final profileProvider = Provider.of<ProfileProvider>(context);
 
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Contact Us',
+      appBar:  PrimaryAppBar(
+        title: LocaleKeys.contact_us.tr(),
         withLeading: true,
       ),
       body: GestureDetector(

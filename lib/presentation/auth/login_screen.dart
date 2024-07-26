@@ -5,6 +5,7 @@ import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/extensions/validation.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,8 +13,13 @@ import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
 import '../../core/common_widget/primary_button.dart';
+// import '../../core/utils/l10n/locale_keys.g.dart';
 import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
+// import '../l10n/locale_keys.g.dart';' as tr;
+import '../../core/lang/locale_keys.g.dart';
+
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -46,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         body: GestureDetector(
           onTap: () {
+            // LocaleKeys..tr();
             FocusScope.of(context).unfocus();
           },
           child: SingleChildScrollView(
@@ -58,13 +65,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     100.height,
                     PrimaryText(
-                      'Sign In',
+                      LocaleKeys.sign_in.tr(),
                       fontSize: 35.sp,
                       fontWeight: FontWeight.w500,
                     ),
                     40.height,
                     PrimaryText(
-                      'Email Address',
+                      LocaleKeys.email_address.tr(),
                       fontSize: 14.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -102,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () =>
                             loginProvider.togglePasswordVisibility(),
                         icon: loginProvider.isPasswordVisible
-                            ? Icon(
+                            ? const Icon(
                                 Icons.visibility_outlined,
                                 size: 22,
                                 color: ColorManager.secondaryText,
@@ -125,8 +132,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 56.h,
                         onPressed: () => loginProvider.login(formKey: formKey!, email: emailController!.text, password: passwordController!.text),
                         isDisable: loginProvider.isLoading,
-                        child: const PrimaryText(
-                          'Sign In',
+                        child:  PrimaryText(
+                          LocaleKeys.sign_in.tr(),
                           color: ColorManager.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -136,8 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const PrimaryText(
-                          'I’m a new user.',
+                        PrimaryText(
+                          LocaleKeys.i_am_a_new_user.tr(),
                           color: ColorManager.secondaryText,
                         ),
                         GestureDetector(
@@ -145,8 +152,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             sl<AuthProvider>().togglePages();
                             print("object");
                           },
-                          child: const PrimaryText(
-                            ' Sign up',
+                          child:  PrimaryText(
+                            LocaleKeys.sign_up.tr(),
                             color: ColorManager.primary,
                             fontWeight: FontWeight.w500,
                           ),

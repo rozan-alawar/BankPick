@@ -5,6 +5,8 @@ import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/extensions/validation.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,14 +59,14 @@ class _LoginScreenState extends State<SignupScreen> {
                 children: [
                   40.height,
                   PrimaryText(
-                    'Sign Up',
+                    LocaleKeys.sign_up.tr(),
                     fontSize: 35.sp,
                     fontWeight: FontWeight.w500,
                   ),
 
                   40.height,
                   PrimaryText(
-                    'Full Name',
+                    LocaleKeys.full_name.tr(),
                     fontSize: 14.sp,
                     color: ColorManager.secondaryText,
                   ),
@@ -84,7 +86,7 @@ class _LoginScreenState extends State<SignupScreen> {
                   20.height,
 
                   PrimaryText(
-                    'Phone Number',
+                    LocaleKeys.phone_number.tr(),
                     fontSize: 14.sp,
                     color: ColorManager.secondaryText,
                   ),
@@ -102,7 +104,7 @@ class _LoginScreenState extends State<SignupScreen> {
                   ),
                   20.height,
                   PrimaryText(
-                    'Email Address',
+                    LocaleKeys.email_address.tr(),
                     fontSize: 14.sp,
                     color: ColorManager.secondaryText,
                   ),
@@ -121,7 +123,7 @@ class _LoginScreenState extends State<SignupScreen> {
                   ),
                   20.height,
                   PrimaryText(
-                    'Password',
+                    LocaleKeys.password.tr(),
                     fontSize: 14.sp,
                     color: ColorManager.secondaryText,
                   ),
@@ -153,8 +155,8 @@ class _LoginScreenState extends State<SignupScreen> {
                       height: 56.h,
                       onPressed: () => registerProvider.signup(formKey:formKey!,email:emailController!.text,password: passwordController!.text,fullName: nameController!.text,phoneNumber: phoneController!.text),
                       isDisable: registerProvider.isLoading,
-                      child:  const PrimaryText(
-                        'Sign Up',
+                      child:   PrimaryText(
+                        LocaleKeys.sign_up.tr(),
                         color: ColorManager.white,
                         fontWeight: FontWeight.bold,
                       ),
@@ -164,14 +166,14 @@ class _LoginScreenState extends State<SignupScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const PrimaryText(
-                        'I’m a new user.',
+                       PrimaryText(
+                        LocaleKeys.i_am_a_new_user.tr(),
                         color: ColorManager.secondaryText,
                       ),
                       GestureDetector(
                         onTap: () =>   sl<AuthProvider>().togglePages(),
-                        child: const PrimaryText(
-                          ' Sign In',
+                        child:  PrimaryText(
+                          LocaleKeys.sign_in.tr(),
                           color: ColorManager.primary,
                           fontWeight: FontWeight.w500,
                         ),

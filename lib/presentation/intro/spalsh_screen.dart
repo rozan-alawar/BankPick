@@ -5,8 +5,10 @@ import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/core/utils/navigation.dart';
 import 'package:dakakeen/injection_container.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Image.asset(ImageAssets.appLogoPng, width: 80.w, height: 80.h,),
             10.height,
-            PrimaryText('BankPick',fontSize: 35.sp,fontWeight: FontWeight.w500,) ,
+            PrimaryText(LocaleKeys.bank_pick.tr(),fontSize: 35.sp,fontWeight: FontWeight.w500,) ,
           ],
         ),
       ),

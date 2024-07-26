@@ -12,17 +12,14 @@ class ServiceProvider with ChangeNotifier {
   //----------------------------- CHANGE CURRENT THEME MODE --------------------------------
 
   void changeTheme({required bool isDark}) {
-    if (isDark) {
-      _isDark = isDark;
-      _themeDataStyle = ThemeDataStyle.dark;
-    } else {
-      _isDark = isDark;
-      _themeDataStyle = ThemeDataStyle.light;
-    }
-
+    print(isDark);
+    _themeDataStyle=isDark?ThemeDataStyle.dark:ThemeDataStyle.light;
+    _isDark = isDark;
     notifyListeners();
 
-    print('in provider $_isDark');
+
+
+    // print('in provider $_isDark');
   }
 
   //--------------------------------- GET THEME VALUE -------------------------------------
@@ -39,9 +36,8 @@ class ServiceProvider with ChangeNotifier {
 
   //-------------------------------- GET THEME MODE ---------------------------------------
   ThemeData getTheme() {
-    print('Them is dark? ${CacheHelper.getData(key: 'isDark')}');
     getThemeFromCache();
-    _themeDataStyle = _isDark ? ThemeDataStyle.dark : ThemeDataStyle.light;
+    _themeDataStyle = getThemeValue() ? ThemeDataStyle.dark : ThemeDataStyle.light;
     return _themeDataStyle;
   }
 }
