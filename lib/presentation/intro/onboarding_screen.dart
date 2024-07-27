@@ -1,4 +1,3 @@
-import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/controller/intro_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
@@ -58,8 +57,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(introProvider.titles.length, (index) {
               return AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                margin: EdgeInsets.symmetric(horizontal: 5),
+                duration: const Duration(milliseconds: 300),
+                margin: const EdgeInsets.symmetric(horizontal: 5),
                 width: introProvider.currentPage == index ? 30 : 8,
                 height: introProvider.currentPage == index ? 12 : 8,
                 decoration: BoxDecoration(
@@ -118,7 +117,7 @@ class OnboardingPage extends StatelessWidget {
   final String subtitle;
   final String image;
 
-  const OnboardingPage({
+  const OnboardingPage({super.key, 
     required this.title,
     required this.subtitle,
     required this.image,
@@ -133,17 +132,17 @@ class OnboardingPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(image),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text(
             title,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         ],
       ),

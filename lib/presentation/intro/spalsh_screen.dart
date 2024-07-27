@@ -2,23 +2,19 @@ import 'dart:async';
 
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
-import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/core/utils/navigation.dart';
 import 'package:dakakeen/injection_container.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/utils/cache_helper.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -45,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
 

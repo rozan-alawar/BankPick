@@ -1,7 +1,6 @@
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
-import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/utils/navigation.dart';

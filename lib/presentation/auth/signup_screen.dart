@@ -12,9 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../config/routes/routes.dart';
 import '../../core/common_widget/primary_button.dart';
-import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -142,7 +140,7 @@ class _LoginScreenState extends State<SignupScreen> {
                     ),
                     suffixIcon: IconButton(
                       onPressed: () => registerProvider.togglePasswordVisibility(),
-                      icon:registerProvider.isPasswordVisible?Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
+                      icon:registerProvider.isPasswordVisible?const Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):const Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
                     ),
 
                   ),

@@ -1,5 +1,4 @@
 import 'package:dakakeen/config/routes/routes.dart';
-import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
@@ -7,10 +6,8 @@ import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../core/utils/navigation.dart';
@@ -23,7 +20,7 @@ class CardsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar:  PrimaryAppBar(title: 'All Cards',withLeading: true,),
+      appBar:  const PrimaryAppBar(title: 'All Cards',withLeading: true,),
 
       body: SingleChildScrollView(
         child: Padding(

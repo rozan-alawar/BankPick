@@ -12,7 +12,6 @@ import '../../controller/service_provider.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
 import '../../injection_container.dart';
-import '../../model/message_model.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});

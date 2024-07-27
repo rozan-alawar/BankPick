@@ -1,23 +1,17 @@
 import 'package:dakakeen/config/routes/routes.dart';
-import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/utils/navigation.dart';
 import 'package:dakakeen/injection_container.dart';
-import 'package:dakakeen/model/transaction_model.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:dakakeen/presentation/home/transaction_buttons_section.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
-import '../../core/common_widget/circular_card.dart';
 import 'card_section.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -9,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
-import '../../controller/home_provider.dart';
 import '../../controller/service_provider.dart';
 import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';

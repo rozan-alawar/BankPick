@@ -5,12 +5,8 @@ import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
-import '../../core/utils/navigation.dart';
-import '../../injection_container.dart';
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -65,7 +61,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
               onChanged: filterLanguages,
               decoration: InputDecoration(
                 hintText:LocaleKeys.search_language.tr(),
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide.none,
@@ -88,7 +84,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     ),
                     title: PrimaryText(language['name']!, fontSize: 14.sp,),
                     trailing: selectedLanguage == language['name']
-                        ? Icon(Icons.check_circle, color: Colors.blue)
+                        ? const Icon(Icons.check_circle, color: Colors.blue)
                         : null,
                     onTap: () {
                       setState(() {

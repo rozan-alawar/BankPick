@@ -1,26 +1,17 @@
-import 'package:dakakeen/controller/wallet_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
+import 'package:dakakeen/controller/wallet_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/extensions/validation.dart';
-import 'package:dakakeen/model/card_model.dart';
-import 'package:dakakeen/presentation/home/card_section.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../config/routes/routes.dart';
-import '../../controller/home_provider.dart';
-import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
-import '../../core/utils/navigation.dart';
-import '../../injection_container.dart';
 import 'money_amount_section.dart';
 
 class RequestMoneyScreen extends StatefulWidget {
@@ -112,7 +103,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   8.height,
                   PrimaryTextField(
                     controller: descriptionController,
-                    validator: (value) {},
+                    validator: (value) {
+                      return null;
+                    },
                     // multiLines: true,
                     multiLines: true,
                   ),
@@ -124,8 +117,10 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       }
                       if (double.tryParse(value) == null) {
                         return 'Please enter a valid amount';
+                      }else{
+                        return value;
                       }
-                      return "";
+
                     },
                   ),
                   60.height,

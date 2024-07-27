@@ -10,8 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../config/routes/routes.dart';
-import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_button.dart';
 import '../../core/utils/navigation.dart';
@@ -99,12 +97,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         onPressed: () =>
                             loginProvider.togglePasswordVisibility(),
                         icon: loginProvider.isPasswordVisible
-                            ? Icon(
+                            ? const Icon(
                           Icons.visibility_outlined,
                           size: 22,
                           color: ColorManager.secondaryText,
                         )
-                            : Icon(
+                            : const Icon(
                           Icons.visibility_off_outlined,
                           size: 22,
                           color: ColorManager.secondaryText,

@@ -6,7 +6,6 @@ import 'package:dakakeen/controller/service_provider.dart';
 import 'package:dakakeen/controller/wallet_provider.dart';
 import 'package:dakakeen/core/utils/app_config.dart';
 import 'package:get_it/get_it.dart';
-import 'package:dio/dio.dart';
 
 import 'core/utils/cache_helper.dart';
 import 'core/utils/navigation.dart';

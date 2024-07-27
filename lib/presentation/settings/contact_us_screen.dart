@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:dakakeen/config/theme/color_manager.dart';
-import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/profile/message_bubble_widget.dart';
@@ -12,8 +9,6 @@ import 'package:provider/provider.dart';
 
 import '../../controller/profile_provider.dart';
 import '../../core/common_widget/primary_appbar.dart';
-import '../../core/common_widget/primary_text.dart';
-import '../../model/message_model.dart';
 
 class ContactUsScreen extends StatefulWidget {
   const ContactUsScreen({super.key});
@@ -71,7 +66,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                         controller: messageController,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide:  const BorderSide(
                               color: ColorManager.secondaryText,
                             ),
                             borderRadius: BorderRadius.all(
@@ -87,7 +82,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             ),
                           ),
                         ),
-                        validator: (value) {},
+                        validator: (value) {
+                          return null;
+                        },
                       ),
                     ),
                     8.width,

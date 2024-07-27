@@ -2,9 +2,9 @@ import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
@@ -65,12 +65,12 @@ class StatisticsScreen extends StatelessWidget {
                 height: 200.h,
                 child: LineChart(
                   LineChartData(
-                    gridData: FlGridData(show: false),
+                    gridData: const FlGridData(show: false),
                     borderData: FlBorderData(show: false),
                     titlesData: FlTitlesData(
-                      leftTitles: AxisTitles(drawBelowEverything: false),
-                      topTitles: AxisTitles(drawBelowEverything: false),
-                      rightTitles: AxisTitles(drawBelowEverything: false),
+                      leftTitles: const AxisTitles(drawBelowEverything: false),
+                      topTitles: const AxisTitles(drawBelowEverything: false),
+                      rightTitles: const AxisTitles(drawBelowEverything: false),
 
                       bottomTitles: AxisTitles(
 
@@ -99,12 +99,12 @@ interval: 1                    ),
                     lineBarsData: [
                       LineChartBarData(
                         spots: [
-                          FlSpot(0, 1),
-                          FlSpot(1, 3),
-                          FlSpot(2, 1.5),
-                          FlSpot(3, 2.5),
-                          FlSpot(4, 4),
-                          FlSpot(5, 3.5),
+                          const FlSpot(0, 1),
+                          const FlSpot(1, 3),
+                          const FlSpot(2, 1.5),
+                          const FlSpot(3, 2.5),
+                          const FlSpot(4, 4),
+                          const FlSpot(5, 3.5),
                         ],
                         isCurved: true,
 

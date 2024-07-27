@@ -1,28 +1,13 @@
-import 'package:dakakeen/model/reciver_model.dart';
-import 'package:flutter/material.dart';
-import 'dart:ui';
-
-import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
-import 'package:dakakeen/core/extensions/validation.dart';
-import 'package:dakakeen/model/card_model.dart';
-import 'package:dakakeen/presentation/home/card_section.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../config/routes/routes.dart';
 import '../../controller/home_provider.dart';
 import '../../controller/service_provider.dart';
-import '../../core/common_widget/circular_card.dart';
-import '../../core/common_widget/primary_appbar.dart';
-import '../../core/common_widget/primary_button.dart';
 import '../../core/common_widget/primary_text.dart';
-import '../../core/utils/navigation.dart';
 import '../../injection_container.dart';
 
 
@@ -53,7 +38,7 @@ class MoneyAmountSection extends StatelessWidget {
                 color: ColorManager.secondaryText,
                 fontSize: 12.sp,
               ),
-              Spacer(),
+              const Spacer(),
               PrimaryText(
                 'Change Currency',
                 color: Colors.red,

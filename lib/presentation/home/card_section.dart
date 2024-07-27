@@ -3,7 +3,6 @@ import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
-import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -67,7 +66,7 @@ class BuildCardSection extends StatelessWidget {
                   PrimaryText(cvv,color: ColorManager.white,fontSize: 12.sp,),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   SvgPicture.asset(IconAssets.master_card),

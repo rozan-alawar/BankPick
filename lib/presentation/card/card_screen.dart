@@ -3,14 +3,10 @@ import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
-import 'package:dakakeen/presentation/home/transactions_list_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
-import '../../config/theme/assets_manager.dart';
-import '../../controller/home_provider.dart';
 import '../../controller/service_provider.dart';
 import '../../controller/wallet_provider.dart';
 import '../../core/common_widget/circular_card.dart';
@@ -70,7 +66,7 @@ class CardScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
                             blurRadius: 6,
-                            offset: Offset(0, 2),
+                            offset: const Offset(0, 2),
                           )
                         ],
                         color: Colors.white,
@@ -127,10 +123,10 @@ class CardScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
                             blurRadius: 6,
-                            offset: Offset(0, 2),
+                            offset: const Offset(0, 2),
                           )
                         ],
-                        color: Color(0xff232533),
+                        color: const Color(0xff232533),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Column(

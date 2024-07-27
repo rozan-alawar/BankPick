@@ -1,10 +1,7 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
-import 'package:dakakeen/config/theme/color_manager.dart';
-import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/circular_card.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
-import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

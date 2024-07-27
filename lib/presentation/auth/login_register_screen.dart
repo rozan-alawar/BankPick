@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/auth_provider.dart';
-import '../../injection_container.dart';
 
 class LoginRegisterScreen extends StatefulWidget {
   const LoginRegisterScreen({super.key});
