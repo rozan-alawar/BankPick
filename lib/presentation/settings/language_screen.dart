@@ -1,10 +1,12 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
+import 'package:dakakeen/controller/service_provider.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../core/common_widget/primary_appbar.dart';
 
@@ -16,52 +18,23 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-  String selectedLanguage = 'English';
-  List<Map<String, String>> languages = [
-    {'name': 'English', 'flag': ImageAssets.en_flag},
-    {'name': 'Australia', 'flag': ImageAssets.au_flag},
-    {'name': 'Franch', 'flag': ImageAssets.fr_flag},
-    {'name': 'Spanish', 'flag': ImageAssets.es_flag},
-    {'name': 'America', 'flag': ImageAssets.us_flag},
-    {'name': 'Vietnam', 'flag': ImageAssets.vn_flag},
-    {'name': 'Arabic', 'flag': ImageAssets.vn_flag},
-  ];
-
-  List<Map<String, String>> filteredLanguages = [];
-
-  @override
-  void initState() {
-    super.initState();
-    filteredLanguages = languages;
-  }
-
-  void filterLanguages(String query) {
-    final filtered = languages.where((language) {
-      final languageName = language['name']!.toLowerCase();
-      final input = query.toLowerCase();
-      return languageName.contains(input);
-    }).toList();
-
-    setState(() {
-      filteredLanguages = filtered;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final serviceProvider = Provider.of<ServiceProvider>(context);
     return Scaffold(
-      appBar:  PrimaryAppBar(title: LocaleKeys.language.tr(),withLeading: true,),
-
+      appBar: PrimaryAppBar(
+        title: LocaleKeys.language.tr(),
+        withLeading: true,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             TextField(
-              onChanged: filterLanguages,
+              onChanged: serviceProvider.filterLanguages,
               decoration: InputDecoration(
-                hintText:LocaleKeys.search_language.tr(),
+                hintText: LocaleKeys.search_language.tr(),
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -71,30 +44,35 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 fillColor: Colors.grey.withOpacity(0.3),
               ),
             ),
-          20.height,
+            20.height,
             Expanded(
               child: ListView.separated(
-                separatorBuilder:(context, index) =>  16.height,
-                itemCount: filteredLanguages.length,
+                separatorBuilder: (context, index) => 16.height,
+                itemCount: serviceProvider.filteredLanguages.length,
                 itemBuilder: (context, index) {
-                  final language = filteredLanguages[index];
+                  final language = serviceProvider.languages[index];
                   return ListTile(
                     leading: Image.asset(
                       language['flag']!,
                       width: 40.w,
                     ),
-                    title: PrimaryText(language['name']!, fontSize: 14.sp,),
-                    trailing: selectedLanguage == language['name']
-                        ? const Icon(Icons.check_circle, color: Colors.blue)
-                        : null,
-                    onTap: ()async {
+                    title: PrimaryText(
+                      language['name']!,
+                      fontSize: 14.sp,
+                    ),
+                    trailing:
+                        serviceProvider.selectedLanguage == language['name']
+                            ? const Icon(Icons.check_circle, color: Colors.blue)
+                            : null,
+                    onTap: () async {
                       await context.setLocale(
-                        Locale('ar'),
-
+                        serviceProvider.selectedLanguage == "English"
+                            ? const Locale('en')
+                            : const Locale('ar'),
                       ); //BuildContext extension method
 
                       setState(() {
-                        selectedLanguage = language['name']!;
+                        serviceProvider.selectedLanguage = language['name']!;
                       });
                     },
                   );

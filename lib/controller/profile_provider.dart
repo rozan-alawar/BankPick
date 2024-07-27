@@ -1,7 +1,5 @@
-import 'package:dakakeen/controller/home_provider.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
+import 'package:flutter/cupertino.dart';
 import '../config/theme/assets_manager.dart';
 import '../core/utils/cache_helper.dart';
 import '../model/card_model.dart';

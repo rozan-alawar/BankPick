@@ -56,8 +56,7 @@ void main() async {
         Locale('ar'),
         Locale('en'),
       ],
-      // startLocale: const Locale('ar'),
-      fallbackLocale: const Locale('en'),
+      fallbackLocale: const Locale('ar'),
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider.value(
@@ -98,10 +97,8 @@ class MyApp extends StatelessWidget {
         return SafeArea(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme:
-                // sl<ServiceProvider>().getTheme(), // Light/Default mode styles
-            Provider.of<ServiceProvider>(context).getTheme(),
-            darkTheme: ThemeDataStyle.dark, // Dark mode styles
+            theme: Provider.of<ServiceProvider>(context).getTheme(),
+            darkTheme: ThemeDataStyle.dark,
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
             initialRoute: Routes.home,

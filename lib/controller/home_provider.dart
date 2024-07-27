@@ -1,7 +1,4 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
-import 'package:dakakeen/config/theme/theme_manager.dart';
-import 'package:dakakeen/core/utils/navigation.dart';
-import 'package:dakakeen/injection_container.dart';
 import 'package:dakakeen/model/card_model.dart';
 import 'package:dakakeen/presentation/card/card_screen.dart';
 import 'package:dakakeen/presentation/home/home_screen.dart';

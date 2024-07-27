@@ -6,10 +6,8 @@ import 'package:dakakeen/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../config/routes/routes.dart';
 import '../config/theme/assets_manager.dart';
 import '../core/utils/cache_helper.dart';
-import '../core/utils/navigation.dart';
 import '../injection_container.dart';
 import '../model/card_model.dart';
 
