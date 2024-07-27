@@ -1,4 +1,6 @@
 import 'package:dakakeen/core/extensions/validation.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:dakakeen/config/routes/routes.dart';
 import 'package:dakakeen/controller/home_provider.dart';
@@ -49,7 +51,7 @@ User_Model? user = HomeProvider().user;
     final profileProvider = Provider.of<ProfileProvider>(context);
 
     return  Scaffold(
-      appBar: const PrimaryAppBar(title: 'Profile',withLeading: true,),
+      appBar:  PrimaryAppBar(title: LocaleKeys.profile.tr(),withLeading: true,),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child:  Form(
@@ -82,7 +84,7 @@ User_Model? user = HomeProvider().user;
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     PrimaryText(
-                      'Full Name',
+                      LocaleKeys.full_name.tr(),
                       fontSize: 12.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -101,7 +103,7 @@ User_Model? user = HomeProvider().user;
             
                     ),
                     PrimaryText(
-                      'Email Address',
+                      LocaleKeys.email_address.tr(),
                       fontSize: 12.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -118,7 +120,7 @@ User_Model? user = HomeProvider().user;
                       ),
                     ),
                     PrimaryText(
-                      'Phone Number',
+                      LocaleKeys.phone_number.tr(),
                       fontSize: 12.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -140,7 +142,7 @@ User_Model? user = HomeProvider().user;
                       height: 56.h,
                       onPressed: ()=> profileProvider.saveProfile(formKey!,context,nameController!.text,emailController!.text,phoneController!.text,),
                       child:  PrimaryText(
-                        'Save',
+                        LocaleKeys.save.tr(),
                         color: ColorManager.white,
                         fontWeight: FontWeight.bold,
                       ),
@@ -148,7 +150,7 @@ User_Model? user = HomeProvider().user;
                   ],
                 ),
     70.height,
-    PrimaryText( 'Joined ${homeProvider.user!.joinedDate.day}/${homeProvider.user!.joinedDate.month}/${homeProvider.user!.joinedDate.year}',color: ColorManager.secondaryText,),
+    PrimaryText( '${LocaleKeys.joined.tr()} ${homeProvider.user!.joinedDate.day}/${homeProvider.user!.joinedDate.month}/${homeProvider.user!.joinedDate.year}',color: ColorManager.secondaryText,),
 
               ],
             ),

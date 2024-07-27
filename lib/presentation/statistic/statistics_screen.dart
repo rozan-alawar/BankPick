@@ -1,10 +1,12 @@
 import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/controller/home_provider.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +26,7 @@ class StatisticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeProvider =Provider.of<HomeProvider>(context);
     return Scaffold(
-      appBar:  PrimaryAppBar(title: 'Statistics',withLeading: false,action: [ GestureDetector(
+      appBar:  PrimaryAppBar(title: LocaleKeys.statistics.tr(),withLeading: false,action: [ GestureDetector(
         onTap: () =>
             sl<NavigationService>().navigateTo(Routes.notification),
         child: CircularCard(
@@ -47,7 +49,7 @@ class StatisticsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     PrimaryText(
-                      'Current Balance',
+                      LocaleKeys.current_balance.tr(),
                       fontSize: 18.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -65,12 +67,12 @@ class StatisticsScreen extends StatelessWidget {
                 height: 200.h,
                 child: LineChart(
                   LineChartData(
-                    gridData: const FlGridData(show: false),
+                    gridData: FlGridData(show: false),
                     borderData: FlBorderData(show: false),
                     titlesData: FlTitlesData(
-                      leftTitles: const AxisTitles(drawBelowEverything: false),
-                      topTitles: const AxisTitles(drawBelowEverything: false),
-                      rightTitles: const AxisTitles(drawBelowEverything: false),
+                      leftTitles: AxisTitles(drawBelowEverything: false),
+                      topTitles: AxisTitles(drawBelowEverything: false),
+                      rightTitles: AxisTitles(drawBelowEverything: false),
 
                       bottomTitles: AxisTitles(
 
@@ -99,12 +101,12 @@ interval: 1                    ),
                     lineBarsData: [
                       LineChartBarData(
                         spots: [
-                          const FlSpot(0, 1),
-                          const FlSpot(1, 3),
-                          const FlSpot(2, 1.5),
-                          const FlSpot(3, 2.5),
-                          const FlSpot(4, 4),
-                          const FlSpot(5, 3.5),
+                          FlSpot(0, 1),
+                          FlSpot(1, 3),
+                          FlSpot(2, 1.5),
+                          FlSpot(3, 2.5),
+                          FlSpot(4, 4),
+                          FlSpot(5, 3.5),
                         ],
                         isCurved: true,
 
@@ -119,16 +121,16 @@ interval: 1                    ),
                 ),
               ),
               30.height,
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   PrimaryText(
-                    'Transaction',
+                    LocaleKeys.transaction.tr(),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   PrimaryText(
-                    'See All',
+                    LocaleKeys.see_all.tr(),
                     color: ColorManager.primary,
                   ),
                 ],

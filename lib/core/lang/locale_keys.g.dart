@@ -62,5 +62,24 @@ abstract class  LocaleKeys {
   static const confirm_new_password = 'confirm_new_password';
   static const message_center = 'message_center';
   static const message_details = 'message_details';
+  static const welcome_back = 'welcome_back';
+  static const sent = 'sent';
+  static const receive = 'receive';
+  static const loan = 'loan';
+  static const top_up = 'top_up';
+  static const home = 'home';
+  static const cardholder_name = 'cardholder_name';
+  static const expiry_date = 'expiry_date';
+  static const card_number = 'card_number';
+  static const statistics = 'statistics';
+  static const all_cards = 'all_cards';
+  static const add_card = 'add_card';
+  static const birth_day = 'birth_day';
+  static const category_chart = 'category_chart';
+  static const transfer = 'transfer';
+  static const travel = 'travel';
+  static const food = 'food';
+  static const shopping = 'shopping';
+  static const car = 'car';
 
 }

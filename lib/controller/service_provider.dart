@@ -40,4 +40,33 @@ class ServiceProvider with ChangeNotifier {
     _themeDataStyle = getThemeValue() ? ThemeDataStyle.dark : ThemeDataStyle.light;
     return _themeDataStyle;
   }
+
+
+
+
+  //change language
+  String _languageCode = 'en';
+
+  String get languageCode => _languageCode;
+
+  void changeLanguage({required String languageCode}){
+    _languageCode = languageCode;
+    notifyListeners();
+  }
+
+  getLanguageFromCache() async {
+    _languageCode = await CacheHelper.getData(key: 'languageCode');
+    notifyListeners();
+  }
+
+  String getLanguage(){
+    getLanguageFromCache();
+    return _languageCode;
+  }
+
+  void saveLanguageToCache({required String languageCode}){
+    CacheHelper.saveData(key: 'languageCode', value: languageCode);
+  }
+
+
 }

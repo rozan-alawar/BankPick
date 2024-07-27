@@ -59,5 +59,25 @@
   "new_password": "New Password",
   "confirm_new_password": "Confirm New Password",
   "message_center": "Message Center",
-  "message_details": "Message Details"
+  "message_details": "Message Details",
+  "welcome_back": "Welcome Back",
+  "sent": "Sent",
+  "receive": "Receive",
+  "loan": "Loan",
+  "top_up": "Top-Up",
+  "home": "Home",
+  "cardholder_name": "Cardholder Name",
+  "expiry_date": "Expiry Date",
+  "card_number": "Card Number",
+  "statistics": "Statistics",
+  "all_cards": "All Cards",
+  "add_card": "Add Card",
+  "birth_day": "Birth Day",
+  "category_chart": "Category Chart",
+  "transfer": "Transfer",
+  "travel": "Travel",
+
+  "food": "Food",
+  "shopping": "Shopping",
+  "car": "Car"
 }

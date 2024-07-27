@@ -1,8 +1,18 @@
+import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../config/routes/routes.dart';
+import '../../config/theme/assets_manager.dart';
+import '../../config/theme/color_manager.dart';
+import '../../core/common_widget/circular_card.dart';
 import '../../core/common_widget/primary_appbar.dart';
 import '../../core/common_widget/primary_text.dart';
+import '../../core/utils/navigation.dart';
+import '../../injection_container.dart';
 
 class TermAndConditionScreen extends StatelessWidget {
   const TermAndConditionScreen({super.key});
@@ -10,8 +20,8 @@ class TermAndConditionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Term & Condition',
+      appBar: PrimaryAppBar(
+        title:LocaleKeys.term_and_condition.tr(),
         withLeading: true,
       ),
       body: Padding(

@@ -24,6 +24,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     {'name': 'Spanish', 'flag': ImageAssets.es_flag},
     {'name': 'America', 'flag': ImageAssets.us_flag},
     {'name': 'Vietnam', 'flag': ImageAssets.vn_flag},
+    {'name': 'Arabic', 'flag': ImageAssets.vn_flag},
   ];
 
   List<Map<String, String>> filteredLanguages = [];
@@ -86,7 +87,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     trailing: selectedLanguage == language['name']
                         ? const Icon(Icons.check_circle, color: Colors.blue)
                         : null,
-                    onTap: () {
+                    onTap: ()async {
+                      await context.setLocale(
+                        Locale('ar'),
+
+                      ); //BuildContext extension method
+
                       setState(() {
                         selectedLanguage = language['name']!;
                       });

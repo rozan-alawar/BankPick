@@ -1,5 +1,7 @@
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +18,7 @@ class PaymentPreferancesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           PrimaryText(
-            'Category Chart',
+            LocaleKeys.category_chart.tr(),
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,
           ),
@@ -93,12 +95,12 @@ class PaymentPreferancesSection extends StatelessWidget {
       spacing: 10.0,
       runSpacing: 10.0,
       children: [
-        _buildLegendItem(Colors.orange[300]!, 'Transaction'),
-        _buildLegendItem(Colors.green[300]!, 'Transfer'),
-        _buildLegendItem(Colors.blue[300]!, 'Travel'),
-        _buildLegendItem(Colors.red[300]!, 'Food'),
-        _buildLegendItem(Colors.purple[300]!, 'Shopping'),
-        _buildLegendItem(Colors.yellow[300]!, 'Car'),
+        _buildLegendItem(Colors.orange[300]!, LocaleKeys.transaction.tr()),
+        _buildLegendItem(Colors.green[300]!,  LocaleKeys.transfer.tr()),
+        _buildLegendItem(Colors.blue[300]!,  LocaleKeys.travel.tr()),
+        _buildLegendItem(Colors.red[300]!,  LocaleKeys.food.tr()),
+        _buildLegendItem(Colors.purple[300]!,  LocaleKeys.shopping.tr()),
+        _buildLegendItem(Colors.yellow[300]!,  LocaleKeys.car.tr()),
       ],
     );
   }

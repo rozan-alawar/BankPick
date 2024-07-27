@@ -2,11 +2,17 @@ import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/config/theme/theme_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_button.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/home/card_section.dart';
+import 'package:dakakeen/presentation/home/transactions_list_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/routes/routes.dart';
+import '../../config/theme/assets_manager.dart';
+import '../../controller/home_provider.dart';
 import '../../controller/service_provider.dart';
 import '../../controller/wallet_provider.dart';
 import '../../core/common_widget/circular_card.dart';
@@ -23,7 +29,7 @@ class CardScreen extends StatelessWidget {
     final walletProvider = sl<WalletProvider>();
     return Scaffold(
       appBar: PrimaryAppBar(
-        title: 'My Card',
+        title:LocaleKeys.my_card.tr(),
         withLeading: false,
         action: [
           GestureDetector(
@@ -51,7 +57,7 @@ class CardScreen extends StatelessWidget {
               ),
               30.height,
               PrimaryText(
-                'Monthly Spending limit',
+                LocaleKeys.monthly_spending_limit.tr(),
                 fontWeight: FontWeight.w500,
                 fontSize: 16.sp,
               ),
@@ -66,7 +72,7 @@ class CardScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
                             blurRadius: 6,
-                            offset: const Offset(0, 2),
+                            offset: Offset(0, 2),
                           )
                         ],
                         color: Colors.white,
@@ -76,7 +82,7 @@ class CardScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           PrimaryText(
-                            'Amount: \$${ sl<WalletProvider>().spendingLimit.toStringAsFixed(2)}',
+                            '${LocaleKeys.amount.tr()}: \$${ sl<WalletProvider>().spendingLimit.toStringAsFixed(2)}',
                             fontSize: 14.sp,
                             color: Colors.black,
                           ),
@@ -123,17 +129,17 @@ class CardScreen extends StatelessWidget {
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
                             blurRadius: 6,
-                            offset: const Offset(0, 2),
+                            offset: Offset(0, 2),
                           )
                         ],
-                        color: const Color(0xff232533),
+                        color: Color(0xff232533),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           PrimaryText(
-                            'Amount: \$${walletProvider.spendingLimit.toStringAsFixed(2)}',
+                            '${LocaleKeys.amount.tr()}: \$${walletProvider.spendingLimit.toStringAsFixed(2)}',
                             fontSize: 14.sp,
                             color: Colors.white,
                           ),
@@ -181,7 +187,7 @@ class CardScreen extends StatelessWidget {
                       onPressed: () =>
                           sl<NavigationService>().navigateTo(Routes.request),
                       child: PrimaryText(
-                        'Request',
+                        LocaleKeys.request.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 16.sp,
                         color: Colors.white,
@@ -195,7 +201,7 @@ class CardScreen extends StatelessWidget {
                       onPressed: () =>
                           sl<NavigationService>().navigateTo(Routes.send),
                       child: PrimaryText(
-                        'Send',
+                        LocaleKeys.send.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 16.sp,
                         color: Colors.white,

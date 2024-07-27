@@ -1,7 +1,9 @@
 import 'package:dakakeen/core/common_widget/primary_appbar.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/model/message_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,8 +28,8 @@ class _MessageCenterScreenState extends State<MessageCenterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PrimaryAppBar(
-        title: 'Message Center',
+      appBar:  PrimaryAppBar(
+        title: LocaleKeys.message_center.tr(),
         withLeading: true,
       ),
       body: ListView.separated(

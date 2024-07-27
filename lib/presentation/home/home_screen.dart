@@ -1,17 +1,25 @@
 import 'package:dakakeen/config/routes/routes.dart';
+import 'package:dakakeen/config/theme/assets_manager.dart';
 import 'package:dakakeen/config/theme/color_manager.dart';
 import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/core/utils/navigation.dart';
 import 'package:dakakeen/injection_container.dart';
+import 'package:dakakeen/model/transaction_model.dart';
 import 'package:dakakeen/presentation/home/profile_section.dart';
 import 'package:dakakeen/presentation/home/transaction_buttons_section.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/home_provider.dart';
+import '../../core/common_widget/circular_card.dart';
 import 'card_section.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,16 +51,16 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const PrimaryText(
-                    'Transaction',
+                   PrimaryText(
+                    LocaleKeys.transaction.tr(),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                   GestureDetector(
                     onTap: () => sl<NavigationService>()
                         .navigateTo(Routes.transaction_history),
-                    child: const PrimaryText(
-                      'See All',
+                    child:  PrimaryText(
+                      LocaleKeys.see_all.tr(),
                       color: ColorManager.primary,
                     ),
                   ),

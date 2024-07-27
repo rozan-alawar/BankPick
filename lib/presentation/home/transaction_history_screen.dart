@@ -1,5 +1,7 @@
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
 import 'package:dakakeen/presentation/home/transactions_list_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,7 +38,7 @@ class TransactionHistoryScreen extends StatelessWidget {
               ),
               80.width,
               PrimaryText(
-                'Transaction History',
+                LocaleKeys.transaction_history.tr(),
                 fontWeight: FontWeight.w500,
                 fontSize: 18.sp,
               ),

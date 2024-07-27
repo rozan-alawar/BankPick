@@ -5,6 +5,8 @@ import 'package:dakakeen/core/common_widget/primary_text.dart';
 import 'package:dakakeen/core/common_widget/primary_textfiled.dart';
 import 'package:dakakeen/core/extensions/empty_space_extension.dart';
 import 'package:dakakeen/core/extensions/validation.dart';
+import 'package:dakakeen/core/lang/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +46,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: const PrimaryAppBar(title: 'Change Password',withLeading: true,),
+        appBar:  PrimaryAppBar(title:LocaleKeys.change_password.tr(),withLeading: true,),
 
         body: GestureDetector(
           onTap: () {
@@ -61,7 +63,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
 
 
                     PrimaryText(
-                      'Current Password',
+                      LocaleKeys.current_password.tr(),
                       fontSize: 14.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -77,7 +79,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                     ),
                     PrimaryText(
-                      'New Password',
+                      LocaleKeys.new_password.tr(),
                       fontSize: 14.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -111,7 +113,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     ),
 
                     PrimaryText(
-                      'Confirm New Password',
+                      LocaleKeys.confirm_new_password.tr(),
                       fontSize: 14.sp,
                       color: ColorManager.secondaryText,
                     ),
@@ -141,7 +143,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                         onPressed: () => sl<NavigationService>().pop(),
                         isDisable: loginProvider.isLoading,
                         child:  PrimaryText(
-                          'Change Password',
+                          LocaleKeys.change_password.tr(),
                           color: ColorManager.white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
