@@ -31,11 +31,17 @@ class SettingsScreen extends StatelessWidget {
         withLeading: false,
         action: [
           GestureDetector(
-            onTap: () =>     sl<AuthProvider>().logout(),
-            child: CircularCard(
-              widget:  Icon(Icons.logout_rounded,color:serviceProvider.isDark??false?Colors.white:Colors.black ),
-              width: 45,
-              height: 45,
+            onTap: () => sl<AuthProvider>().logout(),
+            child: Transform.rotate(
+              angle: serviceProvider.selectedLanguage == "Arabic" ? 3.2 : 0,
+              child: CircularCard(
+                widget: Icon(Icons.logout_rounded,
+                    color: serviceProvider.isDark ?? false
+                        ? Colors.white
+                        : Colors.black),
+                width: 45,
+                height: 45,
+              ),
             ),
           ),
         ],
@@ -46,8 +52,8 @@ class SettingsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               PrimaryText(
-                 LocaleKeys.general.tr(),
+              PrimaryText(
+                LocaleKeys.general.tr(),
                 color: ColorManager.secondaryText,
               ),
               30.height,
@@ -57,7 +63,8 @@ class SettingsScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     PrimaryText(
-                      LocaleKeys.language.tr(),                      fontSize: 16.sp,
+                      LocaleKeys.language.tr(),
+                      fontSize: 16.sp,
                     ),
                     const Spacer(),
                     const PrimaryText(
@@ -66,7 +73,9 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     16.width,
                     Transform.rotate(
-                        angle: 3.2,
+                        angle: serviceProvider.selectedLanguage == "Arabic"
+                            ? 0
+                            : 3.2,
                         child: SvgPicture.asset(
                           IconAssets.arrow_back,
                           color: ColorManager.secondaryText,
@@ -75,91 +84,35 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               30.height,
-              GestureDetector(
+              SectionTail(
                 onTap: () => sl<NavigationService>().navigateTo(Routes.profile),
-                child: Row(
-                  children: [
-                    PrimaryText(
-                      LocaleKeys.my_profile.tr(),
-                      fontSize: 16.sp,
-                    ),
-                    const Spacer(),
-                    Transform.rotate(
-                        angle: 3.2,
-                        child: SvgPicture.asset(
-                          IconAssets.arrow_back,
-                          color: ColorManager.secondaryText,
-                        )),
-                  ],
-                ),
+                text: LocaleKeys.my_profile.tr(),
               ),
               30.height,
-              GestureDetector(
+              SectionTail(
                 onTap: () =>
                     sl<NavigationService>().navigateTo(Routes.contact_us),
-                child: Row(
-                  children: [
-                    PrimaryText(
-                      LocaleKeys.contact_us.tr(),
-                      fontSize: 16.sp,
-                    ),
-                    const Spacer(),
-                    Transform.rotate(
-                        angle: 3.2,
-                        child: SvgPicture.asset(
-                          IconAssets.arrow_back,
-                          color: ColorManager.secondaryText,
-                        )),
-                  ],
-                ),
+                text: LocaleKeys.contact_us.tr(),
               ),
               50.height,
-               PrimaryText(
+              PrimaryText(
                 LocaleKeys.security.tr(),
                 color: ColorManager.secondaryText,
               ),
               30.height,
-              GestureDetector(
+              SectionTail(
                 onTap: () =>
                     sl<NavigationService>().navigateTo(Routes.change_password),
-                child: Row(
-                  children: [
-                    PrimaryText(
-                      LocaleKeys.change_password.tr(),
-                      fontSize: 16.sp,
-                    ),
-                    const Spacer(),
-                    Transform.rotate(
-                        angle: 3.2,
-                        child: SvgPicture.asset(
-                          IconAssets.arrow_back,
-                          color: ColorManager.secondaryText,
-                        )),
-                  ],
-                ),
+                text: LocaleKeys.change_password.tr(),
               ),
               30.height,
-              GestureDetector(
+              SectionTail(
                 onTap: () =>
                     sl<NavigationService>().navigateTo(Routes.term_condition),
-                child: Row(
-                  children: [
-                    PrimaryText(
-                      LocaleKeys.privacy_policy.tr(),
-                      fontSize: 16.sp,
-                    ),
-                    const Spacer(),
-                    Transform.rotate(
-                        angle: 3.2,
-                        child: SvgPicture.asset(
-                          IconAssets.arrow_back,
-                          color: ColorManager.secondaryText,
-                        )),
-                  ],
-                ),
+                text: LocaleKeys.privacy_policy.tr(),
               ),
               50.height,
-               PrimaryText(
+              PrimaryText(
                 LocaleKeys.choose_what_data_you_share_with_us.tr(),
                 color: ColorManager.secondaryText,
               ),
@@ -186,11 +139,13 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const Spacer(),
                   Switch(
-                    value: Provider.of<ServiceProvider>(context).getThemeValue(),
+                    value:
+                        Provider.of<ServiceProvider>(context).getThemeValue(),
                     onChanged: (value) {
                       // print(                      CacheHelper.getData(key: 'isDark'));
-                      CacheHelper.saveData(key: 'isDark',value: value);
-                      Provider.of<ServiceProvider>(context,listen: false).changeTheme(isDark: value);
+                      CacheHelper.saveData(key: 'isDark', value: value);
+                      Provider.of<ServiceProvider>(context, listen: false)
+                          .changeTheme(isDark: value);
                     },
                   )
                 ],
@@ -198,6 +153,36 @@ class SettingsScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SectionTail extends StatelessWidget {
+  const SectionTail({super.key, required this.text, this.onTap});
+  final void Function()? onTap;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final serviceProvider = Provider.of<ServiceProvider>(context);
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          PrimaryText(
+            text,
+            fontSize: 16.sp,
+          ),
+          const Spacer(),
+          Transform.rotate(
+              angle: serviceProvider.selectedLanguage == "Arabic" ? 0 : 3.2,
+              child: SvgPicture.asset(
+                IconAssets.arrow_back,
+                color: ColorManager.secondaryText,
+              )),
+        ],
       ),
     );
   }

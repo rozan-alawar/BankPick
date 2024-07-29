@@ -20,7 +20,7 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context);
+    final serviceProvider = Provider.of<ServiceProvider>(context);
 
     return AppBar(
       toolbarHeight: 90.h,
@@ -31,11 +31,14 @@ class PrimaryAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? GestureDetector(
                   onTap: () => sl<NavigationService>().pop(),
                   child: CircularCard(
-                    widget: SvgPicture.asset(
-                      IconAssets.arrow_back,
-                      color: sl<ServiceProvider>().isDark
-                          ? Colors.white
-                          : Colors.black,
+                    widget: Transform.rotate(
+                  angle:    serviceProvider.selectedLanguage == "Arabic" ? 3.2 :0,
+                      child: SvgPicture.asset(
+                        IconAssets.arrow_back,
+                        color: sl<ServiceProvider>().isDark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
                     ),
                     width: 45,
                     height: 45,
