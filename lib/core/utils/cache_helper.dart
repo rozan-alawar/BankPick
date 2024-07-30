@@ -5,20 +5,13 @@ class CacheHelper {
 
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance();
-    int appCounter = sharedPreferences!.getInt('appCounter') ?? 0;
-    if (appCounter == 0) {
-      appCounter = 1;
-    } else {
-      appCounter = appCounter + 1;
-    }
-
-    await sharedPreferences!.setInt('appCounter', appCounter);
+    languageCode = await sharedPreferences!.get('languageCode');
   }
 
   static dynamic getData({required String key}) {
     return sharedPreferences?.get(key);
   }
-
+  static  dynamic languageCode ;
   static Future<bool> saveData(
       {required String key, required dynamic value}) async {
     if (value is String) return await sharedPreferences!.setString(key, value);

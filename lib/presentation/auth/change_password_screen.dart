@@ -52,107 +52,105 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           onTap: () {
             FocusScope.of(context).unfocus();
           },
-          child: SingleChildScrollView(
-            child: Form(
-              key: formKey,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+          child: Form(
+            key: formKey,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
 
-                    PrimaryText(
-                      LocaleKeys.current_password.tr(),
-                      fontSize: 14.sp,
-                      color: ColorManager.secondaryText,
+                  PrimaryText(
+                    LocaleKeys.current_password.tr(),
+                    fontSize: 14.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  4.height,
+                  PrimaryTextField(
+                    controller: emailController,
+                    validator: (value) {
+                      return value!.isValidEmail;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.password,
+
                     ),
-                    4.height,
-                    PrimaryTextField(
-                      controller: emailController,
-                      validator: (value) {
-                        return value!.isValidEmail;
-                      },
-                      prefixIcon: SvgPicture.asset(
-                        IconAssets.password,
-
+                  ),
+                  PrimaryText(
+                    LocaleKeys.new_password.tr(),
+                    fontSize: 14.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  4.height,
+                  PrimaryTextField(
+                    obscureText: loginProvider.isPasswordVisible,
+                    controller: passwordController,
+                    validator: (value) {
+                      return value!.isValidPassword;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.password,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () =>
+                          loginProvider.togglePasswordVisibility(),
+                      icon: loginProvider.isPasswordVisible
+                          ? const Icon(
+                        Icons.visibility_outlined,
+                        size: 22,
+                        color: ColorManager.secondaryText,
+                      )
+                          : const Icon(
+                        Icons.visibility_off_outlined,
+                        size: 22,
+                        color: ColorManager.secondaryText,
                       ),
                     ),
-                    PrimaryText(
-                      LocaleKeys.new_password.tr(),
-                      fontSize: 14.sp,
-                      color: ColorManager.secondaryText,
-                    ),
-                    4.height,
-                    PrimaryTextField(
-                      obscureText: loginProvider.isPasswordVisible,
-                      controller: passwordController,
-                      validator: (value) {
-                        return value!.isValidPassword;
-                      },
-                      prefixIcon: SvgPicture.asset(
-                        IconAssets.password,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                      suffixIcon: IconButton(
-                        onPressed: () =>
-                            loginProvider.togglePasswordVisibility(),
-                        icon: loginProvider.isPasswordVisible
-                            ? const Icon(
-                          Icons.visibility_outlined,
-                          size: 22,
-                          color: ColorManager.secondaryText,
-                        )
-                            : const Icon(
-                          Icons.visibility_off_outlined,
-                          size: 22,
-                          color: ColorManager.secondaryText,
-                        ),
-                      ),
+                  ),
+
+                  PrimaryText(
+                    LocaleKeys.confirm_new_password.tr(),
+                    fontSize: 14.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  4.height,
+                  PrimaryTextField(
+                    obscureText: loginProvider.isPasswordVisible,
+                    controller: passwordController,
+                    validator: (value) {
+                      return value!.isValidPassword;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.password,
+                      width: 20.w,
+                      height: 20.h,
                     ),
 
-                    PrimaryText(
-                      LocaleKeys.confirm_new_password.tr(),
-                      fontSize: 14.sp,
-                      color: ColorManager.secondaryText,
-                    ),
-                    4.height,
-                    PrimaryTextField(
-                      obscureText: loginProvider.isPasswordVisible,
-                      controller: passwordController,
-                      validator: (value) {
-                        return value!.isValidPassword;
-                      },
-                      prefixIcon: SvgPicture.asset(
-                        IconAssets.password,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-
-                    ),
-                    40.height,
-                    AbsorbPointer(
-                      absorbing: loginProvider.isLoading,
-                      child: PrimaryButton(
-                        color: loginProvider.isLoading
-                            ? ColorManager.secondaryText
-                            : ColorManager.primary,
-                        width: double.infinity,
-                        height: 56.h,
-                        onPressed: () => sl<NavigationService>().pop(),
-                        isDisable: loginProvider.isLoading,
-                        child:  PrimaryText(
-                          LocaleKeys.change_password.tr(),
-                          color: ColorManager.white,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  ),
+                  Expanded(child: Container()),
+                  AbsorbPointer(
+                    absorbing: loginProvider.isLoading,
+                    child: PrimaryButton(
+                      color: loginProvider.isLoading
+                          ? ColorManager.secondaryText
+                          : ColorManager.primary,
+                      width: double.infinity,
+                      height: 56.h,
+                      onPressed: () => sl<NavigationService>().pop(),
+                      isDisable: loginProvider.isLoading,
+                      child:  PrimaryText(
+                        LocaleKeys.change_password.tr(),
+                        color: ColorManager.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
+                  ),
 
-                  ],
-                ),
+                ],
               ),
             ),
           ),
