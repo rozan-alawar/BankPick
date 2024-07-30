@@ -29,7 +29,7 @@ class ServiceProvider with ChangeNotifier {
 
   //--------------------- GET SAVED THEME MODE FROM CACHE --------------------------------
   getThemeFromCache() async {
-    _isDark = await CacheHelper.getData(key: 'isDark')??false;
+    _isDark = await CacheHelper.getData(key: 'isDark') ?? false;
     notifyListeners();
   }
 
@@ -42,29 +42,29 @@ class ServiceProvider with ChangeNotifier {
   }
 
   //change language
-  String _languageCode = 'en';
+  String _languageCode = CacheHelper.languageCode ?? "";
   String selectedLanguage = 'English';
 
   String get languageCode => _languageCode;
 
   List<Map<String, String>> languages = [
-    {'name': 'English', 'flag': ImageAssets.en_flag},
-    {'name': 'Australia', 'flag': ImageAssets.au_flag},
-    {'name': 'Franch', 'flag': ImageAssets.fr_flag},
-    {'name': 'Spanish', 'flag': ImageAssets.es_flag},
-    {'name': 'America', 'flag': ImageAssets.us_flag},
-    {'name': 'Vietnam', 'flag': ImageAssets.vn_flag},
-    {'name': 'Arabic', 'flag': ImageAssets.vn_flag},
+    {'name': 'English', 'flag': ImageAssets.en_flag, 'language_code': 'en'},
+    {'name': 'Australia', 'flag': ImageAssets.au_flag, 'language_code': 'au'},
+    {'name': 'Franch', 'flag': ImageAssets.fr_flag, 'language_code': 'fr'},
+    {'name': 'Spanish', 'flag': ImageAssets.es_flag, 'language_code': 'es'},
+    {'name': 'America', 'flag': ImageAssets.us_flag, 'language_code': 'us'},
+    {'name': 'Vietnam', 'flag': ImageAssets.vn_flag, 'language_code': 'vn'},
+    {'name': 'Arabic', 'flag': ImageAssets.vn_flag, 'language_code': 'ar'},
   ];
 
-  List<Map<String, String>> filteredLanguages =[
-    {'name': 'English', 'flag': ImageAssets.en_flag, 'language_code':'en'},
-    {'name': 'Australia', 'flag': ImageAssets.au_flag,'language_code':'au'},
-    {'name': 'Franch', 'flag': ImageAssets.fr_flag,'language_code':'fr'},
-    {'name': 'Spanish', 'flag': ImageAssets.es_flag,'language_code':'es'},
-    {'name': 'America', 'flag': ImageAssets.us_flag,'language_code':'us'},
-    {'name': 'Vietnam', 'flag': ImageAssets.vn_flag,'language_code':'vn'},
-    {'name': 'Arabic', 'flag': ImageAssets.vn_flag,'language_code':'ar'},
+  List<Map<String, String>> filteredLanguages = [
+    {'name': 'English', 'flag': ImageAssets.en_flag, 'language_code': 'en'},
+    {'name': 'Australia', 'flag': ImageAssets.au_flag, 'language_code': 'au'},
+    {'name': 'Franch', 'flag': ImageAssets.fr_flag, 'language_code': 'fr'},
+    {'name': 'Spanish', 'flag': ImageAssets.es_flag, 'language_code': 'es'},
+    {'name': 'America', 'flag': ImageAssets.us_flag, 'language_code': 'us'},
+    {'name': 'Vietnam', 'flag': ImageAssets.vn_flag, 'language_code': 'vn'},
+    {'name': 'Arabic', 'flag': ImageAssets.vn_flag, 'language_code': 'ar'},
   ];
 
   void filterLanguages(String query) {
@@ -95,6 +95,5 @@ class ServiceProvider with ChangeNotifier {
   void saveLanguageToCache({required String languageCode}) {
     CacheHelper.saveData(key: 'languageCode', value: languageCode);
     notifyListeners();
-
   }
 }

@@ -43,143 +43,141 @@ class _LoginScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     final registerProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  40.height,
-                  PrimaryText(
-                    LocaleKeys.sign_up.tr(),
-                    fontSize: 35.sp,
-                    fontWeight: FontWeight.w500,
+      body: Form(
+        key: formKey,
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                40.height,
+                PrimaryText(
+                  LocaleKeys.sign_up.tr(),
+                  fontSize: 35.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+
+                40.height,
+                PrimaryText(
+                  LocaleKeys.full_name.tr(),
+                  fontSize: 14.sp,
+                  color: ColorManager.secondaryText,
+                ),
+                16.height,
+                PrimaryTextField(
+                  controller: nameController,
+                  validator: (value) {
+                    return value!.isValidName;
+                  },
+                  prefixIcon: SvgPicture.asset(
+                    IconAssets.user,
+                    width: 20.w,
+                    height: 20.h,
                   ),
 
-                  40.height,
-                  PrimaryText(
-                    LocaleKeys.full_name.tr(),
-                    fontSize: 14.sp,
-                    color: ColorManager.secondaryText,
+                ),
+                10.height,
+
+                PrimaryText(
+                  LocaleKeys.phone_number.tr(),
+                  fontSize: 14.sp,
+                  color: ColorManager.secondaryText,
+                ),
+                16.height,
+                PrimaryTextField(
+                  controller: phoneController,
+                  validator: (value) {
+                    return value!.isValidName;
+                  },
+                  prefixIcon: SvgPicture.asset(
+                    IconAssets.phone,
+                    width: 20.w,
+                    height: 20.h,
                   ),
-                  16.height,
-                  PrimaryTextField(
-                    controller: nameController,
-                    validator: (value) {
-                      return value!.isValidName;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.user,
-                      width: 20.w,
-                      height: 20.h,
+                ),
+                10.height,
+                PrimaryText(
+                  LocaleKeys.email_address.tr(),
+                  fontSize: 14.sp,
+                  color: ColorManager.secondaryText,
+                ),
+                16.height,
+                PrimaryTextField(
+                  controller: emailController,
+                  validator: (value) {
+
+                    return value!.isValidEmail;
+                  },
+                  prefixIcon: SvgPicture.asset(
+                    IconAssets.email,
+                    width: 20.w,
+                    height: 20.h,
+                  ),
+                ),
+                10.height,
+                PrimaryText(
+                  LocaleKeys.password.tr(),
+                  fontSize: 14.sp,
+                  color: ColorManager.secondaryText,
+                ),
+                10.height,
+                PrimaryTextField(
+                  obscureText: registerProvider.isPasswordVisible,
+
+                  controller: passwordController,
+                  validator: (value) {
+                    return value!.isValidPassword;
+                  },
+                  prefixIcon: SvgPicture.asset(
+                    IconAssets.password,
+                    width: 20.w,
+                    height: 20.h,
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () => registerProvider.togglePasswordVisibility(),
+                    icon:registerProvider.isPasswordVisible?const Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):const Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
+                  ),
+
+                ),
+                Expanded(child: Container()),
+                AbsorbPointer(
+                  absorbing: registerProvider.isLoading,
+                  child: PrimaryButton(
+                    color:registerProvider.isLoading?ColorManager.secondaryText: ColorManager.primary,
+                    width: double.infinity,
+                    height: 56.h,
+                    onPressed: () => registerProvider.signup(formKey:formKey!,email:emailController!.text,password: passwordController!.text,fullName: nameController!.text,phoneNumber: phoneController!.text),
+                    isDisable: registerProvider.isLoading,
+                    child:   PrimaryText(
+                      LocaleKeys.sign_up.tr(),
+                      color: ColorManager.white,
+                      fontWeight: FontWeight.bold,
                     ),
-
                   ),
-                  20.height,
-
-                  PrimaryText(
-                    LocaleKeys.phone_number.tr(),
-                    fontSize: 14.sp,
-                    color: ColorManager.secondaryText,
-                  ),
-                  16.height,
-                  PrimaryTextField(
-                    controller: phoneController,
-                    validator: (value) {
-                      return value!.isValidName;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.phone,
-                      width: 20.w,
-                      height: 20.h,
+                ),
+                20.height,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                     PrimaryText(
+                      LocaleKeys.i_am_a_new_user.tr(),
+                      color: ColorManager.secondaryText,
                     ),
-                  ),
-                  20.height,
-                  PrimaryText(
-                    LocaleKeys.email_address.tr(),
-                    fontSize: 14.sp,
-                    color: ColorManager.secondaryText,
-                  ),
-                  16.height,
-                  PrimaryTextField(
-                    controller: emailController,
-                    validator: (value) {
-
-                      return value!.isValidEmail;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.email,
-                      width: 20.w,
-                      height: 20.h,
-                    ),
-                  ),
-                  20.height,
-                  PrimaryText(
-                    LocaleKeys.password.tr(),
-                    fontSize: 14.sp,
-                    color: ColorManager.secondaryText,
-                  ),
-                  16.height,
-                  PrimaryTextField(
-                    obscureText: registerProvider.isPasswordVisible,
-
-                    controller: passwordController,
-                    validator: (value) {
-                      return value!.isValidPassword;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.password,
-                      width: 20.w,
-                      height: 20.h,
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () => registerProvider.togglePasswordVisibility(),
-                      icon:registerProvider.isPasswordVisible?const Icon(Icons.visibility_outlined,size: 22,color: ColorManager.secondaryText,):const Icon(Icons.visibility_off_outlined,size: 22,color: ColorManager.secondaryText,),
-                    ),
-
-                  ),
-                  40.height,
-                  AbsorbPointer(
-                    absorbing: registerProvider.isLoading,
-                    child: PrimaryButton(
-                      color:registerProvider.isLoading?ColorManager.secondaryText: ColorManager.primary,
-                      width: double.infinity,
-                      height: 56.h,
-                      onPressed: () => registerProvider.signup(formKey:formKey!,email:emailController!.text,password: passwordController!.text,fullName: nameController!.text,phoneNumber: phoneController!.text),
-                      isDisable: registerProvider.isLoading,
-                      child:   PrimaryText(
-                        LocaleKeys.sign_up.tr(),
-                        color: ColorManager.white,
-                        fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: () =>   sl<AuthProvider>().togglePages(),
+                      child:  PrimaryText(
+                        LocaleKeys.sign_in.tr(),
+                        color: ColorManager.primary,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                  ),
-                  20.height,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                       PrimaryText(
-                        LocaleKeys.i_am_a_new_user.tr(),
-                        color: ColorManager.secondaryText,
-                      ),
-                      GestureDetector(
-                        onTap: () =>   sl<AuthProvider>().togglePages(),
-                        child:  PrimaryText(
-                          LocaleKeys.sign_in.tr(),
-                          color: ColorManager.primary,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
