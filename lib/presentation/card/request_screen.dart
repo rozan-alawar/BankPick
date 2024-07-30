@@ -58,97 +58,95 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
     return Scaffold(
       appBar:  PrimaryAppBar(title: LocaleKeys.request_money.tr(),withLeading: true,),
 
-      body: SingleChildScrollView(
-        child: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
-          },
-          child: Form(
-            key: formKey,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                   PrimaryText(
-                    LocaleKeys.payer_name.tr(),
-                    color: ColorManager.secondaryText,
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Form(
+          key: formKey,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+      
+                 PrimaryText(
+                  LocaleKeys.payer_name.tr(),
+                  color: ColorManager.secondaryText,
+                ),
+                PrimaryTextField(
+                  controller: nameController,
+                  validator: (value) {
+                    return value!.isValidName;
+                  },
+                  prefixIcon: SvgPicture.asset(
+                    IconAssets.user,
+                    width: 16.w,
+                    height: 16.h,
+                    fit: BoxFit.contain,
                   ),
-                  PrimaryTextField(
-                    controller: nameController,
-                    validator: (value) {
-                      return value!.isValidName;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.user,
-                      width: 16.w,
-                      height: 16.h,
-                      fit: BoxFit.contain,
-                    ),
+                ),
+                // 20.height,
+                 PrimaryText(
+                  LocaleKeys.email_address.tr(),
+                  color: ColorManager.secondaryText,
+                ),
+                PrimaryTextField(
+                  controller: emailController,
+                  validator: (value) {
+                    return value!.isValidEmail;
+                  },
+                  prefixIcon: SvgPicture.asset(
+                    IconAssets.email,
+                    width: 20.w,
+                    height: 20.h,
+                    fit: BoxFit.fitWidth,
                   ),
-                  // 20.height,
-                   PrimaryText(
-                    LocaleKeys.email_address.tr(),
-                    color: ColorManager.secondaryText,
+                ),
+                // 20.height,
+                 PrimaryText(
+                   LocaleKeys.description.tr(),
+                  color: ColorManager.secondaryText,
+                ),
+                4.height,
+                PrimaryTextField(
+                  controller: descriptionController,
+                  validator: (value) {},
+                  // multiLines: true,
+                  multiLines: true,
+                ),
+                MoneyAmountSection(
+                  currencyController: amountController!,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an amount';
+                    }
+                    if (double.tryParse(value) == null) {
+                      return 'Please enter a valid amount';
+                    }
+                    return "";
+                  },
+                ),
+                Expanded(child: Container()),
+                PrimaryButton(
+                  color: ColorManager.primary,
+                  onPressed: () => walletProvider.requestMoneyFromFriend(
+                    email: emailController!.text,
+                    formKey: formKey!,
+                    amount: double.tryParse(amountController!.text) ?? 0,
+                    description: descriptionController!.text,
+                    payerName: nameController!.text,
+                    currency: currency,
+                    date: dueDate,
                   ),
-                  PrimaryTextField(
-                    controller: emailController,
-                    validator: (value) {
-                      return value!.isValidEmail;
-                    },
-                    prefixIcon: SvgPicture.asset(
-                      IconAssets.email,
-                      width: 20.w,
-                      height: 20.h,
-                      fit: BoxFit.fitWidth,
-                    ),
+                  child:  PrimaryText(
+                    LocaleKeys.request_money.tr()  ,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: Colors.white,
                   ),
-                  // 20.height,
-                   PrimaryText(
-                     LocaleKeys.description.tr(),
-                    color: ColorManager.secondaryText,
-                  ),
-                  4.height,
-                  PrimaryTextField(
-                    controller: descriptionController,
-                    validator: (value) {},
-                    // multiLines: true,
-                    multiLines: true,
-                  ),
-                  MoneyAmountSection(
-                    currencyController: amountController!,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter an amount';
-                      }
-                      if (double.tryParse(value) == null) {
-                        return 'Please enter a valid amount';
-                      }
-                      return "";
-                    },
-                  ),
-                  60.height,
-                  PrimaryButton(
-                    color: ColorManager.primary,
-                    onPressed: () => walletProvider.requestMoneyFromFriend(
-                      email: emailController!.text,
-                      formKey: formKey!,
-                      amount: double.tryParse(amountController!.text) ?? 0,
-                      description: descriptionController!.text,
-                      payerName: nameController!.text,
-                      currency: currency,
-                      date: dueDate,
-                    ),
-                    child:  PrimaryText(
-                      LocaleKeys.request_money.tr()  ,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16.sp,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

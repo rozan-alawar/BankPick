@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
             darkTheme: ThemeDataStyle.dark,
             navigatorKey: sl<NavigationService>().navigatorKey,
             scaffoldMessengerKey: sl<NavigationService>().snackBarKey,
-            initialRoute: Routes.home,
+            initialRoute: Routes.splash,
             onGenerateRoute: AppRoutes.onGenerateRoutes,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
