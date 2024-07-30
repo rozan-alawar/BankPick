@@ -60,100 +60,101 @@ User_Model? user = HomeProvider().user;
         onTap: () {
         FocusScope.of(context).unfocus();
         },
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
+          child: Column(
+            children: [
+                  CircleAvatar(
+                    radius: 40.r,
+                    backgroundImage: AssetImage(
+                      homeProvider.user!.avatarUrl,
+                    ), // Add a profile image in assets folder
+                  ),
+                  20.height,
 
-                    CircleAvatar(
-                      radius: 40.r,
-                      backgroundImage: AssetImage(
-                        homeProvider.user!.avatarUrl,
-                      ), // Add a profile image in assets folder
-                    ),
-                    20.height,
-            
-            
-                        PrimaryText(homeProvider.user?.name ?? "Rozan AbuAlawar",
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                        8.height,
-                        PrimaryText('Senior Designer',
-                            fontSize: 12.sp, color: ColorManager.secondaryText),
-            
-                30.height,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PrimaryText(
-                      LocaleKeys.full_name.tr(),
-                      fontSize: 12.sp,
-                      color: ColorManager.secondaryText,
-                    ),
-                    // 8.height,
-                    PrimaryTextField(
-                      controller: nameController,
-                      validator: (value) {
-                        // registerProvider.setEmail(value!);
-                        return value!.isValidName;
-                      },
-                      prefixIcon: SvgPicture.asset(
-                        IconAssets.user,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-            
-                    ),
-                    PrimaryText(
-                      LocaleKeys.email_address.tr(),
-                      fontSize: 12.sp,
-                      color: ColorManager.secondaryText,
-                    ),
-                    PrimaryTextField(
-                      controller: emailController,
-                      validator: (value) {
-                        return      value!.isValidEmail;
 
-                      },
-                      prefixIcon: SvgPicture.asset(
-                        IconAssets.email,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                    ),
-                    PrimaryText(
-                      LocaleKeys.phone_number.tr(),
-                      fontSize: 12.sp,
-                      color: ColorManager.secondaryText,
-                    ),
-                    PrimaryTextField(
-                      controller: phoneController,
-                      validator: (value) {
-                  return      value!.isValidPhone;
-                      },
-                      prefixIcon: SvgPicture.asset(
-                        IconAssets.phone,
-                        width: 20.w,
-                        height: 20.h,
-                      ),
-                    ),
-                    40.height,
-                    PrimaryButton(
-                      color:ColorManager.primary,
-                      width: double.infinity,
-                      height: 56.h,
-                      onPressed: ()=> profileProvider.saveProfile(formKey!,context,nameController!.text,emailController!.text,phoneController!.text,),
-                      child:  PrimaryText(
-                        LocaleKeys.save.tr(),
-                        color: ColorManager.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-    70.height,
-    PrimaryText( '${LocaleKeys.joined.tr()} ${homeProvider.user!.joinedDate.day}/${homeProvider.user!.joinedDate.month}/${homeProvider.user!.joinedDate.year}',color: ColorManager.secondaryText,),
+                      PrimaryText(homeProvider.user?.name ?? "Rozan AbuAlawar",
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                      8.height,
+                      PrimaryText('Senior Designer',
+                          fontSize: 12.sp, color: ColorManager.secondaryText),
 
-              ],
-            ),
+              30.height,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  PrimaryText(
+                    LocaleKeys.full_name.tr(),
+                    fontSize: 12.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  8.height,
+                  PrimaryTextField(
+                    controller: nameController,
+                    validator: (value) {
+                      // registerProvider.setEmail(value!);
+                      return value!.isValidName;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.user,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+
+                  ),
+                  PrimaryText(
+                    LocaleKeys.email_address.tr(),
+                    fontSize: 12.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  8.height,
+
+                  PrimaryTextField(
+                    controller: emailController,
+                    validator: (value) {
+                      return      value!.isValidEmail;
+
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.email,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+                  ),
+                  PrimaryText(
+                    LocaleKeys.phone_number.tr(),
+                    fontSize: 12.sp,
+                    color: ColorManager.secondaryText,
+                  ),
+                  8.height,
+
+                  PrimaryTextField(
+                    controller: phoneController,
+                    validator: (value) {
+                return      value!.isValidPhone;
+                    },
+                    prefixIcon: SvgPicture.asset(
+                      IconAssets.phone,
+                      width: 20.w,
+                      height: 20.h,
+                    ),
+                  ),
+                  40.height,
+                  PrimaryButton(
+                    color:ColorManager.primary,
+                    width: double.infinity,
+                    height: 56.h,
+                    onPressed: ()=> profileProvider.saveProfile(formKey!,context,nameController!.text,emailController!.text,phoneController!.text,),
+                    child:  PrimaryText(
+                      LocaleKeys.save.tr(),
+                      color: ColorManager.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              70.height,
+              PrimaryText( '${LocaleKeys.joined.tr()} ${homeProvider.user!.joinedDate.day}/${homeProvider.user!.joinedDate.month}/${homeProvider.user!.joinedDate.year}',color: ColorManager.secondaryText,),
+
+            ],
           ),
         ),
     ),
